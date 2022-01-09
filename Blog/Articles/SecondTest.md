@@ -1,5 +1,5 @@
 ---
-title: My second test article
+title: 
 author: Peter Gregg
 description: My second test article
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
