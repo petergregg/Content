@@ -1,5 +1,5 @@
 ---
-title: 
+title: Test Article
 author: Peter Gregg
 description: My test article
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
