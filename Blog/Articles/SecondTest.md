@@ -5,7 +5,7 @@ description: My second test article
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
-status: draft
+status: published
 published: 2021/12/28 15:30:00
 categories: 
   - Test
