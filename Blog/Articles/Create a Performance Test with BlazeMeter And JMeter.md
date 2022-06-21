@@ -6,7 +6,7 @@ image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
 status: draft
-published: 2022/05/17 08:00:00
+published: 2022/06/20 08:00:00
 categories: 
   - Performance
   - BlazeMeter
@@ -31,49 +31,49 @@ The following prerequisites will be required to complete this tutorial:
 This section details how to create a performance test script using BlazeMeters browser extension.
 
 1. Select the 
-![BlazeMeter Logo](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/BlazeMeterLogo.png) **Icon** in your browser.
+![BlazeMeter logo](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/BlazeMeterLogo.png) **Icon** in your browser.
 2. In the **Test name** box, enter a name for the test. Select the **Record** button, to start recording. 
 
-    ![BlazeMeter Logo](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/BlazeMeterCreateTest.png)
+    ![BlazeMeter create test](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/BlazeMeterCreateTest.png)
 
 3. Select the **Add Step** button, to add steps for each action. When finished, select the **Stop** button.
 
-    ![BlazeMeter Logo](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/BlazeMeterCreateTestSteps.png)
+    ![BlazeMeter add step](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/BlazeMeterCreateTestSteps.png)
 
 > [!NOTE] 
 > When the script is saving the **BlazeMeter icon** will blink. 
 
 4. Select **Edit**, and then **JMeter Script...** (If not logged in to BlazeMeter, you will need to be for the next steps).
 
-    ![BlazeMeter Logo](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/BlazeMeterExportJMeterScriptStep1.png)
-5. Select **JMeter & Selenium comibined (YAML)**, and then select **Save**.
+    ![BlazeMeter edit JMeter script](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/BlazeMeterExportJMeterScriptStep1.png)
+5. Select **JMeter & Selenium combined (YAML)**, and then select **Save**.
 
-    ![BlazeMeter Logo](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/BlazeMeterExportJMeterScriptStep2.png)
+    ![BlazeMeter JMeter & selenium combined](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/BlazeMeterExportJMeterScriptStep2.png)
 
 6. Select the **.JMX** button to export the JMeter script.
 
-    ![BlazeMeter Logo](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/BlazeMeterExportJMeterScriptStep3.png)
+    ![BlazeMeter export a JMeter script](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/BlazeMeterExportJMeterScriptStep3.png)
 
 ## Open the performance test in JMeter
 
 This section details how to run a performance test script in JMeter that was created and exported in BlazeMeter.
 
-1. In Microsoft Windows, **Open** the bin folder of JMeter and run the **jmeter.bat** batch file.
+1. In Microsoft Windows, **Open** the bin folder of JMeter and run the **JMeter.bat** batch file.
 
-    ![BlazeMeter Logo](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterRunOnWindows.png)
+    ![JMeter run on windows](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterRunOnWindows.png)
 
 2. In the upper-left of the screen, select **File** > **Open**.
 
-    ![BlazeMeter Logo](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterOpenBlazeMeterJMeterScriptStep1.png)
+    ![JMeter open test script via file menu step 1](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterOpenBlazeMeterJMeterScriptStep1.png)
 
 3. On the **Open** screen, select the **Script**, and then select **Open**. 
 
-    ![BlazeMeter Logo](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterOpenBlazeMeterJMeterScriptStep2.png)
+    ![JMeter open test script via file menu step 2](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterOpenBlazeMeterJMeterScriptStep2.png)
 
 ### Edit Thread Group properties
 1. In the **Test Plan**, select the **Thread Group**. This is where you enter the essential information required for the performance test. Enter the following values:
 
-    ![BlazeMeter Logo](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterBlazeMeterThreadGroup.png) 
+    ![JMeter Thread Group](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterBlazeMeterThreadGroup.png) 
 
     | Field | Value | Description |
     | --- | --- | --- |
@@ -93,7 +93,7 @@ This section details how to run a performance test script in JMeter that was cre
 
 1. In the **Test Plan**, right-click the **Thread Group**, select **Add** >  **Listener** > **Summary Report**.
 
-    ![BlazeMeter Logo](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterThreadGroupAddListener.png) 
+    ![JMeter add listener](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterThreadGroupAddListener.png) 
 
 2. In the **Test Plan** follow step 4 above to add the following listeners to the  **Thread group** and each **Transaction controller**.
 
@@ -101,23 +101,23 @@ This section details how to run a performance test script in JMeter that was cre
     | --- | --- | 
     | Thread Group | Summary Report | 
     | Thread Group | View Results Tree | 
-    | Thread Group | Reponse Time Graph | 
+    | Thread Group | Response Time Graph | 
     | Transaction Controller | Summary Report | 
     | Transaction Controller | View Results in Table | 
     | Transaction Controller | Aggregate Report | 
     | Transaction Controller | Graph Results | 
 
-    ![BlazeMeter Logo](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterThreadGroupAddListeners.png) 
+    ![JMeter add listeners](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterThreadGroupAddListeners.png) 
 
 ### Run the performance test and analyse results
 
 1. In the JMeter screen, select the ![JMeter Start button](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterGUIStartPerformanceTest.png) button.
 
-    Once running, a green indicator icon will appear in the top right of the Control Panel. JMeter will ramp up the total number of active threads to 5 in approximately 10 seconds with a delay of 2 secs between subsequent threads. The inidicator box will turn to grey when the test is complete. 
+    Once running, a green indicator icon will appear in the top right of the Control Panel. JMeter will ramp up the total number of active threads to 5 in approximately 10 seconds with a delay of 2 secs between subsequent threads. The indicator box will turn to grey when the test is complete. 
 
 2. When the performance test has completed. Select the **Summary Report** listener in the **Thread group** to analyse the results.
 
-    ![BlazeMeter Logo](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterThreadGroupSummaryReport.png)
+    ![JMeter summary report](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterThreadGroupSummaryReport.png)
 
 
 
