@@ -22,7 +22,7 @@ In this article, you will learn how to create a performance test with BlazeMeter
 ## Prerequisites
 
 The following prerequisites will be required to complete this tutorial:
-- BlazeMeter browser extension. If you don't already have it,   [add the BlazeMeter extension to your browser](https://chrome.google.com/webstore/detail/blazemeter-the-continuous/mbopgmdnpcbohhpnfglgohlbhfongabi) 
+- BlazeMeter browser extension. If you don't already have it,   [add the BlazeMeter extension to your browser](https://chrome.google.com/webstore/detail/blazemeter-the-continuous/mbopgmdnpcbohhpnfglgohlbhfongabi). 
 - A BlazeMeter account. If you don't have a BlazeMeter account,  [create one for free](https://auth.blazemeter.com/auth/realms/blazect/login-actions/registration?client_id=blazemeter&tab_id=7GOVEWaplBc) before you begin.
 - JMeter. If you don't have JMeter installed, [download JMeter](https://jmeter.apache.org/download_jmeter.cgi). 
 
@@ -54,7 +54,7 @@ This section details how to create a performance test script using BlazeMeters b
 
     ![BlazeMeter Logo](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/BlazeMeterExportJMeterScriptStep3.png)
 
-## Run the performance test in JMeter
+## Open the performance test in JMeter
 
 This section details how to run a performance test script in JMeter that was created and exported in BlazeMeter.
 
@@ -70,8 +70,8 @@ This section details how to run a performance test script in JMeter that was cre
 
     ![BlazeMeter Logo](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterOpenBlazeMeterJMeterScriptStep2.png)
 
-    
-3. In the **Test Plan**, select the **Thread Group**. This is where you enter the essential information required for the performance test. Enter the following values:
+### Edit Thread Group properties
+1. In the **Test Plan**, select the **Thread Group**. This is where you enter the essential information required for the performance test. Enter the following values:
 
     ![BlazeMeter Logo](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterBlazeMeterThreadGroup.png) 
 
@@ -83,19 +83,19 @@ This section details how to run a performance test script in JMeter that was cre
     | Number of Threads (users) | 5 | Mimics the number of user(s) or connection(s) to an application |
     | Ramp-up period (seconds) | 10 | Time to create all of the threads (or how frequent requests should be sent by users) |
     | Loop Count | 1 | Number of times the test will repeat for the thread group (or quantity of requests that should be sent) |
-    | Same user on each iteration | Checked | If checked and the Test Plan utilises HTTP Cookie Manager - cookies returned in the first response for subsequent requests will be used |
+    | Same user on each iteration | Checked | If checked and the Test Plan utilises HTTP Cookie Manager - Cookies returned in the first response for subsequent requests will be used |
     | Delay Thread Creation until needed | Unchecked | If checked it stops JMeter allocating memory for all threads (users) when the performance test starts |
     | Specify Thread lifetime | Unchecked | Specify a duration and startup delay |
     | Duration (seconds) | 0 | Specify a duration for the whole test |
     | Startup delay (seconds) | 0 | Delay time before a thread is started |
 
-### Add Listeners 
+### Add listeners 
 
-4. In the **Test Plan**, right-click the **Thread Group**, select **Add** >  **Listener** > **Summary Report**.
+1. In the **Test Plan**, right-click the **Thread Group**, select **Add** >  **Listener** > **Summary Report**.
 
     ![BlazeMeter Logo](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterThreadGroupAddListener.png) 
 
-5. In the **Test Plan** follow step 4 above to add the following listeners to the  **Thread group** and each **Transaction controller**.
+2. In the **Test Plan** follow step 4 above to add the following listeners to the  **Thread group** and each **Transaction controller**.
 
     | Test Plan Area | Listener | 
     | --- | --- | 
@@ -109,13 +109,13 @@ This section details how to run a performance test script in JMeter that was cre
 
     ![BlazeMeter Logo](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterThreadGroupAddListeners.png) 
 
-### Running the Performance test and Analyse Results
+### Run the performance test and analyse results
 
-6. In the JMeter screen, select the ![JMeter Start button](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterGUIStartPerformanceTest.png) button.
+1. In the JMeter screen, select the ![JMeter Start button](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterGUIStartPerformanceTest.png) button.
 
     Once running, a green indicator icon will appear in the top right of the Control Panel. JMeter will ramp up the total number of active threads to 5 in approximately 10 seconds with a delay of 2 secs between subsequent threads. The inidicator box will turn to grey when the test is complete. 
 
-7. When the performance test has completed. Select the **Summary Report** listener in the **Thread group** to analyse the results.
+2. When the performance test has completed. Select the **Summary Report** listener in the **Thread group** to analyse the results.
 
     ![BlazeMeter Logo](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterThreadGroupSummaryReport.png)
 
