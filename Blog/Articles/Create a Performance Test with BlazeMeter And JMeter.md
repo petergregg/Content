@@ -5,13 +5,12 @@ description: Create a Performance Test with BlazeMeter and JMeter
 image: https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Performance.png
 thumbnail: https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Performance.png
 type: article
-status: draft
-published: 2022/06/20 08:00:00
+status: published
+published: 2022/06/26 10:00:00
 categories: 
   - Performance
   - BlazeMeter
   - JMeter
-  - Command Line
 ---
 
 
