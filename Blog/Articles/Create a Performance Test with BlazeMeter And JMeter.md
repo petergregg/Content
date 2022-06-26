@@ -2,8 +2,8 @@
 title: Create a Performance Test with BlazeMeter and JMeter
 author: Peter Gregg
 description: Create a Performance Test with BlazeMeter and JMeter
-image: https://dummyimage.com/800x600/000/fff&text=placeholder
-thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
+image: https://github.com/petergregg/Content/blob/main/Blog/Images/Performance.png
+thumbnail: https://github.com/petergregg/Content/blob/main/Blog/Images/Performance.png
 type: article
 status: draft
 published: 2022/06/20 08:00:00
