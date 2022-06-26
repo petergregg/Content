@@ -8,7 +8,7 @@ type: resource
 status: published
 published: 2021/12/28 15:30:00
 categories: 
-  - Test
+  - draft
 ---
 
 # H1 Test
