@@ -85,7 +85,7 @@ jobs:
       command: 'build'
       projects: '{YourProjectFolder}*/**.csproj'
 
-- job: WebSocketAnnouncer_Build_and_Push_Docker_Image
+- job: Build_and_Push_Docker_Image
   dependsOn: Build
   displayName: Build & Deploy to Azure Registry
   pool:
