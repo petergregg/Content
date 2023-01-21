@@ -18,7 +18,7 @@ categories:
 
 # Scan Container in Azure Container Registry with Snyk via Azure DevOps Pipeline
 
-In this article, you will learn how to simulate network speeds using fiddler.
+In this article, you will learn how to scan a  container image in an Azure Container Registry with Snyk via Azure DevOps Pipelines.
 
 ## Prerequisites
 
