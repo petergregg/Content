@@ -79,7 +79,7 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Add Snyk Service Connection to Azure DevOps Project
 
-1. In the root of an Azure DevOps Project, select **Project settings**.
+1. From the root of an Azure DevOps Project, select **Project settings**.
 
     ![Azure DevOps Projects Settings Link](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsProjectSettings.png)
 
@@ -216,8 +216,51 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure DevOps Repos Commit Comment](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsReposFilesCommitComment.png)
 
-## View and Trigger Azure DevOps Snyk Pipeline
+## Create and Run Azure DevOps Snyk Pipeline
 
+1. From the root of an Azure DevOps Project, select **Pipelines**.
 
+    ![Azure DevOps Pipelines Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesNavigation.png)
+
+2. Select **Create Pipeline**.
+
+    ![Azure DevOps Pipelines Create Your First Pipeline](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesCreateYourFirstPipeline.png)
+
+3. Select **Azure Repos Git**.
     
-  
+    ![Azure DevOps Pipelines Connect Azure Repos Git](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesConnectAzureReposGit.png)
+
+4. Select **Existing Azure Pipelines YAML file**.
+
+    ![Azure DevOps Pipelines Configure Existing Azure Pipeline Yaml File](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesConfigureExistingAzurePipelineYamlFile.png)
+
+5. Specify the following parameters with the following values.
+
+    | Parameter | Value |
+    | --- | --- | 
+    | Branch | main |
+    | Path | /snyk-az-pipeline.yml |
+
+    ![Azure DevOps Pipelines Select Existing Azure Pipeline Yaml File](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesSelectExistingAzurePipelineYamlFile.png)
+
+6. Review the pipeline **snyk-az-pipeline.yml** yaml, and then select **Run**, to run the pipeline.
+
+    ![Azure DevOps Pipelines Review Pipeline Yaml and Run Pipeline](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesNewPipelineNavigationBar.png)
+
+## View Snyk Test Report
+
+1. Navigate to **Pipelines**.
+
+    ![Azure DevOps Pipelines Snyk](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesSnyk.png)
+    
+3. In the **Runs** tab, select a pipeline that has been run. 
+
+    ![Azure DevOps Pipelines Runs Pipelines Run](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesRunsPipeline.png)
+
+4. Select the **Snyk Report** tab to view the Snyk test report.
+
+    ![Azure DevOps Pipelines Snyk Test Report](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesSnykReport.png)
+
+
+
+
