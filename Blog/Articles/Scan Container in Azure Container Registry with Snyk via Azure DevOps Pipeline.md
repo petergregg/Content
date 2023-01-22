@@ -30,48 +30,48 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Add Snyk Extension to Azure DevOps
 
-1. In the root of an Azure DevOps Organisation, select **Organisation Settings**
+1. In the root of an Azure DevOps Organization, select **Organization Settings**.
 
-    ![Azure DevOps Organisation Settings](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsOrganisationSettings.png)
+    ![Azure DevOps Organization Settings](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsOrganisationSettings.png)
 
 2. In the **General** section, select **Extensions**.
 
-    ![Azure DevOps Organisation Settings General Extensions Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsOrganisationSettingsGeneralExtensionsNavigation.png)
+    ![Azure DevOps Organization Settings General Extensions Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsOrganisationSettingsGeneralExtensionsNavigation.png)
 
-3. Select **Browse marketplace**
+3. Select **Browse marketplace**.
     ![Azure DevOps Extensions Navigation Bar](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsExtensionsNavigationBar.png)
 
 4. Search for **Snyk**, and then select **Snyk Security Scan**.
 
     ![Azure DevOps Service Connection Search Snyk](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsServiceConnectionSearchSnyk.png)
 
-5. Select **Get if free**, then select **Install**
+5. Select **Get if free**, then select **Install**.
 
     ![Azure DevOps Snyk Extension Get It Free](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsSnykExtensionGetItFree.png)
 
-6. In the **Extensions** section, **Snyk** is now installed
+6. In the **Extensions** section, **Snyk** is now installed.
 
     ![Azure DevOps Snyk Extension Get It Free](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsSnykExtensionInstalled.png)
 
 ## Create Azure Container Registry
 
-1. Search for **Azure Container Registry**
+1. Search for **Container Registry**.
 
     ![Azure Search for Container Registries](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureContainerRegistry/AzureSearchContainerRegistries.png)
 
-2. Select **Create**
+2. Select **+ Create**.
 
     ![Azure Container Registries Navigation Bar Create Link](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureContainerRegistry/AzureContainerRegistriesNavigationBar.png)
 
 
-3. Add the following values to **Basics**, select **Review + create**, select **Create**.
+3. Add the following values to **Basics**, then select **Review + create**, and then select **Create**.
 
     ![Azure](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureContainerRegistry/AzureContainerRegistrySetup.png)
 
 
 ## Add Snyk Service Connection to Azure DevOps Project
 
-1. In the root of an Azure DevOps Project, select **Project settings**
+1. In the root of an Azure DevOps Project, and then select **Project settings**.
 
     ![Azure DevOps Projects Settings Link](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsProjectSettings.png)
 
@@ -79,15 +79,16 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure DevOps Project Settings Service Connections Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsProjectSettingsServiceConnectionsNavigation.png)
 
-3. Select **Create service connection**
+3. Select **Create service connection**.
 
     ![Azure DevOps Project Create Service Connection](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsCreateServiceConnection.png)
 
-4. Search for **Synk** then, select **Next**.
+4. Search for **Snyk** then, select **Next**.
 
     ![Azure DevOps Service Connection Search Snyk](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsServiceConnectionSearchSnyk.png)
 
 5. Specify the following parameters with the following values.
+
     > [!NOTE]   
     > For Snyk API Token select **Personal API Token**, copy and paste the **Key** from the Account sections it into Azure DevOps **Snyk API Token**.
 
@@ -105,7 +106,7 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Add Azure Container Registry Service Connection to Azure DevOps Project
 
-1. Complete steps 1 and 2 in [Add Snyk Service Connection to Azure DevOps Project](#add-snyk-service-connection-to-azure-devops-project) .
+1. Complete steps 1 and 2 in [Add Snyk Service Connection to Azure DevOps Project](#add-snyk-service-connection-to-azure-devops-project).
 2. Select **New Service Connection**.
 
      ![Azure DevOps Service Connection Navigation Bar](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsServiceConnectionNavigationBar.png)
@@ -138,7 +139,7 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure DevOps Repos Files Add New File](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsReposFilesAddNewFile.png)
 
-3. In the Modal Popup, name the file **snyk-az-pipeline.yml**
+3. In the Modal Popup, name the file **snyk-az-pipeline.yml**.
 
     ![Azure DevOps Repos Files Add New File Modal Popup](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsReposFilesAddNewFileModalPopup.png)
 
@@ -198,11 +199,11 @@ The following prerequisites will be required to complete this tutorial:
           command: 'push'
           tags: dev
     ```
-5. Select **Commit**
+5. Select **Commit**.
 
     ![Azure DevOps Repos Commit Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsReposFilesCommitNavigation.png)
 
-5. Select **Commit**
+5. Select **Commit**.
 
     ![Azure DevOps Repos Commit Comment](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsReposFilesCommitComment.png)
     
