@@ -200,7 +200,7 @@ The following prerequisites will be required to complete this tutorial:
     ```
 5. Select **Commit**
 
-    ![Azure DevOps Repos Commit Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsReposFilesCommitSnykPipelineYmlFile.png)
+    ![Azure DevOps Repos Commit Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsReposFilesCommitNavigation.png)
 
 5. Select **Commit**
 
