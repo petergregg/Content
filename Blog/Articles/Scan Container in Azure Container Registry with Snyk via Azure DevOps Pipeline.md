@@ -23,100 +23,187 @@ In this article, you will learn how to scan a  container image in an Azure Conta
 ## Prerequisites
 
 The following prerequisites will be required to complete this tutorial:
-- Azure DevOps account. If you don't have a Azure DevOps account,  [create one for free](https://azure.microsoft.com/en-us/products/devops/) before you begin.
-- Azure DevOps project.
-- Azure Container Registry.
-- Snyk account. If you don't have a Azure DevOps account,  [create one for free](https://app.snyk.io/login?cta=sign-up&loc=nav&page=homepage) before you begin.
+- Azure DevOps account. If you don't have an Azure DevOps account,  [create one for free](https://azure.microsoft.com/en-us/products/devops/) before you begin.
+- Azure DevOps project that has docker support.
+- Azure account. If you don't have an Azure account, [create one for free](https://azure.microsoft.com/en-gb/free/) before you begin. 
+- Snyk account. If you don't have a Snyk account,  [create one for free](https://app.snyk.io/login?cta=sign-up&loc=nav&page=homepage) before you begin.
 
 ## Add Snyk Extension to Azure DevOps
 
 1. In the root of an Azure DevOps Organisation, select **Organisation Settings**
-2. In the **General** section, select **Extensions**, then **Browse marketplace**
-3. Search for **Snyk**, and then select **Snyk Security Scan**.
-4. Select **Get if free**, then select **Install**
-5. In the **Extensions** section, **Snyk** is now installed
+
+    ![Azure DevOps Organisation Settings](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsOrganisationSettings.png)
+
+2. In the **General** section, select **Extensions**.
+
+    ![Azure DevOps Organisation Settings General Extensions Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsOrganisationSettingsGeneralExtensionsNavigation.png)
+
+3. Select **Browse marketplace**
+    ![Azure DevOps Extensions Navigation Bar](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsExtensionsNavigationBar.png)
+
+4. Search for **Snyk**, and then select **Snyk Security Scan**.
+
+    ![Azure DevOps Service Connection Search Snyk](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsServiceConnectionSearchSnyk.png)
+
+5. Select **Get if free**, then select **Install**
+
+    ![Azure DevOps Snyk Extension Get It Free](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsSnykExtensionGetItFree.png)
+
+6. In the **Extensions** section, **Snyk** is now installed
+
+    ![Azure DevOps Snyk Extension Get It Free](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsSnykExtensionInstalled.png)
 
 ## Create Azure Container Registry
 
 1. Search for **Azure Container Registry**
-2. Create
-3. Complete form, Next to **Review + create**, select Create
+
+    ![Azure Search for Container Registries](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureContainerRegistry/AzureSearchContainerRegistries.png)
+
+2. Select **Create**
+
+    ![Azure Container Registries Navigation Bar Create Link](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureContainerRegistry/AzureContainerRegistriesNavigationBar.png)
+
+
+3. Add the following values to **Basics**, select **Review + create**, select **Create**.
+
+    ![Azure](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureContainerRegistry/AzureContainerRegistrySetup.png)
+
 
 ## Add Snyk Service Connection to Azure DevOps Project
 
 1. In the root of an Azure DevOps Project, select **Project settings**
-2. In the **Pipelines** section, select **Service connection**, and then **Create service connection**
-3. Search for **Synk** then, select **Next**
-4. Complete the form with the following values.
-> [!NOTE]   
-> For Snyk API Token select **Personal API Token**, copy and paste the **Key** from the Account sections it into Azure DevOps **Snyk API Token**.
 
-| ? | ? | ? | ? |
-| --- | --- | --- | --- | 
-| ? | ? | ? | ? |
+    ![Azure DevOps Projects Settings Link](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsProjectSettings.png)
+
+2. In the **Pipelines** section, select **Service connections**. 
+
+    ![Azure DevOps Project Settings Service Connections Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsProjectSettingsServiceConnectionsNavigation.png)
+
+3. Select **Create service connection**
+
+    ![Azure DevOps Project Create Service Connection](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsCreateServiceConnection.png)
+
+4. Search for **Synk** then, select **Next**.
+
+    ![Azure DevOps Service Connection Search Snyk](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsServiceConnectionSearchSnyk.png)
+
+5. Specify the following parameters with the following values.
+    > [!NOTE]   
+    > For Snyk API Token select **Personal API Token**, copy and paste the **Key** from the Account sections it into Azure DevOps **Snyk API Token**.
+
+    ![Snyk Account API Token](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Snyk/SnykAccountAPIToken.png)
+
+    | Parameter | Value |
+    | --- | --- | 
+    | Server URL | https://snyk.io/ | 
+    | Snyk API Token | Your Snyk API Token from above |
+    | Service connection name | Snyk | 
+    | Grant access permission to all pipelines | True |
+
+    ![Azure DevOps Snyk Service Connection Setup](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsSnykServiceConnectionSetup.png)
 
 
 ## Add Azure Container Registry Service Connection to Azure DevOps Project
 
-1. Complete steps 1 and 2 above.
-2. Search for 
+1. Complete steps 1 and 2 in [Add Snyk Service Connection to Azure DevOps Project](#add-snyk-service-connection-to-azure-devops-project) .
+2. Select **New Service Connection**.
+
+     ![Azure DevOps Service Connection Navigation Bar](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsServiceConnectionNavigationBar.png)
+
+3. Search for **docker**, then select **Docker Registry**.
+
+     ![Azure DevOps Service Connection Navigation Bar](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsCreateDockerServiceConnection.png)
+
+4. Specify the following parameters with the following values.
+
+    | Parameter | Value |
+    | --- | --- | 
+    | Registry type | Azure Container Registry | 
+    | Authentication Type | Service Principal | 
+    | Subscription | Your Azure Subscription | 
+    | Azure container registry | [Azure Container Registry created earlier](#create-azure-container-registry)   | 
+    | Service connection name | Chosen name for the service connection  |
+    | Grant access permission to all pipelines | True |
+
+    ![Azure DevOps Service Connection Navigation Bar](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsAzureContainerRegistryServiceConnectionSetup.png)
+
 
 ## Add Azure DevOps Pipeline
 
-1. In the Azure Repo add a new yaml file named **snyk-az-pipeline.yml**
-2. Add the following yaml, replacing `{Your...}`
+1. In the root of an Azure DevOps Project, select **Repos**.
 
-```
-trigger:
-- main
+    ![Azure DevOps Repos Files Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsReposFilesNavigation.png)
 
-pool:
-  vmImage: ubuntu-latest
+2. Whilst in the root of your repo, select **More actions**, then **+ New**, and then **File**. 
 
-variables:
-  buildConfiguration: 'Release'
+    ![Azure DevOps Repos Files Add New File](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsReposFilesAddNewFile.png)
 
-jobs:
-- job: Build
-  steps: 
-  - task: DotNetCoreCLI@2
-    continueOnError: false
-    inputs:
-      command: 'build'
-      projects: '{YourProjectFolder}*/**.csproj'
+3. In the Modal Popup, name the file **snyk-az-pipeline.yml**
 
-- job: Build_and_Push_Docker_Image
-  dependsOn: Build
-  displayName: Build & Deploy to Azure Registry
-  pool:
-    vmImage: ubuntu-latest
-  steps:
-  - checkout: self
-  - task: Docker@2
-    displayName: Build an image
-    inputs:
-      containerRegistry: '{YourAzureContainerRegistryConnectionSetupAbove}'
-      repository: '{YourNewAzureContainerRegistryRepository}'
-      command: 'build'
-      Dockerfile: '{YourProjectFolder}/Dockerfile'
-      buildContext: '.'
-      tags: 'dev'
+    ![Azure DevOps Repos Files Add New File Modal Popup](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsReposFilesAddNewFileModalPopup.png)
 
-  - task: SnykSecurityScan@1
-    displayName: Scan an image
-    inputs:
-      serviceConnectionEndpoint: 'Snyk'
-      testType: 'container'
-      dockerImageName: '{YourAzureContainerRegistryRepositoryUrl}/{YourAzureContainerRegistryRepository}:dev'  
-      dockerfilePath: '{YourProjectFolder}/Dockerfile'
-      monitorWhen: 'always'
-      failOnIssues: true
+4. Add the following contents to the **snyk-az-pipeline.yml** file, replacing `{Your...}` with your values.
+
+    ```
+    trigger:
+    - main
+
+    pool:
+      vmImage: ubuntu-latest
+
+    variables:
+      buildConfiguration: 'Release'
+
+    jobs:
+    - job: Build
+      steps: 
+      - task: DotNetCoreCLI@2
+        continueOnError: false
+        inputs:
+          command: 'build'
+          projects: '{YourProjectFolder}*/**.csproj'
+
+    - job: Build_and_Push_Docker_Image
+      dependsOn: Build
+      displayName: Build & Deploy to Azure Registry
+      pool:
+        vmImage: ubuntu-latest
+      steps:
+      - checkout: self
+      - task: Docker@2
+        displayName: Build an image
+        inputs:
+          containerRegistry: '{YourAzureContainerRegistryConnectionSetupAbove}'
+          repository: '{YourNewAzureContainerRegistryRepository}'
+          command: 'build'
+          Dockerfile: '{YourProjectFolder}/Dockerfile'
+          buildContext: '.'
+          tags: 'dev'
+
+      - task: SnykSecurityScan@1
+        displayName: Scan an image
+        inputs:
+          serviceConnectionEndpoint: 'Snyk'
+          testType: 'container'
+          dockerImageName: '{YourAzureContainerRegistryRepositoryUrl}/{YourAzureContainerRegistryRepository}:dev'  
+          dockerfilePath: '{YourProjectFolder}/Dockerfile'
+          monitorWhen: 'always'
+          failOnIssues: true
+      
+      - task: Docker@2
+        displayName: Push an image
+        inputs:
+          containerRegistry: '{YourAzureContainerRegistryConnectionSetupAbove}'
+          repository: '{YourNewAzureContainerRegistryRepository}'
+          command: 'push'
+          tags: dev
+    ```
+5. Select **Commit**
+
+    ![Azure DevOps Repos Commit Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsReposFilesCommitSnykPipelineYmlFile.png)
+
+5. Select **Commit**
+
+    ![Azure DevOps Repos Commit Comment](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsReposFilesCommitComment.png)
+    
   
-  - task: Docker@2
-    displayName: Push an image
-    inputs:
-      containerRegistry: '{YourAzureContainerRegistryConnectionSetupAbove}'
-      repository: '{YourNewAzureContainerRegistryRepository}'
-      command: 'push'
-      tags: dev
-```
