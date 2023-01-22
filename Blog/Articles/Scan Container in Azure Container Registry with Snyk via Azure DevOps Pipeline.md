@@ -18,7 +18,7 @@ categories:
 
 # Scan Container in Azure Container Registry with Snyk via Azure DevOps Pipeline
 
-In this article, you will learn how to scan a  container image in an Azure Container Registry with Snyk via Azure DevOps Pipelines.
+In this article, you will learn how to scan a  container image in Azure Container Registry with Snyk via Azure DevOps Pipelines.
 
 ## Prerequisites
 
@@ -66,12 +66,20 @@ The following prerequisites will be required to complete this tutorial:
 
 3. Add the following values to **Basics**, then select **Review + create**, and then select **Create**.
 
+    | Parameter | Value |
+    | --- | --- | 
+    | Subscription | Your Azure Subscription | 
+    | Resource group | Create new with a name of your choice  | 
+    | Registry name | Chosen name for the registry  |
+    | Location | North Europe |
+    | SKU | Basic |
+
     ![Azure](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureContainerRegistry/AzureContainerRegistrySetup.png)
 
 
 ## Add Snyk Service Connection to Azure DevOps Project
 
-1. In the root of an Azure DevOps Project, and then select **Project settings**.
+1. In the root of an Azure DevOps Project, select **Project settings**.
 
     ![Azure DevOps Projects Settings Link](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsProjectSettings.png)
 
@@ -83,23 +91,24 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure DevOps Project Create Service Connection](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsCreateServiceConnection.png)
 
-4. Search for **Snyk** then, select **Next**.
+4. Search for **snyk**, then select **Next**.
 
     ![Azure DevOps Service Connection Search Snyk](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsServiceConnectionSearchSnyk.png)
 
 5. Specify the following parameters with the following values.
 
-    > [!NOTE]   
-    > For Snyk API Token select **Personal API Token**, copy and paste the **Key** from the Account sections it into Azure DevOps **Snyk API Token**.
-
-    ![Snyk Account API Token](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Snyk/SnykAccountAPIToken.png)
-
     | Parameter | Value |
     | --- | --- | 
     | Server URL | https://snyk.io/ | 
-    | Snyk API Token | Your Snyk API Token from above |
+    | Snyk API Token | Your Snyk API Token (see below) |
     | Service connection name | Snyk | 
     | Grant access permission to all pipelines | True |
+
+    > [!NOTE]   
+    > To get the **Snyk API Token**, select **Personal API Token**, then select **click to show** the **Key**. Copy and paste this key into Azure DevOps Snyk Service Connection Setup **Personal API Token** box.
+
+    ![Snyk Account API Token](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Snyk/SnykAccountAPIToken.png)
+
 
     ![Azure DevOps Snyk Service Connection Setup](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsSnykServiceConnectionSetup.png)
 
@@ -107,7 +116,7 @@ The following prerequisites will be required to complete this tutorial:
 ## Add Azure Container Registry Service Connection to Azure DevOps Project
 
 1. Complete steps 1 and 2 in [Add Snyk Service Connection to Azure DevOps Project](#add-snyk-service-connection-to-azure-devops-project).
-2. Select **New Service Connection**.
+2. Select **New service connection**.
 
      ![Azure DevOps Service Connection Navigation Bar](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsServiceConnectionNavigationBar.png)
 
@@ -129,7 +138,7 @@ The following prerequisites will be required to complete this tutorial:
     ![Azure DevOps Service Connection Navigation Bar](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsAzureContainerRegistryServiceConnectionSetup.png)
 
 
-## Add Azure DevOps Pipeline
+## Add Azure DevOps Snyk Pipeline
 
 1. In the root of an Azure DevOps Project, select **Repos**.
 
@@ -199,12 +208,16 @@ The following prerequisites will be required to complete this tutorial:
           command: 'push'
           tags: dev
     ```
-5. Select **Commit**.
+5. In the top right, select **Commit**.
 
     ![Azure DevOps Repos Commit Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsReposFilesCommitNavigation.png)
 
-5. Select **Commit**.
+5. in the bottom right, select **Commit**.
 
     ![Azure DevOps Repos Commit Comment](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsReposFilesCommitComment.png)
+
+## View and Trigger Azure DevOps Snyk Pipeline
+
+
     
   
