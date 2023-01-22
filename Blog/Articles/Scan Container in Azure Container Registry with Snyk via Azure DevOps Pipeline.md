@@ -64,7 +64,7 @@ The following prerequisites will be required to complete this tutorial:
     ![Azure Container Registries Navigation Bar Create Link](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureContainerRegistry/AzureContainerRegistriesNavigationBar.png)
 
 
-3. Add the following values to **Basics**, then select **Review + create**, and then select **Create**.
+3. Enter the following values to **Basics**, then select **Review + create**, and then select **Create**.
 
     | Parameter | Value |
     | --- | --- | 
@@ -95,7 +95,7 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure DevOps Service Connection Search Snyk](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsServiceConnectionSearchSnyk.png)
 
-5. Specify the following parameters with the following values.
+5. Enter the following values.
 
     | Parameter | Value |
     | --- | --- | 
@@ -124,7 +124,7 @@ The following prerequisites will be required to complete this tutorial:
 
      ![Azure DevOps Service Connection Navigation Bar](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsCreateDockerServiceConnection.png)
 
-4. Specify the following parameters with the following values.
+4. Enter the following values.
 
     | Parameter | Value |
     | --- | --- | 
@@ -234,7 +234,7 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure DevOps Pipelines Configure Existing Azure Pipeline Yaml File](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesConfigureExistingAzurePipelineYamlFile.png)
 
-5. Specify the following parameters with the following values.
+5. Enter the following values.
 
     | Parameter | Value |
     | --- | --- | 
@@ -252,7 +252,7 @@ The following prerequisites will be required to complete this tutorial:
 1. Navigate to **Pipelines**.
 
     ![Azure DevOps Pipelines Snyk](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesSnyk.png)
-    
+
 3. In the **Runs** tab, select a pipeline that has been run. 
 
     ![Azure DevOps Pipelines Runs Pipelines Run](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesRunsPipeline.png)
