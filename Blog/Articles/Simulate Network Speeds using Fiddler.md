@@ -20,7 +20,7 @@ In this article, you will learn how to simulate network speeds using fiddler.
 ## Prerequisites
 
 The following prerequisites will be required to complete this tutorial:
-- Fiddler. If you don't have Fiddler installed, [download Fiddler](https://www.telerik.com/download/fiddler).
+- Fiddler. If you don't have Fiddler installed, [download Fiddler for free](https://www.telerik.com/download/fiddler).
 
 # Simulate Network Speeds using Default Settings
 
@@ -31,14 +31,14 @@ This section details how to enable simulation of network speeds using Fiddlers d
     ![Fiddler Enable Simulate Modem Speeds](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/FiddlerEnableSimulateModemSpeeds.png)
 
 # Simulate Network Speeds using Custom Settings
-This section details how to enable simulation of network speeds using Fiddlers default network speed settings.
+This section details how to customize simulation of network speeds.
 
 1. In the upper-left of the screen, select **Rules** > **Customize Rules**. 
 2. On the **Fiddler ScriptEditor** screen, scroll down to `if (m_SimulateModel)`. 
 
     ![Fiddler Enable Simulate Modem Speeds](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/FiddlerCustomiseSimulatedModemSpeeds.png)
 
-3. Update the `request-trickle-delay` value and `response-trickle-delay` value to the network speed you desire. The following values is what I got on my network and can be used as a guide:
+3. Update the `request-trickle-delay` value and `response-trickle-delay` value to the network speed you desire. The following values is what I used to simulate the following network speeds and can be used as a guide.
 
 | Request Value | Response Value | Download (Mbps) | Upload (Mbps) |
 | --- | --- | --- | --- | 
