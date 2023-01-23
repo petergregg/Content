@@ -5,8 +5,8 @@ description: Scan Container in Azure Container Registry with Snyk via Azure DevO
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
-status: draft
-published: 2022/01/21 13:00:00
+status: published
+published: 2022/01/23 20:28:00
 categories: 
   - Azure Container Registry
   - Azure DevOps
