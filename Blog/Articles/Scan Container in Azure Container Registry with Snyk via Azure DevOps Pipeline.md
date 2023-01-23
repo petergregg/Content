@@ -6,7 +6,7 @@ image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
 status: published
-published: 2022/01/23 20:28:00
+published: 2023/01/23 20:28:00
 categories: 
   - Azure Container Registry
   - Azure DevOps
