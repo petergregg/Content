@@ -24,13 +24,13 @@ In this article, you will learn how to scan a  container image in Azure Containe
 
 The following prerequisites will be required to complete this tutorial:
 - Azure DevOps account. If you don't have an Azure DevOps account,  [create one for free](https://azure.microsoft.com/en-us/products/devops/) before you begin.
-- Azure DevOps project that has docker support.
+- Azure DevOps project, with a code repository that has docker support.
 - Azure account. If you don't have an Azure account, [create one for free](https://azure.microsoft.com/en-gb/free/) before you begin. 
 - Snyk account. If you don't have a Snyk account,  [create one for free](https://app.snyk.io/login?cta=sign-up&loc=nav&page=homepage) before you begin.
 
 ## Add Snyk Extension to Azure DevOps
 
-1. In the root of an Azure DevOps Organization, select **Organization Settings**.
+1. In the root of an Azure DevOps Organization, select **Organization Settings** in the bottom left of the screen.
 
     ![Azure DevOps Organization Settings](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsOrganisationSettings.png)
 
@@ -41,21 +41,21 @@ The following prerequisites will be required to complete this tutorial:
 3. Select **Browse marketplace**.
     ![Azure DevOps Extensions Navigation Bar](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsExtensionsNavigationBar.png)
 
-4. Search for **Snyk**, and then select **Snyk Security Scan**.
+4. Search for **snyk**, and then select **Snyk Security Scan**.
 
     ![Azure DevOps Service Connection Search Snyk](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsServiceConnectionSearchSnyk.png)
 
-5. Select **Get if free**, then select **Install**.
+5. Select **Get if free**, and then select **Install**.
 
     ![Azure DevOps Snyk Extension Get It Free](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsSnykExtensionGetItFree.png)
 
-6. In the **Extensions** section, **Snyk** is now installed.
+6. In the **Extensions** section, **Snyk Security Scan** is now installed.
 
     ![Azure DevOps Snyk Extension Get It Free](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsSnykExtensionInstalled.png)
 
 ## Create Azure Container Registry
 
-1. Search for **Container Registry**.
+1. In [Azure Portal](https://portal.azure.com/), search for **container registry**.
 
     ![Azure Search for Container Registries](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureContainerRegistry/AzureSearchContainerRegistries.png)
 
@@ -64,7 +64,7 @@ The following prerequisites will be required to complete this tutorial:
     ![Azure Container Registries Navigation Bar Create Link](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureContainerRegistry/AzureContainerRegistriesNavigationBar.png)
 
 
-3. Enter the following values to **Basics**, then select **Review + create**, and then select **Create**.
+3. Enter the following values in the **Basics** tab, then select the **Review + create** tab, and then select **Create**.
 
     | Parameter | Value |
     | --- | --- | 
@@ -79,7 +79,7 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Add Snyk Service Connection to Azure DevOps Project
 
-1. From the root of an Azure DevOps Project, select **Project settings**.
+1. From the root of an Azure DevOps Project, select **Project settings** in the bottom left of the screen.
 
     ![Azure DevOps Projects Settings Link](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsProjectSettings.png)
 
@@ -104,13 +104,10 @@ The following prerequisites will be required to complete this tutorial:
     | Service connection name | Snyk | 
     | Grant access permission to all pipelines | True |
 
-    > [!NOTE]   
-    > To get the **Snyk API Token**, select **Personal API Token**, then select **click to show** the **Key**. Copy and paste this key into Azure DevOps Snyk Service Connection Setup **Personal API Token** box.
-
-    ![Snyk Account API Token](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Snyk/SnykAccountAPIToken.png)
-
-
     ![Azure DevOps Snyk Service Connection Setup](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsSnykServiceConnectionSetup.png)
+ 
+    > To get the **Snyk API Token**, select **Personal API Token**, then select **click to show** the **Key**. Copy and paste the key into Azure DevOps Snyk Service Connection Setup **Personal API Token** box.
+    ![Snyk Account API Token](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Snyk/SnykAccountAPIToken.png)
 
 
 ## Add Azure Container Registry Service Connection to Azure DevOps Project
@@ -120,7 +117,7 @@ The following prerequisites will be required to complete this tutorial:
 
      ![Azure DevOps Service Connection Navigation Bar](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsServiceConnectionNavigationBar.png)
 
-3. Search for **docker**, then select **Docker Registry**.
+3. Search for **docker**, and then select **Docker Registry**.
 
      ![Azure DevOps Service Connection Navigation Bar](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsCreateDockerServiceConnection.png)
 
@@ -148,11 +145,11 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure DevOps Repos Files Add New File](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsReposFilesAddNewFile.png)
 
-3. In the Modal Popup, name the file **snyk-az-pipeline.yml**.
+3. In the Modal Popup, add the file name  **snyk-az-pipeline.yml** into the **New file name** text box.
 
     ![Azure DevOps Repos Files Add New File Modal Popup](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsReposFilesAddNewFileModalPopup.png)
 
-4. Add the following contents to the **snyk-az-pipeline.yml** file, replacing `{Your...}` with your values.
+4. Add the following contents to the **snyk-az-pipeline.yml** file, replacing `{Your...}` with your project folder name, azure container registry, repository and login server url (usually ends in .azurecr.io).
 
     ```
     trigger:
@@ -195,7 +192,7 @@ The following prerequisites will be required to complete this tutorial:
         inputs:
           serviceConnectionEndpoint: 'Snyk'
           testType: 'container'
-          dockerImageName: '{YourAzureContainerRegistryRepositoryUrl}/{YourAzureContainerRegistryRepository}:dev'  
+          dockerImageName: '{YourAzureContainerRegistryLoginServerUrl}/{YourAzureContainerRegistryRepository}:dev'  
           dockerfilePath: '{YourProjectFolder}/Dockerfile'
           monitorWhen: 'always'
           failOnIssues: true
@@ -212,7 +209,7 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure DevOps Repos Commit Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsReposFilesCommitNavigation.png)
 
-5. in the bottom right, select **Commit**.
+5. In the bottom right, select **Commit**.
 
     ![Azure DevOps Repos Commit Comment](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsReposFilesCommitComment.png)
 
@@ -226,11 +223,11 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure DevOps Pipelines Create Your First Pipeline](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesCreateYourFirstPipeline.png)
 
-3. Select **Azure Repos Git**.
+3. In the **Connect** tab, Select **Azure Repos Git**.
     
     ![Azure DevOps Pipelines Connect Azure Repos Git](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesConnectAzureReposGit.png)
 
-4. Select **Existing Azure Pipelines YAML file**.
+4. In the **Select** tab, select **Existing Azure Pipelines YAML file**.
 
     ![Azure DevOps Pipelines Configure Existing Azure Pipeline Yaml File](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesConfigureExistingAzurePipelineYamlFile.png)
 
