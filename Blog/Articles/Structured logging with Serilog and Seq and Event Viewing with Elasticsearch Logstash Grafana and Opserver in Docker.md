@@ -1,5 +1,5 @@
 ---
-title: Structured logging with Serilog and Seq and Event Viewing with Elasticsearch, Logstash, Grafana and Opserver in Docker
+title: Structured logging with Serilog and Seq and Event Viewing with Elasticsearch Logstash Grafana and Opserver in Docker
 author: Peter Gregg
 description: Structured logging to a dotnet core Web API project using Serilog and Seq and Event Viewing with Elasticsearch, Logstash, Grafana and Opserver in Docker
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
@@ -166,7 +166,7 @@ The following prerequisites will be required to complete this tutorial:
     ```
 ## Replace the code in WeatherController.cs
 
-1. Replace the code in the `WeatherController.cs` with the following. 
+1. Replace the code in the `WeatherController` with the following. 
 
     ```
     private readonly ILogger<WeatherForecastController> _logger;
@@ -188,9 +188,9 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
         
-## Replace App Settings
+## Replace App Settings JSON
 
-1. Add the following json into the `appsettings.json` and `appsettings.Development.json` files.
+1. Replace the JSON in the `appsettings` and `appsettings.Development` JSON files.
 
     ```
     {
@@ -227,7 +227,7 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-# Add Docker Compose Project to a Visual Studio Solution
+# Add Docker Compose Project to the Solution
 
 1. Right click on the **Web API project**, and then select **Add** > **Docker Support**.
 
@@ -247,7 +247,7 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Define Container Applications in Docker Compose
 
-1. Add the following code to the **docker-compose.yml** file after the **monitored.api** service block.
+1. Add the following code to the `docker-compose` yaml file after the `monitored.api` service block.
 
     ```
     sqldata:
@@ -267,7 +267,7 @@ The following prerequisites will be required to complete this tutorial:
     opserver:
         image: opserver/opserver:preview1
     ```
-2. Add the following code to the **docker-compose.override.yml** file after the **monitored.api** service block.
+2. Add the following yaml to the `docker-compose.override` yaml file after the `monitored.api` service block.
 
     ```
     sqldata:
@@ -319,18 +319,18 @@ The following prerequisites will be required to complete this tutorial:
         volumes:
         - ./deploy/opserver/config:/app/Config
     ```
-## Create Configuration for ElasticSearch and Grafana
+## Create configuration for ElasticSearch, Logstash and Grafana (ELG)
 
 ### Create ELG folder structure
 
-1. Create the following folder structure. Create **deploy** folder in thr root of the solution with the following folders in **elasticsearch**, **logstash** and **grafana**.
+1. Create **deploy** folder in the root of the solution with the following folders in it **elasticsearch**, **logstash** and **grafana**.
 
 
     ![Visual Studio ELG Folder Structure](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioELGFolderStructure.png)
 
 ### Create elasticsearch configuration
 
-1. Create a new folder named **config** in the **elasticsearch** folder and add a **elasticsearch.yml** file with the following contents.
+1. Create a new folder named **config** in the **elasticsearch** folder and add the following yaml file `elasticsearch`.
     ```
     ## Default Elasticsearch configuration from elasticsearch-docker.
     ## from https://github.com/elastic/elasticsearch-docker/blob/master/build/elasticsearch/elasticsearch.yml
@@ -351,8 +351,8 @@ The following prerequisites will be required to complete this tutorial:
     ```
 
 ### Create grafana configuration
-1. Create a new folder named **provisioning** the **grafana** folder. 
-2. Create a new folder named **dashboards** in the **provisioning** folder and add a **dashboards.yaml** file with the following contents.
+1. Create a new folder named **provisioning** in the **grafana** folder. 
+2. Create a new folder named **dashboards** in the **provisioning** folder and add the following yaml file `dashboards`.
 
     ```
     apiVersion: 1
@@ -364,10 +364,10 @@ The following prerequisites will be required to complete this tutorial:
     options:
         path: /etc/grafana/provisioning/dashboards/monitoredapi
     ```
-3. Create a new folder named **monitoredapi** in the **dashboards** folder and add a **MonitoredAPIDashboard.json** file with the following contents.
+3. Create a new folder named **monitoredapi** in the **dashboards** folder and add the following JSON file `MonitoredAPIDashboard`.
 
 
-4. Create a new folder named **datasources** in the **provisioning** folder and add a **datasources.yaml** file with the following contents.
+4. Create a new folder named **datasources** in the **provisioning** folder and add the following yaml file **datasources**.
 
     ```
     apiVersion: 1
@@ -389,7 +389,7 @@ The following prerequisites will be required to complete this tutorial:
 ## Create Configuration for OpsServer
 
 1. Create a new folder named **opserver** in the **deploy** folder.
-2. Create a new folder named **config** in the **opserver** folder and add a **opserverSettings.json** file with the following contents.
+2. Create a new folder named **config** in the **opserver** folder and add the following JSON file `opserverSettings`.
 
     ```
     {
@@ -441,6 +441,11 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-    ## Test Web API
+## Folder Structure and config files for ELG and OPServer
+1. After completing the steps above the final folder structure and config files will look like the following.
 
-    
+
+
+## Test Web API
+
+
