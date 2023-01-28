@@ -28,7 +28,7 @@ In this article, you will learn how to add Structured logging to a dotnet core W
 ## Prerequisites
 
 The following prerequisites will be required to complete this tutorial:
-- Visual Studio 2022 Community. If you don't have Visual Studio installed, [download Visual Studio for free](https://visualstudio.microsoft.com/vs/community/) before you begin.
+- Visual Studio 2022 Community with the ASP.NET and web development workload. If you don't have Visual Studio installed, [download Visual Studio for free](https://visualstudio.microsoft.com/vs/community/) before you begin.
 - Windows Subsystem for Linux (WSL). If you don't have WSL installed, [download Docker WSL for free](https://learn.microsoft.com/en-us/windows/wsl/install) before you begin.
 - Docker Desktop. If you don't have Docker Desktop installed, [download Docker Desktop for free](https://docs.docker.com/desktop/install/windows-install/) before you begin.
 
@@ -67,12 +67,12 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Visual Studio Additional Information New dotnet Core Web API Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioConfigureDockerDotNetCoreWebAPIProject.png)
 
-# Install the following nuget packages for Serilog, Seq, Elastic Search and MS SQL support
-1. In Visual Studio, select **Tools** > **Package Manager** > **Package Manager Console**.
+# Install the following nuget packages for Serilog, Seq, Elastic Search and MS SQL Database support
+1. In Visual Studio, select **Tools** > **Nuget Package Manager** > **Package Manager Console**.
 
     ![Visual Studio Add Nuget Package Manager Console](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioNugetPackageManagerConsole.png)
 
-2. Enter the following values:
+2. Enter the following.
 
     Install-Package Serilog.AspNetCore
 
@@ -88,11 +88,9 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Enable Serilog in program.cs
 
-1. Add the following code to the **program.cs** under `var builder = WebApplication.CreateBuilder(args);` and resolve any usings.
+1. Add the following code to the `program.cs` under `var builder = WebApplication.CreateBuilder(args);` and resolve any usings.
 
     ```
-        var builder = WebApplication.CreateBuilder(args);
-
         builder.Host.UseSerilog((context, logger) => logger
        .WriteTo.Console()
        .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(context.Configuration["ElasticSearch:ServerUrl"]))
@@ -104,11 +102,11 @@ The following prerequisites will be required to complete this tutorial:
        .Enrich.WithElasticApmCorrelationInfo()
        .ReadFrom.Configuration(context.Configuration));
     ```
-## Add SQL Database to Project
+## Add Database to the project
 
-## Add Model
+### Add a model to define the database entity
 
-1. Add the following Model **WeatherForecast.cs** into the Data folder.
+1. Add the following model class `WeatherForecast` into the `Data` folder.
 
     ```
     public class WeatherForecast
@@ -125,56 +123,42 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-### Add DB Context
+### Add a database context
 
-1. Add the following class **MonitoredAPIDataContext.cs** to the **Data** folder with the following content.
+1. Add the following class `MonitoredAPIDataContext` to the `Data` folder with the following code.
 
     ```
-    using Microsoft.EntityFrameworkCore;
-
-    namespace Monitored.API.Data
+    public class MonitoredAPIDataContext : DbContext
     {
-        public class MonitoredAPIDataContext : DbContext
+        public MonitoredAPIDataContext(DbContextOptions<MonitoredAPIDataContext> options) : base(options)
         {
-            public MonitoredAPIDataContext(DbContextOptions<MonitoredAPIDataContext> options) : base(options)
-            {
-            }
+        }
 
-            public DbSet<WeatherForecast> WeatherForecasts { get; set; }
+        public DbSet<WeatherForecast> WeatherForecasts { get; set; }
+    }
+    ```
+
+### Seed the Database
+1. Add the following class `Seeder` into the `Data` folder.
+
+    ```
+    // This is purely for a demo, don't anything like this in a real application!
+    public static void Seed(this MonitoredAPIDataContext monitoredAPIDataContext)
+    {
+        if (!monitoredAPIDataContext.WeatherForecasts.Any())
+        {
+            Fixture fixture = new Fixture();
+            fixture.Customize<WeatherForecast>(weatherForecast => weatherForecast.Without(p => p.Id));
+            //--- The next two lines add 100 rows to your database
+            List<WeatherForecast> weatherForecasts = fixture.CreateMany<WeatherForecast>(100).ToList();
+            monitoredAPIDataContext.AddRange(weatherForecasts);
+            monitoredAPIDataContext.SaveChanges();
         }
     }
     ```
 
-### Add Seed Data
-1. Add the following class **Seeder.cs** into the **Data** folder.
-
-    ```
-    using AutoFixture;
-
-    namespace Monitored.API.Data
-    {
-        public static class Seeder
-        {
-
-            // This is purely for a demo, don't anything like this in a real application!
-            public static void Seed(this MonitoredAPIDataContext monitoredAPIDataContext)
-            {
-                if (!monitoredAPIDataContext.WeatherForecasts.Any())
-                {
-                    Fixture fixture = new Fixture();
-                    fixture.Customize<WeatherForecast>(weatherForecast => weatherForecast.Without(p => p.Id));
-                    //--- The next two lines add 100 rows to your database
-                    List<WeatherForecast> weatherForecasts = fixture.CreateMany<WeatherForecast>(100).ToList();
-                    monitoredAPIDataContext.AddRange(weatherForecasts);
-                    monitoredAPIDataContext.SaveChanges();
-                }
-            }
-        }
-    }
-    ```
-
-### Enable Use of SQL
-1. Add the following code to the program.cs under the serilog configuration and resolve any usings. 
+### Register the database context
+1. Add the following code to the `program.cs` class after the `Use.serilog` configuration block. 
 
     ```
     builder.Services.AddDbContext<MonitoredAPIDataContext>(options =>
@@ -182,7 +166,7 @@ The following prerequisites will be required to complete this tutorial:
     ```
 ## Replace the code in WeatherController.cs
 
-1. Replace the code in the **WeatherController.cs** with the following code. 
+1. Replace the code in the `WeatherController.cs` with the following. 
 
     ```
     private readonly ILogger<WeatherForecastController> _logger;
@@ -204,12 +188,13 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
         
-## Add AppSettings to Web API project
+## Replace App Settings
 
-1. Add the following json into the **appsettings.json** and **appsettings.Development.json** files.
+1. Add the following json into the `appsettings.json` and `appsettings.Development.json` files.
 
     ```
     {
+    "AllowedHosts": "*",
     "Serilog": {
         "Properties": {
         "Application": "Monitored.API"
@@ -228,18 +213,21 @@ The following prerequisites will be required to complete this tutorial:
         "Override": {
             "Microsoft": "Debug",
             "Monitored.API": "Debug",
-            "System" : "Warning",
+            "System": "Warning",
             "Microsoft.Hosting.Lifetime": "Information"
         }
         }
     },
     "ElasticSearch": {
         "ServerUrl": "http://elasticsearch:9200"
+    },
+    "ConnectionStrings": {
+        "monitoredapidb": "Server=sqldata;Database=monitoredapi;User Id=sa;Password=Pass@word;Encrypt=False"
     }
     }
     ```
 
-## Add Docker Compose Project to a Visual Studio Solution
+# Add Docker Compose Project to a Visual Studio Solution
 
 1. Right click on the **Web API project**, and then select **Add** > **Docker Support**.
 
@@ -452,3 +440,7 @@ The following prerequisites will be required to complete this tutorial:
     }
     }
     ```
+
+    ## Test Web API
+
+    
