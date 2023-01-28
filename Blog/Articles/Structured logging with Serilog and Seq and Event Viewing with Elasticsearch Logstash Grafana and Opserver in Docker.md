@@ -443,7 +443,8 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Folder Structure and config files for ELG and OPServer
 1. After completing the steps above the final folder structure and config files will look like the following.
-
+    
+    ![Visual Studio ELG and OPServer Final Folder and Config Structure](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioELGOPServerFinalFolderConfigStructure.png)
 
 
 ## Test Web API
