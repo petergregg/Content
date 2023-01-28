@@ -1,7 +1,7 @@
 ---
-title: Structured logging with Serilog and Seq and Event Viewing with Elasticsearch Logstash Grafana and Opserver in Docker
+title: Structured logging with Serilog and Seq and Event Viewing with Elasticsearch, Logstash, Grafana and Opserver in Docker
 author: Peter Gregg
-description: Structured logging with Serilog and Seq and Event Viewing with Elasticsearch Logstash Grafana and Opserver in Docker
+description: Structured logging to a dotnet core Web API project using Serilog and Seq and Event Viewing with Elasticsearch, Logstash, Grafana and Opserver in Docker
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
@@ -20,9 +20,9 @@ categories:
   - dotnet
 ---
 
-# Structured logging with Serilog and Seq and Event Viewing with Elasticsearch Logstash Grafana and Opserver in Docker
+# Structured logging with Serilog and Seq and Event Viewing with Elasticsearch, Logstash, Grafana and Opserver in Docker
 
-In this article, you will learn how to add structured logging with Serilog, Seq and event viewing with Elasticsearch, Logstash, Grafana, and Opserver under Docker containers. 
+In this article, you will learn how to add Structured logging to a dotnet core Web API project using Serilog and Seq and Event Viewing with Elasticsearch, Logstash, Grafana and Opserver in Docker containers. 
 
 ## Prerequisites
 
@@ -48,14 +48,19 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Visual Studio Additional Information New dotnet Core Web API Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioConfigureDockerDotNetCoreWebAPIProject.png)
 
-# Install the following nuget packages for Serilog, Seq, Elastic Search
-1. In Visual Studio, open the Package Manager Console and enter:
+# Install the following nuget packages for Serilog, Seq, Elastic Search and MS SQL support
+1. In Visual Studio, open the **Package Manager Console** and enter:
 
     Install-Package Serilog.AspNetCore
+
     Install-Package Serilog.Sinks.Seq
+    
     Install-Package Serilog.Sinks.ElasticSearch
+    
     Install-Package Elastic.Apm.SerilogEnricher
+    
     Install Microsoft.EntityFrameworkCore.SqlServer
+    
     Install AutoFixture
 
 ## Enable Serilog in program.cs
