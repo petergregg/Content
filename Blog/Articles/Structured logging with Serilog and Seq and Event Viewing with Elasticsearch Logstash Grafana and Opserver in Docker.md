@@ -16,8 +16,9 @@ categories:
   - Opserver
   - Docker
   - MSSQL
-  - EF Core
-  - dotnet
+  - Entity Framework core
+  - dotnet core
+  - Web API
 ---
 
 # Structured logging with Serilog and Seq and Event Viewing with Elasticsearch, Logstash, Grafana and Opserver in Docker
@@ -33,23 +34,45 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Create a Web API Project in Visual Studio with Docker Support
 
-1. Open **Visual Studio**
-2. Select **Create a new project**..
+1. Open **Visual Studio**.
+2. Select **Create a new project**.
 
     ![Visual Studio Create New Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioCreateNewProject.png)
 3. Search for **core web api**, and then select **ASP.NET Core Web API**, and then select **Next**.
 
     ![Visual Studio Create New dotnet Core Web API Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioCreateDotNetCoreWebAPIProject.png)
 
-4. Enter the following values in **Configure your new project window**, and then select **Next**
+4. Enter the following values in **Configure your new project window**, and then select **Next**.
+
+    | Parameter | Value |
+    | --- | --- | 
+    | Project Name | Monitored.API | 
+    | Location | Location of your choice  | 
+    | Solution name | MonitoredDockerStack  |
+    | Place solution and project in the same directory | Unchecked  |
+
     ![Visual Studio Configure New dotnet Core Web API Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioConfigureDotNetCoreWebAPIProject.png)
 
 5. Enter the following values in **Additional information**, and then select **Create**.
 
+    | Parameter | Value |
+    | --- | --- | 
+    | Framework | .NET 6.0 (Long-term support) | 
+    | Authentication type | None  | 
+    | Configure for HTTPS | Checked  |
+    | Enable Docker | Checked  |
+    | Docker OS | Linux  |
+    | Use controllers (uncheck to use minimal APIs) | Checked  |
+    | Enable OpenAPI | Checked  |
+
     ![Visual Studio Additional Information New dotnet Core Web API Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioConfigureDockerDotNetCoreWebAPIProject.png)
 
 # Install the following nuget packages for Serilog, Seq, Elastic Search and MS SQL support
-1. In Visual Studio, open the **Package Manager Console** and enter:
+1. In Visual Studio, select **Tools** > **Package Manager** > **Package Manager Console**.
+
+    ![Visual Studio Add Nuget Package Manager Console](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioNugetPackageManagerConsole.png)
+
+2. Enter the following values:
 
     Install-Package Serilog.AspNetCore
 
@@ -59,13 +82,13 @@ The following prerequisites will be required to complete this tutorial:
     
     Install-Package Elastic.Apm.SerilogEnricher
     
-    Install Microsoft.EntityFrameworkCore.SqlServer
+    Install-Package Microsoft.EntityFrameworkCore.SqlServer
     
-    Install AutoFixture
+    Install-Package AutoFixture
 
 ## Enable Serilog in program.cs
 
-1. Add the following code to the program.cs under `var builder = WebApplication.CreateBuilder(args);` and resolve any usings.
+1. Add the following code to the **program.cs** under `var builder = WebApplication.CreateBuilder(args);` and resolve any usings.
 
     ```
         var builder = WebApplication.CreateBuilder(args);
