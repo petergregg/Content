@@ -316,7 +316,6 @@ The following prerequisites will be required to complete this tutorial:
 
 1. Create a new folder named **config** in the **elasticsearch** folder and add a **elasticsearch.yml** file with the following contents.
     ```
-    ---
     ## Default Elasticsearch configuration from elasticsearch-docker.
     ## from https://github.com/elastic/elasticsearch-docker/blob/master/build/elasticsearch/elasticsearch.yml
     #
