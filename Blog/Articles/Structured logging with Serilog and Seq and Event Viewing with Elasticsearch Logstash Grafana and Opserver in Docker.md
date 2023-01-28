@@ -125,7 +125,7 @@ The following prerequisites will be required to complete this tutorial:
 
 ### Add a database context
 
-1. Add the following class `MonitoredAPIDataContext` to the `Data` folder with the following code.
+1. Add the following class `MonitoredAPIDataContext` into the `Data` folder.
 
     ```
     public class MonitoredAPIDataContext : DbContext
@@ -190,7 +190,7 @@ The following prerequisites will be required to complete this tutorial:
         
 ## Replace App Settings JSON
 
-1. Replace the JSON in the `appsettings` and `appsettings.Development` JSON files.
+1. Replace the JSON in the `appsettings` and `appsettings.Development` with the following.
 
     ```
     {
@@ -323,7 +323,7 @@ The following prerequisites will be required to complete this tutorial:
 
 ### Create ELG folder structure
 
-1. Create **deploy** folder in the root of the solution with the following folders in it **elasticsearch**, **logstash** and **grafana**.
+1. Create a **deploy** folder in the root of the solution with the following folders in it **elasticsearch**, **logstash** and **grafana**.
 
 
     ![Visual Studio ELG Folder Structure](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioELGFolderStructure.png)
