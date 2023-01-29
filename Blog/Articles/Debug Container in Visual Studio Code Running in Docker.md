@@ -15,7 +15,7 @@ categories:
 ---
 
 # Debug Container in Visual Studio Code Running in Docker
-In this article, you will learn how to Debug Container in Visual Studio Running in Docker.
+In this article, you will learn how to Debug Container in Visual Studio Code running in Docker.
 
 ## Prerequisites
 The following prerequisites will be required to complete this tutorial:
@@ -39,9 +39,9 @@ The following prerequisites will be required to complete this tutorial:
     | Parameter | Value | 
     | --- | --- | 
     | name | Display name of your choice | 
-    | containerName | your running container | 
-    | sourceFileMap (left path) | path were the application code / dll is stored on the docker container (this will be defined in your docker file) | 
-    | sourceFileMap (right path) | path of the project in Visual Studio code workspace | 
+    | containerName | Your running container | 
+    | sourceFileMap (left path) | Path where the application code / dll is stored on the docker container (this will be defined in your docker file) | 
+    | sourceFileMap (right path) | Path of the project in Visual Studio code workspace | 
 
     ```
     {
