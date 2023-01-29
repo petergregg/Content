@@ -34,7 +34,14 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Visual Studio Code Create Launch JSON File Debug Docker Container](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudioCode/VisualStudioCodeCreateLaunchJSONFileDebugDockerContainer.png)
 
-4. Add the following JSON to the `launch` JSON file.
+4. Add the following JSON to the `launch` JSON file, replacing the following values.
+
+    | Parameter | Value | 
+    | --- | --- | 
+    | name | Display name of your choice | 
+    | containerName | your running container | 
+    | sourceFileMap (left path) | path were the application code / dll is stored on the docker container (this will be defined in your docker file) | 
+    | sourceFileMap (right path) | path of the project in Visual Studio code workspace | 
 
     ```
     {
