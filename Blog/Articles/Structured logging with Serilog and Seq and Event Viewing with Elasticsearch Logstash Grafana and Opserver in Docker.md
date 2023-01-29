@@ -446,7 +446,74 @@ The following prerequisites will be required to complete this tutorial:
     
     ![Visual Studio ELG and OPServer Final Folder and Config Structure](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioELGOPServerFinalFolderConfigStructure.png)
 
+# Testing
+## Run Docker Stack
+
+1. Right click on the `MonitoredDockerStack` Solution and select **Open in Terminal**
+
+    ![Visual Studio Solution Open In Terminal](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioSolutionOpenInTerminal.png)
+
+2. Run the following command in the terminal.
+
+    ```
+    docker compose -f docker-compose.yml -f docker-compose.override.yml up -d --build --force-recreate
+    ```
+
+    ![Visual Studio Solution Run Docker Compose Up in Terminal](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioSolutionRunDockerComposeUpInTerminal.png)
 
 ## Test Web API
+1. Browse to https://localhost:5021/swagger/index.html.
+2. Select **GET /WeatherForecast**, and then select **Try it out**.
+
+    ![Swagger Try it out](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Swagger/SwaggerTryItOut.png)
+
+3. Select **Execute**.
+
+    ![Swagger Execute GET](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Swagger/SwaggerExecuteGET.png)
+
+4. The following response with be displayed.
+
+    ![Swagger GET Success Response](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Swagger/SwaggerGetSuccessResponse.png)
+
+## Test Grafana
+
+1. Browse to http://localhost:3000/.
+2. Enter the default username and password **admin / admin**.
+
+    ![Grafana Login](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Grafana/GrafanaLogin.png)
+
+3. In Navigation on the left of the screen, select **Dashboards** icon.    
+
+    ![Grafana Login](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Grafana/GrafanaDashboardsNavigationIcon.png)
+
+4. Select **Monitored.API Overview**.
+
+    ![Grafana Login](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Grafana/GrafanaDashboardsOverview.png)
+
+5. View the Monitored.API Overview Dashboard.
+
+    ![Grafana Dashboard Monitored.API Overview](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Grafana/GrafanaDashboardMonitoredAPIOverview.png)
+
+## Test OPServer
+
+1. Browse to http://localhost:4001/. 
+2. Enter the default username and password **admin / admin**.
+
+    ![Opserver Login](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Opserver/OpserverLogin.png)
+
+3. Select **SQL** in top right hand corner of the screen for the SQL overview.
+
+    ![Opserver SQL Overview](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Opserver/OpserverSQLOverview.png)
+
+4. Select **Elastic** in top right hand corner of the screen for the Elastic overview.
+
+    ![Opserver SQL Overview](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Opserver/OpserverElasticOverview.png)
+
+
+
+
+
+
+
 
 
