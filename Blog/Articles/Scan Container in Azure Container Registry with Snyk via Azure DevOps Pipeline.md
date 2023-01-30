@@ -14,6 +14,7 @@ categories:
   - Docker
   - Containers
   - DevSecOps
+  - Security Vulnerabilities
 ---
 
 # Scan Container in Azure Container Registry with Snyk via Azure DevOps Pipeline
