@@ -1,30 +1,32 @@
 ---
 title: Debug Container in Visual Studio Code Running in Docker 
 author: Peter Gregg
-description: Debug Container in Visual Studio Code Running in Docker
+description: Debug a container in Visual Studio Code running in Docker
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
 status: draft
-published: 2023/01/29 14:00:00
+published: 2023/01/30 20:45:00
 categories: 
   - Visual Studio Code
   - Docker
+  - Containers
+  - Debugging
   - dotnet core
   - Web API
 ---
 
-# Debug Container in Visual Studio Code Running in Docker
-In this article, you will learn how to Debug Container in Visual Studio Code running in Docker.
+# Debug a container in Visual Studio Code running in Docker
+In this article, you will learn how to debug a container in Visual Studio Code running in Docker.
 
 ## Prerequisites
 The following prerequisites will be required to complete this tutorial:
-- Visual Studio Code with the C# and Docker extension installed. If you don't have Visual Studio Code installed, [download Visual Studio Code for free](https://code.visualstudio.com/download) before you begin.
+- Visual Studio Code with the C# and Docker extension installed. If you don't have Visual Studio Code installed, [download Visual Studio Code for free](https://code.visualstudio.com/download) and install the [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) and [Docker extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) before you begin.
 - Windows Subsystem for Linux (WSL). If you don't have WSL installed, [download Docker WSL for free](https://learn.microsoft.com/en-us/windows/wsl/install) before you begin.
 - Docker Desktop. If you don't have Docker Desktop installed, [download Docker Desktop for free](https://docs.docker.com/desktop/install/windows-install/) before you begin.
-- dotnet core application with docker compose orchestration.
+- dotnet core web application or api with docker compose orchestration.
 
-# Add Visual Studio Code Launch file
+# Add Visual Studio Code launch JSON file
 1. Open a dotnet core application in **Visual Studio Code**.
 2. Select the **Run and Debug** icon, and then select **create a launch.json file**. 
     
@@ -40,7 +42,7 @@ The following prerequisites will be required to complete this tutorial:
     | --- | --- | 
     | name | Display name of your choice | 
     | containerName | Your running container | 
-    | sourceFileMap (left path) | Path where the application code / dll is stored on the docker container (this will be defined in your docker file) | 
+    | sourceFileMap (left path) | Path where the application code / dll is published on the docker container (this will be defined in your docker file) | 
     | sourceFileMap (right path) | Path of the project in Visual Studio code workspace | 
 
     ```
@@ -64,7 +66,7 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-# Run Web APP in docker container
+# Configure docker compose and run the web application or api in a docker container
 1. Add the following volume mapping to the service you would like to debug in the `docker.compose.override` yaml file `- ~/.vsdbg:/remote_debugger:rw`.
 
 2. Select **Terminal** > **New Terminal**.
@@ -79,16 +81,16 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Visual Studio Code Run Docker Compose Up in Terminal](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudioCode/VisualStudioCodeRunDockerComposeUpInTerminal.png)
 
-# Attach Debugger
-1. Select **Run and Debug** tab, and then choose your dotnet core web application from the **RUN AND DEBUG** list. Select the **play** icon.
+# Debug web application or api in container
+1. Select the **Run and Debug** icon, and then choose your dotnet core web application or api from the **RUN AND DEBUG** drop down list. Select the **Start Debugging (play)** icon.
 
     ![Visual Studio Code Start Debugging Docker Container](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudioCode/VisualStudioCodeStartDebuggingDockerContainer.png)
 
-3. Add a **breakpoint** to your dotnet core application and then send request to the application.
+2. Add a **breakpoint** to your application or api and then send a request that will hit the breakpoint.
 
     ![Visual Studio Code Breakpoint Debugging Docker Container](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudioCode/VisualStudioCodeDebuggingDockerContainer.png)
 
 # Disconnect Debugger 
-1. Select the **Disconnect** plug icon to disconnect the  debugger from the container. 
+1. Select the **Disconnect plug** icon to disconnect the debugger from the container. 
 
-    ![Visual Studio Code Debugging Docker Container Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudioCode/VisualStudioCodeDebuggingDockerContainerNavigation.png)
+    ![Visual Studio Code Debugging Docker Container  Disconnect Plug](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudioCode/VisualStudioCodeDebuggingDockerContainerNavigation.png)
