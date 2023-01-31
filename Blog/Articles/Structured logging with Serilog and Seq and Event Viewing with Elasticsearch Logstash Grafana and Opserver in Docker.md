@@ -23,7 +23,7 @@ categories:
 
 # Structured logging with Serilog and Seq and Event Viewing with Elasticsearch, Logstash, Grafana and Opserver in Docker
 
-In this article, you will learn how to add Structured logging to a dotnet core Web API project using Serilog and Seq and Event Viewing with Elasticsearch, Logstash, Grafana and Opserver in Docker containers. 
+In this article, you will learn how to add Structured logging to a dotnet core Web API project using Serilog, Seq and Event Viewing with Elasticsearch, Logstash, Grafana and Opserver in Docker containers. 
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ The following prerequisites will be required to complete this tutorial:
 - Windows Subsystem for Linux (WSL). If you don't have WSL installed, [download Docker WSL for free](https://learn.microsoft.com/en-us/windows/wsl/install) before you begin.
 - Docker Desktop. If you don't have Docker Desktop installed, [download Docker Desktop for free](https://docs.docker.com/desktop/install/windows-install/) before you begin.
 
-## Create a Web API Project in Visual Studio with Docker Support
+## Create a Web API Project in Visual Studio with Docker support
 
 1. Open **Visual Studio**.
 2. Select **Create a new project**.
@@ -88,7 +88,7 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Enable Serilog in program.cs
 
-1. Add the following code to the `program.cs` under `var builder = WebApplication.CreateBuilder(args);` and resolve any usings.
+1. Add the following code to the `program.cs` under `var builder = WebApplication.CreateBuilder(args);`.
 
     ```
         builder.Host.UseSerilog((context, logger) => logger
@@ -102,7 +102,7 @@ The following prerequisites will be required to complete this tutorial:
        .Enrich.WithElasticApmCorrelationInfo()
        .ReadFrom.Configuration(context.Configuration));
     ```
-## Add Database to the project
+## Add database to the project
 
 ### Add a model to define the database entity
 
@@ -140,7 +140,7 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-### Seed the Database
+### Seed the database
 1. Add the following class `Seeder` into the `Data` folder.
 
     ```
@@ -160,7 +160,7 @@ The following prerequisites will be required to complete this tutorial:
     ```
 
 ### Register the database context
-1. Add the following code to the `program.cs` class after the `Use.serilog` configuration block. 
+1. Add the following code to the `program.cs` class after the comment `// Add services to the container.`. 
 
     ```
     builder.Services.AddDbContext<MonitoredAPIDataContext>(options =>
@@ -168,7 +168,7 @@ The following prerequisites will be required to complete this tutorial:
     ```
 ## Replace the code in WeatherController.cs
 
-1. Replace the code in the `WeatherController` with the following. 
+1. Replace the code in the `WeatherController`. 
 
     ```
     private readonly ILogger<WeatherForecastController> _logger;
@@ -190,9 +190,9 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
         
-## Replace App Settings JSON
+## Replace app settings JSON
 
-1. Replace the JSON in the `appsettings` and `appsettings.Development` with the following.
+1. Replace the JSON in the `appsettings` and `appsettings.Development`.
 
     ```
     {
@@ -229,7 +229,7 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-# Add Docker Compose Project to the Solution
+# Add Docker compose project to the solution
 
 1. Right click on the **Web API project**, and then select **Add** > **Docker Support**.
 
@@ -247,9 +247,9 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Visual Studio Additional Information New dotnet Core Web API Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioDockerComposeProjectInSolution.png)
 
-## Define Container Applications in Docker Compose
+## Define container applications in Docker compose
 
-1. Replace the yaml in the `docker-compose` yaml file with the following.
+1. Replace the yaml in the `docker-compose` yaml file.
 
     ```
     version: '3.4'
@@ -283,7 +283,7 @@ The following prerequisites will be required to complete this tutorial:
         - sqldata
         - elasticsearch
     ```
-2. Replace the yaml in the `docker-compose.override` yaml file with the following.
+2. Replace the yaml in the `docker-compose.override` yaml file.
 
     ```
     version: '3.4'
@@ -360,7 +360,7 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Visual Studio ELG Folder Structure](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioELGFolderStructure.png)
 
-### Create elasticsearch configuration
+### Create ElasticSearch configuration
 
 1. Create a new folder named **config** in the **elasticsearch** folder and add the following yaml file `elasticsearch`.
     ```
@@ -382,7 +382,7 @@ The following prerequisites will be required to complete this tutorial:
     xpack.security.enabled: false 
     ```
 
-### Create grafana configuration
+### Create Grafana configuration
 1. Create a new folder named **provisioning** in the **grafana** folder. 
 2. Create a new folder named **dashboards** in the **provisioning** folder and add the following yaml file `dashboards`.
 
@@ -399,7 +399,7 @@ The following prerequisites will be required to complete this tutorial:
 3. Create a new folder named **monitoredapi** in the **dashboards** folder and add [Monitored API Dashboard JSON file](https://github.com/petergregg/MonitoringDockerStack/blob/7be0e834e199cffbf04165cb047dafcd7b978f28/deploy/elg/grafana/provisioning/dashboards/monitoredapi/MonitoredAPIDashboard.json).
 
 
-4. Create a new folder named **datasources** in the **provisioning** folder and add the following yaml file **datasources**.
+4. Create a new folder named **datasources** in the **provisioning** folder and add the following yaml file `datasources`.
 
     ```
     apiVersion: 1
@@ -418,7 +418,7 @@ The following prerequisites will be required to complete this tutorial:
         esVersion: 7.17.8
     ```
 
-## Create Configuration for OpsServer
+## Create configuration for Opserver
 
 1. Create a new folder named **opserver** in the **deploy** folder.
 2. Create a new folder named **config** in the **opserver** folder and add the following JSON file `opserverSettings`.
@@ -474,19 +474,19 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-## Folder Structure and config files for ELG and OPServer
+## Folder structure and configuration files for ELG and Opserver
 1. After completing the steps above the final folder structure and config files will look like the following.
     
     ![Visual Studio ELG and OPServer Final Folder and Config Structure](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioELGOPServerFinalFolderConfigStructure.png)
 
 # Testing
-## Run Docker Stack
+## Run Docker stack
 
-1. Right click on the `MonitoredDockerStack` Solution and select **Open in Terminal**
+1. Right click on the `MonitoredDockerStack` Solution and select **Open in Terminal**.
 
     ![Visual Studio Solution Open In Terminal](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioSolutionOpenInTerminal.png)
 
-2. Run the following command in the terminal.
+2. Run the following command in the **Terminal**.
 
     ```
     docker compose -f docker-compose.yml -f docker-compose.override.yml up -d --build --force-recreate
@@ -495,8 +495,8 @@ The following prerequisites will be required to complete this tutorial:
     ![Visual Studio Solution Run Docker Compose Up in Terminal](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioSolutionRunDockerComposeUpInTerminal.png)
 
 ## Test Web API
-1. Browse to [https://localhost:5021/](https://localhost:5021/)swagger/index.html.
-2. Select **GET /WeatherForecast**, and then select **Try it out**.
+1. Browse to [https://localhost:5021/](https://localhost:5021/swagger/index.html).
+2. Expand **GET /WeatherForecast**, and then select **Try it out**.
 
     ![Swagger Try it out](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Swagger/SwaggerTryItOut.png)
 
@@ -511,11 +511,11 @@ The following prerequisites will be required to complete this tutorial:
 ## Test Grafana
 
 1. Browse to [http://localhost:3000/](http://localhost:3000/).
-2. Enter the default username and password **admin / admin**.
+2. Enter the default username and password **admin / admin**, and then select **Log in**.
 
     ![Grafana Login](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Grafana/GrafanaLogin.png)
 
-3. In Navigation on the left of the screen, select **Dashboards** icon.    
+3. In Navigation on the left of the screen, select the **Dashboards** icon.    
 
     ![Grafana Login](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Grafana/GrafanaDashboardsNavigationIcon.png)
 
@@ -527,18 +527,18 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Grafana Dashboard Monitored.API Overview](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Grafana/GrafanaDashboardMonitoredAPIOverview.png)
 
-## Test OPServer
+## Test Opserver
 
 1. Browse to [http://localhost:4001/](http://localhost:4001/). 
-2. Enter the default username and password **admin / admin**.
+2. Enter the default username and password **admin / admin**, and then select **Log in**.
 
     ![Opserver Login](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Opserver/OpserverLogin.png)
 
-3. Select **SQL** in top right hand corner of the screen for the SQL overview.
+3. Select **SQL** in the top right hand corner of the screen for the SQL overview.
 
     ![Opserver SQL Overview](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Opserver/OpserverSQLOverview.png)
 
-4. Select **Elastic** in top right hand corner of the screen for the Elastic overview.
+4. Select **Elastic** in the top right hand corner of the screen for the Elastic overview.
 
     ![Opserver SQL Overview](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Opserver/OpserverElasticOverview.png)
 
