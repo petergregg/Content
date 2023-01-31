@@ -5,8 +5,8 @@ description: Debug a container in Visual Studio Code running in Docker
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
-status: draft
-published: 2023/01/30 20:45:00
+status: published
+published: 2023/01/30 21:00:00
 categories: 
   - Visual Studio Code
   - Docker
@@ -27,8 +27,8 @@ The following prerequisites will be required to complete this tutorial:
 - dotnet core web application or api with docker compose orchestration.
 
 # Add Visual Studio Code launch JSON file
-1. Open a dotnet core application in **Visual Studio Code**.
-2. Select the **Run and Debug** icon, and then select **create a launch.json file**. 
+1. Open a dotnet core web application or api in **Visual Studio Code**.
+2. Select the **Run and Debug** tab, and then select **create a launch.json file**. 
     
     ![Visual Studio Code Create Launch JSON File](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudioCode/VisualStudioCodeCreateLaunchJSONFile.png)
 
@@ -42,8 +42,8 @@ The following prerequisites will be required to complete this tutorial:
     | --- | --- | 
     | name | Display name of your choice | 
     | containerName | Your running container | 
-    | sourceFileMap (left path) | Path where the application code / dll is published on the docker container (this will be defined in your docker file) | 
-    | sourceFileMap (right path) | Path of the project in Visual Studio code workspace | 
+    | sourceFileMap (left path) | Path where the application code / dll is published in the docker container (this will be defined in your docker file) | 
+    | sourceFileMap (right path) | Path of the project in the Visual Studio Code workspace | 
 
     ```
     {
@@ -66,14 +66,18 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-# Configure docker compose and run the web application or api in a docker container
-1. Add the following volume mapping to the service you would like to debug in the `docker.compose.override` yaml file `- ~/.vsdbg:/remote_debugger:rw`.
+# Configure docker compose and run a web application or api in a docker container
+1. Add the following volume mapping to the service you would like to debug in the `docker.compose.override` yaml file. 
+
+    ```
+    - ~/.vsdbg:/remote_debugger:rw
+    ```
 
 2. Select **Terminal** > **New Terminal**.
 
     ![Visual Studio Code Open New Terminal](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudioCode/VisualStudioCodeOpenTerminal.png)
 
-3. Run the following `docker compose up` command in the terminal.
+3. Run the following `docker compose up` command in the **Terminal**.
 
     ```
     docker compose -f docker-compose.yml -f docker-compose.override.yml up -d --build --force-recreate
@@ -81,8 +85,8 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Visual Studio Code Run Docker Compose Up in Terminal](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudioCode/VisualStudioCodeRunDockerComposeUpInTerminal.png)
 
-# Debug web application or api in container
-1. Select the **Run and Debug** icon, and then choose your dotnet core web application or api from the **RUN AND DEBUG** drop down list. Select the **Start Debugging (play)** icon.
+# Debug a web application or api in a container
+1. Select the **Run and Debug** tab, and then choose the configuration you created in the [Add visual studio code launch json file](#add-visual-studio-code-launch-json-file) step above from the **RUN AND DEBUG** configuration list. Select the **Start Debugging (play)** icon.
 
     ![Visual Studio Code Start Debugging Docker Container](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudioCode/VisualStudioCodeStartDebuggingDockerContainer.png)
 
