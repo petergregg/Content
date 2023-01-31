@@ -25,6 +25,8 @@ categories:
 
 In this article, you will learn how to add Structured logging to a dotnet core Web API project using Serilog, Seq and Event Viewing with Elasticsearch, Logstash, Grafana and Opserver in Docker containers. 
 
+[Source code on GitHub](https://github.com/petergregg/MonitoringDockerStack)
+
 ## Prerequisites
 
 The following prerequisites will be required to complete this tutorial:
