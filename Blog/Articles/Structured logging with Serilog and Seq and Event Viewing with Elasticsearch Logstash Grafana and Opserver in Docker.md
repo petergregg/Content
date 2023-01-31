@@ -5,8 +5,8 @@ description: Structured logging to a dotnet core Web API project using Serilog a
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
-status: draft
-published: 2022/01/21 13:00:00
+status: published
+published: 2023/01/31 20:25:00
 categories: 
   - Serilog
   - Seq
