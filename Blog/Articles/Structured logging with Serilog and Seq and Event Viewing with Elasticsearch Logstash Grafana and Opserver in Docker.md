@@ -132,6 +132,8 @@ The following prerequisites will be required to complete this tutorial:
     {
         public MonitoredAPIDataContext(DbContextOptions<MonitoredAPIDataContext> options) : base(options)
         {
+            Database.EnsureCreated();
+            this.Seed();
         }
 
         public DbSet<WeatherForecast> WeatherForecasts { get; set; }
@@ -142,14 +144,14 @@ The following prerequisites will be required to complete this tutorial:
 1. Add the following class `Seeder` into the `Data` folder.
 
     ```
-    // This is purely for a demo, don't anything like this in a real application!
+    // This is demo code, don't do this in a production application!
     public static void Seed(this MonitoredAPIDataContext monitoredAPIDataContext)
     {
         if (!monitoredAPIDataContext.WeatherForecasts.Any())
         {
             Fixture fixture = new Fixture();
             fixture.Customize<WeatherForecast>(weatherForecast => weatherForecast.Without(p => p.Id));
-            //--- The next two lines add 100 rows to your database
+            // The next two lines add 100 rows to your database
             List<WeatherForecast> weatherForecasts = fixture.CreateMany<WeatherForecast>(100).ToList();
             monitoredAPIDataContext.AddRange(weatherForecasts);
             monitoredAPIDataContext.SaveChanges();
@@ -247,9 +249,20 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Define Container Applications in Docker Compose
 
-1. Add the following code to the `docker-compose` yaml file after the `monitored.api` service block.
+1. Replace the yaml in the `docker-compose` yaml file with the following.
 
     ```
+    version: '3.4'
+
+    services:
+    monitored.api:
+        image: ${DOCKER_REGISTRY-}monitoredapi
+        build:
+        context: .
+        dockerfile: Monitored.API/Dockerfile
+        depends_on:
+        - sqldata
+
     sqldata:
         image: mcr.microsoft.com/mssql/server:2022-latest
 
@@ -266,10 +279,29 @@ The following prerequisites will be required to complete this tutorial:
 
     opserver:
         image: opserver/opserver:preview1
+        depends_on:
+        - sqldata
+        - elasticsearch
     ```
-2. Add the following yaml to the `docker-compose.override` yaml file after the `monitored.api` service block.
+2. Replace the yaml in the `docker-compose.override` yaml file with the following.
 
     ```
+    version: '3.4'
+
+    services:
+    monitored.api:
+        container_name: monitoredapi
+        environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+        - ASPNETCORE_URLS=https://+:443;http://+:80
+        ports:
+        - "5020:80"
+        - "5021:443"
+        volumes:
+        - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+        - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+        - ~/.vsdbg:/remote_debugger:rw
+
     sqldata:
         container_name: sqldata
         environment:
@@ -364,7 +396,7 @@ The following prerequisites will be required to complete this tutorial:
     options:
         path: /etc/grafana/provisioning/dashboards/monitoredapi
     ```
-3. Create a new folder named **monitoredapi** in the **dashboards** folder and add the following JSON file `MonitoredAPIDashboard`.
+3. Create a new folder named **monitoredapi** in the **dashboards** folder and add [Monitored API Dashboard JSON file](https://github.com/petergregg/MonitoringDockerStack/blob/7be0e834e199cffbf04165cb047dafcd7b978f28/deploy/elg/grafana/provisioning/dashboards/monitoredapi/MonitoredAPIDashboard.json).
 
 
 4. Create a new folder named **datasources** in the **provisioning** folder and add the following yaml file **datasources**.
@@ -399,12 +431,13 @@ The following prerequisites will be required to complete this tutorial:
         "ForwardedHeaders": "All"
     },
     "Security": {
+        // This is demo code, don't do this in a production application!
         "provider": "EveryonesAnAdmin"
     },
     "Modules": {
         /* Configuration for the SQL Server dashboard */
         "Sql": {
-        "defaultConnectionString": "Server=$ServerName$;Database=monitoredapi;User Id=sa;Password=Pass@word;Encrypt=False",
+        "defaultConnectionString": "Server=$ServerName$;Database=master;User Id=sa;Password=Pass@word;Encrypt=False",
         "refreshIntervalSeconds": 30,
         "instances": [
             {
@@ -422,7 +455,7 @@ The following prerequisites will be required to complete this tutorial:
             "name": "docker-cluster",
             "refreshIntervalSeconds": 20,
             "nodes": [
-                "ecb229eb0c90"
+                "elasticsearch"
             ]
             }
         ]
