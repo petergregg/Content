@@ -44,7 +44,7 @@ The following prerequisites will be required to complete this tutorial:
 
 4. Search for **snyk**, and then select **Snyk Security Scan**.
 
-    ![Azure DevOps Service Connection Search Snyk](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsServiceConnectionSearchSnyk.png)
+    ![Azure DevOps Extension Search Snyk](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsSnykExtension.png)
 
 5. Select **Get if free**, and then select **Install**.
 
