@@ -52,7 +52,7 @@ The following prerequisites will be required to complete this tutorial:
 
 6. In the **Extensions** section, **Snyk Security Scan** is now installed.
 
-    ![Azure DevOps Snyk Extension Get It Free](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsSnykExtensionInstalled.png)
+    ![Azure DevOps Snyk Extension Installed](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsSnykExtensionInstalled.png)
 
 ## Create Azure Container Registry
 
