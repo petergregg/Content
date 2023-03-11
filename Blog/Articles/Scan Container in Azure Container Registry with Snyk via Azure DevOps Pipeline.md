@@ -40,6 +40,7 @@ The following prerequisites will be required to complete this tutorial:
     ![Azure DevOps Organization Settings General Extensions Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsOrganisationSettingsGeneralExtensionsNavigation.png)
 
 3. Select **Browse marketplace**.
+
     ![Azure DevOps Extensions Navigation Bar](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsExtensionsNavigationBar.png)
 
 4. Search for **snyk**, and then select **Snyk Security Scan**.
@@ -82,7 +83,7 @@ The following prerequisites will be required to complete this tutorial:
 
 1. From the root of an Azure DevOps Project, select **Project settings** in the bottom left of the screen.
 
-    ![Azure DevOps Projects Settings Link](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsProjectSettings.png)
+    ![Azure DevOps Project Settings Link](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsProjectSettings.png)
 
 2. In the **Pipelines** section, select **Service connections**. 
 
