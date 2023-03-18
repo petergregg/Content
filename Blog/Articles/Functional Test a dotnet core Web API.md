@@ -78,10 +78,20 @@ The following prerequisites will be required to complete this tutorial:
     ```
     public partial class Program { }
     ```
+### Reference the Web API Project in the Test Project
+
+1. Right click on the **Test Project**, and then select **Add** > **Project Reference...**.
+
+    ![Visual Studio Reference a Web API Project in the Test Project Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioAddProjectReferenceToProjectNavigation.png)
+
+2. Select the **Web API Project**, and then **OK**.
+
+    ![Visual Studio Reference Manager Reference a Web API Project in the Test Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioReferenceManagerAddProjectReferenceToProject.png)
+
 
 ### Add a Custom WebApplicationFactory to the Test Project
 
-1. Add the following class `CustomWebApplicationFactory` into a new `Base` folder, replacing `{YourConnectionString}` with your connection string.
+1. In the test project, Add the following class `CustomWebApplicationFactory` into a new `Base` folder, replacing `{YourConnectionString}` with your connection string.
 
     ```
     public class CustomWebApplicationFactory<TProgram>
