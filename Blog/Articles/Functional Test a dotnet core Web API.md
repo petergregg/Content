@@ -25,19 +25,19 @@ In this article, you will learn how to functional test a dotnet core Web API pro
 ## Prerequisites
 
 The following prerequisites will be required to complete this tutorial:
-- Visual Studio 2022 Community with the ASP.NET and web development workload. If you don't have Visual Studio installed, [download Visual Studio for free](https://visualstudio.microsoft.com/vs/community/) before you begin.
+- Visual Studio 2022 Community with the ASP.NET and web development workload installed. If you don't have Visual Studio installed, [download Visual Studio for free](https://visualstudio.microsoft.com/vs/community/) before you begin.
 - A dotnet core Web API project. If you don't have a project you can [follow the first step in these instructions to create one](https://www.pgdevopstips.co.uk/article/structured-logging-with-serilog-and-seq-and-event-viewing-with-elasticsearch-logstash-grafana-and-opserver-in-docker).
 
 
-## Add a Functional Test Project to an existing Web API project
+## Add a Functional Test Project to an existing Solution
 
 1. Open a dotnet core Web API project in **Visual Studio**.
-2. Right click on the **Solution**, and then select **Add** > **New Project**.     
+2. Right click on the **Solution**, and then select **Add** > **New Project...**.     
 
     ![Visual Studio Create New Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioAddNewProjectToSolution.png)
 
 
-2. Search for **xUnit**, and then select **xUnit Test Project**, and then select **Next**.
+2. Search for **xunit**, and then select **xUnit Test Project**, and then select **Next**.
 
     ![Visual Studio Create New xUnit Test Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioAddANewXUnitProject.png)
 
@@ -91,7 +91,7 @@ The following prerequisites will be required to complete this tutorial:
 
 ### Add a Custom WebApplicationFactory to the Test Project
 
-1. In the test project, Add the following class `CustomWebApplicationFactory` into a new `Base` folder, replacing `{YourConnectionString}` with your connection string.
+1. In the test project, add the following class `CustomWebApplicationFactory` into a new `Base` folder, replacing `{YourConnectionString}` with your connection string.
 
     ```
     public class CustomWebApplicationFactory<TProgram>
@@ -163,7 +163,7 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-2. The Final Functional Test Project should look like the following.
+2. The final test project should look like the following.
 
     ![Visual Studio Final Test Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioFinalBasicFunctionalTestProject.png)
 
@@ -173,7 +173,7 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Visual Studio Open Test Explorer](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioOpenTestExplorer.png)
 
-2. In the Test Explorer, select ![Run All Tests In View](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioTestExplorerRunAllTestsButton.png) button.
+2. In the Test Explorer, select the ![Run All Tests In View](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioTestExplorerRunAllTestsButton.png) button.
 
 
     ![Visual Studio Test Explorer Initial Not Run Tests](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioTestExplorerInitialNotRunTests.png)
