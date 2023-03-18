@@ -1,7 +1,7 @@
 ---
-title: Functional Test a C# dotnet core Web API
+title: Functional Test a dotnet core Web API
 author: Peter Gregg
-description: Functional Test a C# dotnet core Web API
+description: Functional Test a dotnet core Web API
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
@@ -15,7 +15,7 @@ categories:
   - Web API
 ---
 
-# Functional Test a C# dotnet core Web API
+# Functional Test a dotnet core Web API
 
 In this article, you will learn how to functional test a dotnet core Web API project with an SQL database using Visual Studio and xUnit. 
 
