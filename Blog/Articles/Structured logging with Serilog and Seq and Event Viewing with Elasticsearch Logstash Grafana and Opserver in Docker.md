@@ -44,7 +44,7 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Visual Studio Create New dotnet Core Web API Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioCreateDotNetCoreWebAPIProject.png)
 
-4. Enter the following values in **Configure your new project window**, and then select **Next**.
+4. Enter the following values in the **Configure your new project window**, and then select **Next**.
 
     | Parameter | Value |
     | --- | --- | 
