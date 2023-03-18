@@ -84,7 +84,7 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Visual Studio Reference a Web API Project in the Test Project Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioAddProjectReferenceToProjectNavigation.png)
 
-2. Select the **Web API Project**, and then **OK**.
+2. Tick the **Web API Project**, and then select **OK**.
 
     ![Visual Studio Reference Manager Reference a Web API Project in the Test Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioReferenceManagerAddProjectReferenceToProject.png)
 
