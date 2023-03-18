@@ -5,8 +5,8 @@ description: Functional Test a dotnet core Web API
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
-status: draft
-published: 2023/03/18 09:40:00
+status: published
+published: 2023/03/18 11:00:00
 categories: 
   - Visual Studio
   - Integration Tests
