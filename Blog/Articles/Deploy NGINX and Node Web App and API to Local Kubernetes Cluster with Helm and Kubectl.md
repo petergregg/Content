@@ -32,11 +32,17 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Visual Studio Code Open New Terminal](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudioCode/VisualStudioCodeOpenTerminal.png)
 
-2. Run the following commands to create a new folder named **Fabmedical** and navigate into the folder.
+2. Navigate to a location on your laptop where you would like to store the projects for this tutorial.
 
     ```
-    mkdir Fabmedical
-    cd Fabmedical
+    cd /DevSample
+    ```
+
+2. Run the following commands to create a new folder named **FabmedicalTemp** and navigate into the folder.
+
+    ```
+    mkdir FabmedicalTemp
+    cd FabmedicalTemp
     ```
 
 3. Run the following command to clone the **Fabmedical** project repository.
@@ -51,10 +57,58 @@ The following prerequisites will be required to complete this tutorial:
     rm -rf MCW-Cloud-native-applications/.git
     ```
 
-5. Run the the following command to navigate to the **developer** folder.
+6. Run the the following command to navigate to the **developer** folder.
 
     ```
     cd 'Hands-on lab'/lab-files/developer
+    ```
+7. Run the following commands to set your username and email, for git to use it for commits.
+
+    ```
+    git config --global "you@example.com"
+    git config --global "Your Name"
+    ```
+8. Run the following commands to initialize a new git repository:
+
+    ```
+    git init
+    git add .
+    git commit -m "Initial Commit"
+    ```
+
+9. Navigate to a location on your laptop where you would like to store the Fabmedical Kubernetes project for this tutorial.
+
+    ```
+    cd /DevSample
+    ```
+
+10. Run the following commands to create a new folder named **FabmedicalK8s** and navigate into the folder.
+
+    ```
+    mkdir FabmedicalK8s
+    cd FabmedicalK8s
+    ```
+
+11. Run the following command to clone the repository code into the **FabmedicalK8s** folder. Replace {DevSample} with the folder you have the project stored in on your computer.
+
+    ```
+    git clone /DevSample/FabmedicalK8s
+    ```
+
+# Push the FabmedicalK8s to a GitHub repo (Optional)
+
+1. Create a GitHub repository to store a new project in your GitHub account named `Fabmedicalk8s`.
+
+2. Run the following command to set the remote origin to the GitHub URL, replace {YourGitHubUsername} with your Github username.
+
+    ```
+    git remote add origin https://github.com/{YourGitHubUsername}/Fabmedicalk8s
+    ```
+
+3. Run the following command to push to the main branch.
+    
+    ```
+    git push -u origin main
     ```
 
 # Install Kubernetes Dashboard UI
