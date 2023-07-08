@@ -19,7 +19,7 @@ categories:
 ---
 
 # Deploy NGINX and Node Web App and API to Local Kubernetes Cluster with Helm and Kubectl
-In this article, you will learn how to deploy NGINX and a node web app and api with a mongodb to a Local Kubernetes Cluster with Helm and Kubectl.
+In this article, you will learn how to deploy NGINX and a Node web app and api with a mongodb to a local Kubernetes Cluster with Helm and Kubectl.
 
 ## Prerequisites
 The following prerequisites will be required to complete this tutorial:
@@ -28,46 +28,49 @@ The following prerequisites will be required to complete this tutorial:
 - Docker Desktop. If you don't have Docker Desktop installed, [download Docker Desktop for free](https://docs.docker.com/desktop/install/windows-install/) before you begin.
 
 # Clone the Fabmedical project
-1. Open Visual Studio Code, select **Terminal**, and then **New Terminal**. 
-2. Create a new folder named **Fabmedical** and navigate into the folder.
+1. Open Visual Studio Code, select **Terminal**, and then **New Terminal**.
+
+    ![Visual Studio Code Open New Terminal](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudioCode/VisualStudioCodeOpenTerminal.png)
+
+2. Run the following commands to create a new folder named **Fabmedical** and navigate into the folder.
 
     ```
     mkdir Fabmedical
     cd Fabmedical
     ```
 
-3. Clone the **Fabmedical** project repository with the following command.
+3. Run the following command to clone the **Fabmedical** project repository.
 
     ```
     git clone https://github.com/microsoft/MCW-Cloud-native-applications.git
     ```
     
-4. Remove the **.git** directory because it is not required.
+4. Run the following command to remove the **.git** directory because it is not required.
 
     ```
     rm -rf MCW-Cloud-native-applications/.git
     ```
 
-5. Navigate to the **developer** folder.
+5. Run the the following command to navigate to the **developer** folder.
 
     ```
     cd 'Hands-on lab'/lab-files/developer
     ```
 
 # Install Kubernetes Dashboard UI
-1. Open Visual Studio Code, select **Terminal**, and then **New Terminal**.vDeploy the Kubernetes Dashboard UI with the following command.
+1. In Visual Studio Code, select **Terminal**, and then **New Terminal**. Run the following command to deploy the Kubernetes Dashboard UI.
 
     ```
     kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
     ```
 
-2. Ensure the pods are running with the following command.
+2. Run the following command to ensure the pods are running.
 
     ```
     kubectl get pods -A
     ```
 
-3. Create a new folder named **deploy** in the **root** of the **Fabmedical** project.
+3. Run the following commands to create a new folder named **deploy** in the **root** of the **Fabmedical** project.
 
     ```
     mkdir deploy
@@ -75,17 +78,17 @@ The following prerequisites will be required to complete this tutorial:
     ```
 
 
-4. Create a new folder named **K8s** in the **deploy** folder with the following command.
+4. Run the following commands to create a new folder named **K8s** in the **deploy** folder.
 
     ```
     mkdir K8s
     cd K8s
     ```
 
-5. Add a yaml file named `dashboard-adminuser` into the **K8s** folder. 
+5. Run the following command to add a yaml file named `dashboard-adminuser` into the **K8s** folder. 
 
     ```
-    > dashboard-adminuser.yaml
+    code dashboard-adminuser.yaml
     ```
 
 6. Add the following contents into the `dashboard-adminuser` yaml file.
@@ -111,19 +114,20 @@ The following prerequisites will be required to complete this tutorial:
       namespace: kubernetes-dashboard
     ```
 
-7. In Visual Studio Code, right click on the **K8s** folder and select **Open in Integrated Terminal**. Run the following command.
+7. Run the following command to apply the configuration specified in the `dashboard-adminuser` yaml file.
 
     ```
     kubectl apply -f dashboard-adminuser.yaml
     ```
 
-8. Create a token to log into the Kubernetes Dashboard UI with the following command, and copy.
+8. Run the following command to create a token to log into the Kubernetes Dashboard UI. Copy the token for later.
 
     ```
     kubectl -n kubernetes-dashboard create token admin-user
     ```
 
-9. Run the Kubernetes Dashboard UI with the following command.
+9. Run the following command to start the Kubernetes Dashboard UI.
+
     ```
     kubectl proxy
     ```
@@ -146,29 +150,29 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Build a docker image and setup Helm chart to run the content initialization container
 
-1. Navigate to **content-init** folder in the **root** folder of the **Fabmedical** project and build the content initialization docker image using the following command.
+1. In the same Terminal, run the following commands to navigate to **content-init** folder and build the content initialization docker image.
 
     ```
-    cd content-init
+    cd ../../content-init
     docker image build -t content-init .
     ```
 
-2. Create a folder named **helm** in the **k8s** folder which is located in the **deploy** folder.
+2. Run the following commands to create a folder named **helm** in the **k8s** folder.
 
     ```
-    cd deploy/k8s
+    cd ../deploy/k8s
     mkdir helm
     cd helm
     ```
 
-2. Navigate to the **helm** folder and create scaffolded helm charts for the content initialization project with the following command.
+2. Run the following commands to navigate to the **helm** folder and create scaffolded helm charts for the content initialization project.
 
     ```
     cd helm
     helm create content-init
     ```
 
-3. In the same terminal navigate to the **content-init** folder and open the scaffolded `values` yaml file, with the following command.
+3. In the same Terminal, run the following commands to navigate to the **content-init** folder and open the scaffolded `values` yaml file.
 
     ```
     cd  content-init
@@ -192,7 +196,11 @@ The following prerequisites will be required to complete this tutorial:
 
 6. Save the changes and close the file.
 
-7. In VS Code navigate to the **content-init** folder and open the scaffolded `chart` yaml file.
+7. Run the following command to open the scaffolded `chart` yaml file.
+
+    ```
+    code chart.yaml
+    ```
 
 8. Search for `appVersion` and update the values to match the following.
 
@@ -202,10 +210,10 @@ The following prerequisites will be required to complete this tutorial:
 
 12. Save the changes and close the file.
 
-13. In a terminal navigate to the **templates** folder in the **content-init** folder and open the scaffolded `deployments` yaml file, with the following command.
+13. Run the following commands to navigate to the **templates** folder in the **content-init** folder and open the scaffolded `deployments` yaml file.
 
     ```
-    cd  content-init/templates
+    cd templates
     code deployments.yaml
     ```
 
@@ -224,7 +232,11 @@ The following prerequisites will be required to complete this tutorial:
 
 15. Save the changes and close the file.
 
-16. In Visual Studio Code, right click on the **helm** folder in the **k8s** folder which is located in the **deploy** folder and select **Open in Integrated Terminal**.
+16. Run the following command to navigate back to the **helm** folder.
+
+    ```
+    cd ../../
+    ```
 
 17. Run the following helm install command.
 
@@ -234,21 +246,21 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Build a docker image and setup Helm chart to run the content api container
 
-1. Navigate to **content-api** folder in the **root** folder of the **Fabmedical** project and build the api docker image with the following command.
+1. In the same Terminal, run the following commands to navigate to **content-api** folder and build the api docker image.
 
     ```
-    cd content-api
+    cd ../../../content-api
     docker image build -t content-api .
     ```
 
-2. Navigate to **helm** folder in the **k8s** folder which is located in the **deploy** folder and create the scaffolded helm charts for the api with the following command.
+2. Run the following commands to navigate to **helm** folder in the **k8s** folder and create the scaffolded helm charts for the api.
 
     ```
     cd ../deploy/k8s/helm
     helm create api
     ```
 
-3. In the same Terminal, navigate to the **api** folder and open the scaffolded `values` yaml file.
+3. Run the following commands to navigate to the **api** folder and open the scaffolded `values` yaml file.
 
     ```
     cd  api
@@ -296,7 +308,7 @@ The following prerequisites will be required to complete this tutorial:
 
 9. Save changes and close the file.
 
-10.  In the helm **api** folder, open the scaffolded `chart` yaml file.
+10.  Run the following command to open the scaffolded `chart` yaml file.
 
     ```
     code chart.yaml
@@ -310,10 +322,10 @@ The following prerequisites will be required to complete this tutorial:
 
 12. Save changes and close the file.
 
-13. In a Terminal, navigate to the **templates** folder in the **api** folder and open the scaffolded `deployments` yaml file.
+13. Run the following commands to navigate to the **templates** folder and open the scaffolded `deployments` yaml file.
 
     ```
-    cd  api/templates
+    cd  templates
     code deployments.yaml
     ```
 
@@ -353,7 +365,7 @@ containers:
 
 16. Save the changes and close the file.
 
-17. Open the scaffolded `services` yaml file in the **templates** folder.
+17. Run the following command to open the scaffolded `services` yaml file in the **templates** folder.
 
     ```
     code services.yaml
@@ -370,7 +382,11 @@ containers:
     ```
 19. Save the changes and close the file.
 
-20. In Visual Studio Code, right click on the **helm** folder in the **k8s** folder which is located in the **deploy** folder and select **Open in Integrated Terminal**.
+20. Run the following command to navigate to the **helm** folder
+
+    ```
+    cd ../../
+    ```
 
 21. Run the following helm install command.
 
@@ -380,21 +396,21 @@ containers:
 
 ## Build a docker image and setup Helm chart to run the content web container
 
-1. Navigate to **content-web** folder in the **root** folder of the **Fabmedical** project and build the content-web docker image with the following command.
+1. In the same Terminal, run the following commands to navigate to **content-web** folder and build the web docker image.
 
     ```
-    cd content-web
+    cd ../../../content-web
     docker image build -t content-web .
     ```
 
-2. Navigate to **helm** folder in the **k8s** folder which is located in the **deploy** folder and create the scaffolded helm charts for the web with the following command.
+2. Run the following commands to navigate to **helm** folder in the **k8s** folder and create the scaffolded helm charts for the api.
 
     ```
     cd ../deploy/k8s/helm
     helm create web
     ```
 
-3. In the same Terminal navigate to the **web** folder and open the scaffolded `values` yaml file.
+3. Run the following commands to navigate to the **web** folder and open the scaffolded `values` yaml file.
 
     ```
     cd  web
@@ -445,7 +461,7 @@ containers:
 
 9. Save the changes and close the file.
 
-10. In the same Terminal open the scaffolded `chart` yaml file in the helm web folder.
+10. Run the following command to open the scaffolded `chart` yaml file in the helm web folder.
 
     ```
     code chart.yaml
@@ -459,7 +475,7 @@ containers:
 
 12. Save the changes and close the file.
 
-13. In the same Terminal navigate to the **templates** folder in the helm **web** folder and open the scaffolded `deployments` yaml file.
+13. Run the following commands to navigate to the **templates** folder in the helm **web** folder and open the scaffolded `deployments` yaml file.
 
     ```
     cd  templates
@@ -482,7 +498,7 @@ containers:
             rollme: {{ randAlphaNum 5 | quote }}
     ```
 
-15. 15. Search for the `containers` definition and update the `containerPort`, `livenessProbe port` to match the following. Also add the following `env` variable.
+15. Search for the `containers` definition and update the `containerPort`, `livenessProbe port` to match the following. Also add the following `env` variable.
 
     ```
     containers:
@@ -502,7 +518,7 @@ containers:
 
 16. Save the changes and close the file.
 
-17. In the same Terminal open the scaffolded `services` yaml file in the web **templates** folder.
+17. Run the following command to open the scaffolded `services` yaml file in the web **templates** folder.
 
     ```
     code services.yaml
@@ -520,7 +536,11 @@ containers:
 
 19. Save the changes and close the file.
 
-20. In Visual Studio Code, right click on the **helm** folder in the **k8s** folder which is located in the **deploy** folder and select **Open in Integrated Terminal**.
+20. Run the following command to navigate to the **helm** folder
+
+    ```
+    cd ../../
+    ```
 
 21. Run the following helm install command.
 
@@ -528,30 +548,42 @@ containers:
     helm install web ./web
     ```
 
-22. Open the Kubernetes management dashboard ui and select **Services** under **Discovery and Load Balancing** in the navigation menu. In the **Services** view, select the **web service**. 
+22. Open the Kubernetes management dashboard ui and select **Services** under **Discovery and Load Balancing** in the navigation menu. 
 
     ![Kubernetes Dashboard Discovery And Load Balancing Services Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/KubernetesDashboard/KubernetesDashboardDiscoveryAndLoadBalancingServicesNavigation.png)
 
-23. Once the web service has finished deploying, select the external endpoint to access the website.
+23. In the **Services** view, select the **web service**. Once the web service has finished deploying, select the external endpoint to access the website.
 
     ![Kubernetes Dashboard Discovery And Load Balancing Services](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/KubernetesDashboard/KubernetesDashboardDiscoveryAndLoadBalancingServices.png)
 
 # Install NGINX using a Helm chart
 
-1. Run the following helm install command.
+1. In the same Terminal, run the following command to navigate to the **k8s** folder in the **deploy** folder.
+
+    ```
+    cd ../
+    ``` 
+
+2. Run the following helm install command.
 
     ```
     helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace
     ```
 
-2. Navigate to the **k8s** folder in the **deploy** folder in the **root** folder of the **Fabmedical** project and create a folder named **nginx-ingress**, then navigate to the new **nginx-ingress** folder.
+2. Run the following commands to create a folder named **nginx-ingress** and navigate to the new **nginx-ingress** folder.
 
     ```
     mkdir nginx-ingress
     cd nginx-ingress
     ```
 
-3. Create a new yaml file named `content-nginx` with the following contents.
+3. Run the following command to create a new yaml file named `content-nginx` 
+
+    ```
+    code content-nginx.yaml
+    ```
+
+4. Add the following contents to the `content-nginx` yaml file.
 
     ```
     apiVersion: networking.k8s.io/v1
@@ -583,7 +615,7 @@ containers:
                   number: 3001
     ```
 
-4. Apply the nginx config specified in the `content-nginx` yaml file to the `default` namespace with the following command.
+4. Run the following command to apply the nginx configuration specified in the `content-nginx` yaml file to the `default` namespace.
 
     ```
     kubectl apply -f content-nginx.yaml --namespace default 
