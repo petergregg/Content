@@ -99,7 +99,7 @@ The following prerequisites will be required to complete this tutorial:
     metadata:
       name: admin-user
       namespace: kubernetes-dashboard
-    ---
+    
     apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRoleBinding
     metadata:
