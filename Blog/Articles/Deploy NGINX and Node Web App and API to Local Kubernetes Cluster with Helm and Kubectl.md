@@ -136,7 +136,8 @@ The following prerequisites will be required to complete this tutorial:
 
     ![kubernetes Dashboard Login](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/KubernetesDashboard/KubernetesDashboardLogin.png)
 
-    !IMPORTANT You have to manually start the dashboard and get a new login token every time you restart the cluster.
+> [!NOTE] 
+> Every time you restart the cluster you have to manually start the dashboard and get a new login token. 
 
 # Setup and deploy services using Helm charts
 
@@ -347,21 +348,21 @@ The following prerequisites will be required to complete this tutorial:
 
 15. Search for the `containers` definition and update the `containerPort`, `livenessProbe port` to match the following. Also add the following `env` variable.
 
-```
-containers:
-  ...
-    ports:
+    ```
+    containers:
       ...
-        containerPort: 3001
-        ...
-    env:
-      - name: MONGODB_CONNECTION
-        value: mongodb://my-release-mongodb:27017/contentdb
-    livenessProbe:
-      httpGet:
-        ...
-        port: 3001
-```
+        ports:
+          ...
+            containerPort: 3001
+            ...
+        env:
+          - name: MONGODB_CONNECTION
+            value: mongodb://my-release-mongodb:27017/contentdb
+        livenessProbe:
+          httpGet:
+            ...
+            port: 3001
+    ```
 
 16. Save the changes and close the file.
 
@@ -434,14 +435,14 @@ containers:
 
 7. Search for the `service` definition and update the values to match the following.
 
-      ```
-      service:
-        type: LoadBalancer
-        port: 3000
-        targetPort: 3000
-        protocol: TCP
-        name: web
-      ```
+    ```
+    service:
+      type: LoadBalancer
+      port: 3000
+      targetPort: 3000
+      protocol: TCP
+      name: web
+    ```
 
 8. Search for the `resources` definition. Remove the curly braces and add requests to match the following.
 
