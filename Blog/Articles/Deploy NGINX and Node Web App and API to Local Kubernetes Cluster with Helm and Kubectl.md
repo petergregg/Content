@@ -153,7 +153,17 @@ The following prerequisites will be required to complete this tutorial:
     metadata:
       name: admin-user
       namespace: kubernetes-dashboard
-    
+    ```
+
+7. Run the following command to add a yaml file named `dashboard-adminuser-authorization` into the **K8s** folder. 
+
+    ```
+    code dashboard-adminuser-authorization.yaml
+    ```
+
+8. Add the following contents into the `dashboard-adminuser-authorization` yaml file.
+
+    ```
     apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRoleBinding
     metadata:
@@ -167,27 +177,29 @@ The following prerequisites will be required to complete this tutorial:
       name: admin-user
       namespace: kubernetes-dashboard
     ```
-7. Save the changes and close the file.
 
-8. Run the following command to apply the configuration specified in the `dashboard-adminuser` yaml file.
+9. Save the changes and close the file.
+
+10. Run the following commands to apply the configuration specified in the `dashboard-adminuser` and `dashboard-adminuser-authorization` yaml files.
 
     ```
     kubectl apply -f dashboard-adminuser.yaml
+    kubectl apply -f dashboard-adminuser-authorization.yaml
     ```
 
-9. Run the following command to create a token to log into the Kubernetes Dashboard UI. Copy the token for later.
+11. Run the following command to create a token to log into the Kubernetes Dashboard UI. Copy the token for later.
 
     ```
     kubectl -n kubernetes-dashboard create token admin-user
     ```
 
-10. Run the following command to start the Kubernetes Dashboard UI.
+12. Run the following command to start the Kubernetes Dashboard UI.
 
     ```
     kubectl proxy
     ```
 
-11. Navigate to http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login. Select **Token** and paste the copied token into **Enter token** box.
+13. Navigate to http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login. Select **Token** and paste the copied token into **Enter token** box.
 
     ![kubernetes Dashboard Login](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/KubernetesDashboard/KubernetesDashboardLogin.png)
 
