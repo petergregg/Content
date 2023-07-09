@@ -1,7 +1,7 @@
 ---
-title: Deploy NGINX and Node Web App and API to Local Kubernetes Cluster with Helm and Kubectl
+title: Deploy NGINX Ingress Controller and Node.js Web App and API to Local Kubernetes Cluster with Helm and Kubectl
 author: Peter Gregg
-description: Deploy NGINX and Node.js Web App and API to Local Kubernetes Cluster with Helm and Kubectl
+description: Deploy NGINX Ingress Controller and Node.js Web App and API to Local Kubernetes Cluster with Helm, Helm Charts and Kubectl
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
@@ -14,22 +14,23 @@ categories:
   - Visual Studio Code
   - Kubernetes
   - Helm
+  - Helm Charts
   - Kubectl
-  - Nginx
+  - Nginx Ingress Controller
   - Node.js
 ---
 
-# Deploy NGINX and Node.js Web App and API to Local Kubernetes Cluster with Helm and Kubectl
-In this article, you will learn how to deploy NGINX and a Node.js web app and api with a mongodb to a local Kubernetes Cluster with Helm and Kubectl. This article was inspired by the [Microsoft Cloud Workshop Cloud Native Applications](https://github.com/microsoft/MCW-Cloud-native-applications).
+# Deploy NGINX Ingress Controller and Node.js Web App and API to Local Kubernetes Cluster with Helm and Kubectl
+In this article, you will learn how to deploy [NGINX Ingress Controller](https://docs.nginx.com/nginx-ingress-controller/) and a Node.js web app and api with a mongodb to a local Kubernetes Cluster with Helm and Kubectl. This article was inspired by the [Microsoft Cloud Workshop Cloud Native Applications](https://github.com/microsoft/MCW-Cloud-native-applications).
 
 ## Prerequisites
 The following prerequisites will be required to complete this tutorial:
-- Visual Studio Code
+- Visual Studio Code. If you don't have Visual Studio Code installed, [download Visual Studio Code for free](https://code.visualstudio.com/Download) before you begin.
 - Windows Subsystem for Linux (WSL). If you don't have WSL installed, [download Docker WSL for free](https://learn.microsoft.com/en-us/windows/wsl/install) before you begin.
 - Docker Desktop with Kubernetes enabled. If you don't have Docker Desktop installed, [download Docker Desktop for free](https://docs.docker.com/desktop/install/windows-install/) before you begin.
 
 # Clone the Fabmedical project
-1. Open Visual Studio Code, select **Terminal**, and then **New Terminal**.
+1. Open **Visual Studio Code**, select **Terminal**, and then **New Terminal**. Ensure you are running a Powershell terminal.
 
     ![Visual Studio Code Open New Terminal](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudioCode/VisualStudioCodeOpenTerminal.png)
 
@@ -55,45 +56,42 @@ The following prerequisites will be required to complete this tutorial:
 4. Run the following command to remove the **.git** directory because it is not required.
 
     ```
-    rm -rf MCW-Cloud-native-applications/.git
+    rm MCW-Cloud-native-applications/.git -r -force
     ```
 
 6. Run the the following command to navigate to the **developer** folder.
 
     ```
-    cd 'Hands-on lab'/lab-files/developer
+    cd MCW-Cloud-native-applications/'Hands-on lab'/lab-files/developer
     ```
-7. Run the following commands to set your username and email, for git to use for commits.
 
-    ```
-    git config --global "you@example.com"
-    git config --global "Your Name"
-    ```
-8. Run the following commands to initialize a new git repository:
+7. Run the following commands to initialize a new git repository and to set your username and email, for git to use for commits. Replace {YourEmail@example.com} with your email and {Your Name} with your name.
 
     ```
     git init
+    git config --global user.email "{YourEmail@example.com}"
+    git config --global user.name "{Your Name}"
     git add .
     git commit -m "Initial Commit"
     ```
 
-9. Navigate to a folder on your device where you would like to store the Fabmedical Kubernetes project for this tutorial. Replace {DevSample} with your chosen folder.
+8. Navigate to a folder on your device where you would like to store the Fabmedical Kubernetes project for this tutorial. Replace {DevSample} with your chosen folder.
 
     ```
     cd /DevSample
     ```
 
-10. Run the following commands to create a new folder named **FabmedicalK8s** and navigate into the folder.
+9. Run the following commands to create a new folder named **FabmedicalK8s** and navigate into the folder.
 
     ```
     mkdir FabmedicalK8s
     cd FabmedicalK8s
     ```
 
-11. Run the following command to clone the repository code into the **FabmedicalK8s** folder. Replace {DevSample} with the folder you have the project stored in on your computer.
+10. Run the following command to clone the repository code into the **FabmedicalK8s** folder. Replace {DevSample} with your chosen folder.
 
     ```
-    git clone /DevSample/FabmedicalK8s
+    git clone /DevSample/FabmedicalTemp/MCW-Cloud-native-applications/'Hands-on lab'/lab-files/developer .
     ```
 
 # Push the FabmedicalK8s to a GitHub repo (Optional)
