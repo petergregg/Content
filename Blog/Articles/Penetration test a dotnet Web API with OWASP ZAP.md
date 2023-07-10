@@ -5,7 +5,7 @@ description: Penetration test a dotnet Web API with OWASP ZAP
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
-status: published
+status: draft
 published: 2023/01/31 20:25:00
 categories: 
   - OWASP ZAP
