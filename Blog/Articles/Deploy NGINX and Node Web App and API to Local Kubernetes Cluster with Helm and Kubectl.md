@@ -210,7 +210,7 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Install mongodb using Helm
 
-1. Run the following helm installation command to [install bitnami mongodbs image](https://github.com/bitnami/charts/tree/main/bitnami/mongodb).
+1. Run the following `helm install` command to [install bitnami mongodbs image](https://github.com/bitnami/charts/tree/main/bitnami/mongodb).
 
     ```
     helm install my-release oci://registry-1.docker.io/bitnamicharts/mongodb --set auth.enabled=false
@@ -305,7 +305,7 @@ The following prerequisites will be required to complete this tutorial:
     cd ../../
     ```
 
-15. Run the following helm install command.
+15. Run the following `helm install` command.
 
     ```
     helm install content-init ./content-init
@@ -455,7 +455,7 @@ The following prerequisites will be required to complete this tutorial:
     cd ../../
     ```
 
-20. Run the following helm install command.
+20. Run the following `helm install` command.
 
     ```
     helm install api ./api
@@ -528,7 +528,7 @@ The following prerequisites will be required to complete this tutorial:
 
 8. Save the changes and close the file.
 
-9. Run the following command to open the scaffolded `chart` yaml file in the helm web folder.
+9. Run the following command to open the scaffolded `chart` yaml file in the helm **web** folder.
 
     ```
     code chart.yaml
@@ -609,7 +609,7 @@ The following prerequisites will be required to complete this tutorial:
     cd ../../
     ```
 
-20. Run the following helm install command.
+20. Run the following `helm install` command.
 
     ```
     helm install web ./web
@@ -631,7 +631,7 @@ The following prerequisites will be required to complete this tutorial:
     cd ../
     ``` 
 
-2. Run the following helm install command.
+2. Run the following `helm install` command.
 
     ```
     helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace
