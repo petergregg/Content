@@ -29,12 +29,12 @@ The following prerequisites will be required to complete this tutorial:
 - Windows Subsystem for Linux (WSL). If you don't have WSL installed, [download Docker WSL for free](https://learn.microsoft.com/en-us/windows/wsl/install) before you begin.
 - Docker Desktop with Kubernetes enabled. If you don't have Docker Desktop installed, [download Docker Desktop for free](https://docs.docker.com/desktop/install/windows-install/) before you begin.
 
-# Clone the MCW-Cloud-native-applications project
+# Clone the Fabmedical project
 1. Open **Visual Studio Code**, select **Terminal**, and then **New Terminal**. Ensure you are running a Powershell terminal.
 
     ![Visual Studio Code Open New Terminal](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudioCode/VisualStudioCodeOpenTerminal.png)
 
-2. In the Terminal, navigate to a folder on your device where you would like to store a temporary project for this tutorial. Replace `{DevSample}` with your chosen folder.
+2. In the Terminal, navigate to a folder on your device where you would like to store a temporary project for this tutorial. Replace {DevSample} with your chosen folder.
 
     ```
     cd /DevSample
@@ -47,7 +47,7 @@ The following prerequisites will be required to complete this tutorial:
     cd FabmedicalTemp
     ```
 
-3. Run the following command to clone the **MCW-Cloud-native-applications** project repository.
+3. Run the following command to clone the **Fabmedical** project repository.
 
     ```
     git clone https://github.com/microsoft/MCW-Cloud-native-applications.git
@@ -65,7 +65,7 @@ The following prerequisites will be required to complete this tutorial:
     cd MCW-Cloud-native-applications/'Hands-on lab'/lab-files/developer
     ```
 
-7. Run the following commands to initialize a new git repository and to set your username and email, for git to use for commits. Replace `{YourEmail@example.com}` with your email and `{Your Name}` with your name.
+7. Run the following commands to initialize a new git repository and to set your username and email, for git to use for commits. Replace {YourEmail@example.com} with your email and {Your Name} with your name.
 
     ```
     git init
@@ -75,7 +75,7 @@ The following prerequisites will be required to complete this tutorial:
     git commit -m "Initial Commit"
     ```
 
-8. Navigate to a folder on your device where you would like to store the **Fabmedical Kubernetes** project for this tutorial. Replace `{DevSample}` with your chosen folder.
+8. Navigate to a folder on your device where you would like to store the Fabmedical Kubernetes project for this tutorial. Replace {DevSample} with your chosen folder.
 
     ```
     cd /DevSample
@@ -88,7 +88,7 @@ The following prerequisites will be required to complete this tutorial:
     cd FabmedicalK8s
     ```
 
-10. Run the following command to clone the repository code into the **FabmedicalK8s** folder. Replace `{DevSample}` with your chosen folder.
+10. Run the following command to clone the repository code into the **FabmedicalK8s** folder. Replace {DevSample} with your chosen folder.
 
     ```
     git clone /DevSample/FabmedicalTemp/MCW-Cloud-native-applications/'Hands-on lab'/lab-files/developer .
@@ -98,7 +98,7 @@ The following prerequisites will be required to complete this tutorial:
 
 1. Create a GitHub repository to store the new project in your GitHub account named `Fabmedicalk8s`.
 
-2. Run the following command to set the remote origin to the GitHub URL, replace `{YourGitHubUsername}` with your Github username.
+2. Run the following command to set the remote origin to the GitHub URL, replace {YourGitHubUsername} with your Github username.
 
     ```
     git remote add origin https://github.com/{YourGitHubUsername}/Fabmedicalk8s
@@ -123,7 +123,7 @@ The following prerequisites will be required to complete this tutorial:
     kubectl get pods -A
     ```
 
-3. Run the following commands to navigate to **Fabmedicalk8s** folder and create a new folder named **deploy**. Replace `{DevSample}` with your chosen folder.
+3. Run the following commands to navigate to **Fabmedicalk8s** folder and create a new folder named **deploy**. Replace {DevSample} with your chosen folder.
 
     ```
     cd /DevSample/FabmedicalK8s
@@ -139,7 +139,7 @@ The following prerequisites will be required to complete this tutorial:
     cd K8s
     ```
 
-5. Run the following command to create a new yaml file named `dashboard-adminuser` into the **K8s** folder. 
+5. Run the following command to add a yaml file named `dashboard-adminuser` into the **K8s** folder. 
 
     ```
     code dashboard-adminuser.yaml
@@ -155,7 +155,7 @@ The following prerequisites will be required to complete this tutorial:
       namespace: kubernetes-dashboard
     ```
 
-7. Run the following command to create a new yaml file named `dashboard-adminuser-authorization` into the **K8s** folder. 
+7. Run the following command to add a yaml file named `dashboard-adminuser-authorization` into the **K8s** folder. 
 
     ```
     code dashboard-adminuser-authorization.yaml
@@ -239,7 +239,7 @@ The following prerequisites will be required to complete this tutorial:
     helm create content-init
     ```
 
-3. Run the following commands to navigate to the **content-init** folder and open the scaffolded `values` yaml file.
+3. In the same Terminal, run the following commands to navigate to the **content-init** folder and open the scaffolded `values` yaml file.
 
     ```
     cd content-init
@@ -480,7 +480,7 @@ The following prerequisites will be required to complete this tutorial:
 3. Run the following commands to navigate to the **web** folder and open the scaffolded `values` yaml file.
 
     ```
-    cd web
+    cd  web
     code values.yaml
     ```
 
@@ -545,7 +545,7 @@ The following prerequisites will be required to complete this tutorial:
 13. Run the following commands to navigate to the **templates** folder and open the scaffolded `deployments` yaml file.
 
     ```
-    cd templates
+    cd  templates
     code deployments.yaml
     ```
 
