@@ -14,3 +14,5 @@ categories:
   - Docker
   - Containers
 ---
+
+# Setup NGINX as an API Gateway 
