@@ -34,7 +34,7 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Visual Studio Code Open New Terminal](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudioCode/VisualStudioCodeOpenTerminal.png)
 
-2. In the Terminal, navigate to a folder on your device where you would like to store a temporary project for this tutorial. Replace {DevSample} with your chosen folder.
+2. In the Terminal, navigate to a folder on your device where you would like to store a temporary project for this tutorial. Replace **{DevSample}** with your chosen folder.
 
     ```
     cd /DevSample
