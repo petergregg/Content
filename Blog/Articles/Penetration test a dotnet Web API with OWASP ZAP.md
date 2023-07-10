@@ -6,7 +6,7 @@ image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
 status: draft
-published: 2023/01/31 20:25:00
+published: 2023/07/10 20:00:00
 categories: 
   - OWASP ZAP
   - Docker
@@ -18,10 +18,7 @@ categories:
 
 # Penetration test a dotnet Web API with OWASP ZAP
 
-In this article, you will learn how to Penetration test a dotnet core Web API project with OWASP ZAP. 
-
-[Source code on GitHub](https://github.com/petergregg/MonitoringDockerStack)
-
+In this article, you will learn how to penetration test a dotnet core [Web API project](https://github.com/petergregg/MonitoringDockerStack) with OWASP ZAP. 
 
 ## Prerequisites
 
@@ -34,29 +31,24 @@ The following prerequisites will be required to complete this tutorial:
 
 1. Open Powershell, and execute the following command.
 
-```
-docker run -i -t --network=host --rm -v "$(pwd):/zap/wrk/:rw"  owasp/zap2docker-stable 
+    ```
+    docker run -i -t --network=host --rm -v "$(pwd):/zap/wrk/:rw" -t owasp/zap2docker-weekly
+    ```
 
-docker run -i -t --network=host --rm -v "$(pwd):/zap/wrk/:rw" -t owasp/zap2docker-weekly
-```
 2. Once in the container, run the zap api scan with the following command.
 
-```
-./zap-api-scan.py -t Zap/IrishRailOpenAPIDefinition.yml -f openapi -x xml_report.xml -n Zap/IrishRailContext.context
+    ```
+    ./zap-api-scan.py -g api-scan.conf -t monitoredapidefinition.json -f openapi -r api-scan-report.html
+    ```
 
-./zap-api-scan.py -g api-scan.conf -t http://localhost:5020/swagger/v1/swagger.json -f openapi -r api-scan-report.html
+3. Run the following command to get the name of the running zap container and make a copy of the container name. 
 
-./zap-api-scan.py -g api-scan.conf -t monitoredapidefinition.json -f openapi -r api-scan-report.html
-```
+  ```
+  docker ps
+  ```
 
-```
-docker cp sharp_ptolemy:/zap/wrk/ "C:\DevSample\zap"
-```
-
-2. WSL
-
-Copy files into linux directory
+4. Run the following command to copy the container files to a folder on your device. Replace `{ZapContainerName}` with your zap container and `{FolderOnYourDevice}` to a folder on your device.
 
 ```
-docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-weekly zap-api-scan.py -g api-scan.conf -t  https://$(ifconfig en0 | grep "inet " | cut -d " " -f2):5020/swagger/v1/swagger.json -f openapi
+docker cp {ZapContainerName}:/zap/wrk/ "C:\{FolderOnYourDevice}\zap"
 ```
