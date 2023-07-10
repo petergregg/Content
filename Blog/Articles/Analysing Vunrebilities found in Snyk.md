@@ -11,3 +11,5 @@ categories:
   - Security
   - Snyk
 ---
+
+# Analysing Vulnerabilities found in Snyk
