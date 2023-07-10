@@ -43,12 +43,12 @@ The following prerequisites will be required to complete this tutorial:
 
 3. Run the following command to get the name of the running zap container and make a copy of the container name. 
 
-  ```
-  docker ps
-  ```
+    ```
+    docker ps
+    ```
 
 4. Run the following command to copy the container files to a folder on your device. Replace `{ZapContainerName}` with your zap container and `{FolderOnYourDevice}` to a folder on your device.
 
-```
-docker cp {ZapContainerName}:/zap/wrk/ "C:\{FolderOnYourDevice}\zap"
-```
+    ```
+    docker cp {ZapContainerName}:/zap/wrk/ "C:\{FolderOnYourDevice}\zap"
+    ```
