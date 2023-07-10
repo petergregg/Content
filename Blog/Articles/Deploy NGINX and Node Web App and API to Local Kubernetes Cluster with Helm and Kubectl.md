@@ -40,20 +40,20 @@ The following prerequisites will be required to complete this tutorial:
     cd /DevSample
     ```
 
-2. Run the following commands to create a new folder named **FabmedicalTemp** and navigate to the folder.
+3. Run the following commands to create a new folder named **FabmedicalTemp** and navigate to the folder.
 
     ```
     mkdir FabmedicalTemp
     cd FabmedicalTemp
     ```
 
-3. Run the following command to clone the **MCW-Cloud-native-applications** project repository.
+4. Run the following command to clone the **MCW-Cloud-native-applications** project repository.
 
     ```
     git clone https://github.com/microsoft/MCW-Cloud-native-applications.git
     ```
     
-4. Run the following command to remove the **.git** directory because it is not required.
+5. Run the following command to remove the **.git** directory because it is not required.
 
     ```
     rm MCW-Cloud-native-applications/.git -r -force
@@ -232,21 +232,21 @@ The following prerequisites will be required to complete this tutorial:
     mkdir helm
     ```
 
-2. Run the following commands to navigate to the **helm** folder and create the scaffolded helm charts for the content initialization project.
+3. Run the following commands to navigate to the **helm** folder and create the scaffolded helm charts for the content initialization project.
 
     ```
     cd helm
     helm create content-init
     ```
 
-3. Run the following commands to navigate to the **content-init** folder and open the scaffolded `values` yaml file.
+4. Run the following commands to navigate to the **content-init** folder and open the scaffolded `values` yaml file.
 
     ```
     cd content-init
     code values.yaml
     ```
 
-4. Search for the `image` definition and update the values to match the following.
+5. Search for the `image` definition and update the values to match the following.
 
     ```
     image:
@@ -254,37 +254,37 @@ The following prerequisites will be required to complete this tutorial:
       pullPolicy: Never
     ```
 
-5. Search for `nameOverride` and `fullnameOverride`, and update the values to match the following.
+6. Search for `nameOverride` and `fullnameOverride`, and update the values to match the following.
 
     ```
     nameOverride: "content-init"
     fullnameOverride: "content-init"
     ```
 
-6. Save the changes and close the file.
+7. Save the changes and close the file.
 
-7. Run the following command to open the scaffolded `chart` yaml file.
+8. Run the following command to open the scaffolded `chart` yaml file.
 
     ```
     code chart.yaml
     ```
 
-8. Search for `appVersion` and update the values to match the following.
+9. Search for `appVersion` and update the values to match the following.
 
     ```
     appVersion: latest
     ```
 
-12. Save the changes and close the file.
+10. Save the changes and close the file.
 
-13. Run the following commands to navigate to the **templates** folder and open the scaffolded `deployments` yaml file.
+11. Run the following commands to navigate to the **templates** folder and open the scaffolded `deployments` yaml file.
 
     ```
     cd templates
     code deployments.yaml
     ```
 
-14. Search for the `containers` definition and add the following `env` variable.
+12. Search for the `containers` definition and add the following `env` variable.
 
     ```
     containers:
@@ -297,15 +297,15 @@ The following prerequisites will be required to complete this tutorial:
         ...
     ```
 
-15. Save the changes and close the file.
+13. Save the changes and close the file.
 
-16. Run the following command to navigate to the **helm** folder.
+14. Run the following command to navigate to the **helm** folder.
 
     ```
     cd ../../
     ```
 
-17. Run the following helm install command.
+15. Run the following helm install command.
 
     ```
     helm install content-init ./content-init
@@ -373,30 +373,30 @@ The following prerequisites will be required to complete this tutorial:
         memory: 128Mi
     ```
 
-9. Save changes and close the file.
+8. Save changes and close the file.
 
-10. Run the following command to open the scaffolded `chart` yaml file.
+9. Run the following command to open the scaffolded `chart` yaml file.
 
     ```
     code chart.yaml
     ```
 
-11. Search for `appVersion` and update the values to match the following.
+10. Search for `appVersion` and update the values to match the following.
 
     ```
     appVersion: latest
     ```
 
-12. Save changes and close the file.
+11. Save changes and close the file.
 
-13. Run the following commands to navigate to the **templates** folder and open the scaffolded `deployments` yaml file.
+12. Run the following commands to navigate to the **templates** folder and open the scaffolded `deployments` yaml file.
 
     ```
     cd templates
     code deployments.yaml
     ```
 
-14. Search for the `metadata` definition and replace the the line under `annotations` with the following.
+13. Search for the `metadata` definition and replace the the line under `annotations` with the following.
 
     ```
     apiVersion: apps/v1
@@ -412,7 +412,7 @@ The following prerequisites will be required to complete this tutorial:
             rollme: {{ randAlphaNum 5 | quote }}
     ```
 
-15. Search for the `containers` definition and update the `containerPort`, and `livenessProbe port` values to match the following. Also add the following `env` variable.
+14. Search for the `containers` definition and update the `containerPort`, and `livenessProbe port` values to match the following. Also add the following `env` variable.
 
     ```
     containers:
@@ -430,15 +430,15 @@ The following prerequisites will be required to complete this tutorial:
             port: 3001
     ```
 
-16. Save the changes and close the file.
+15. Save the changes and close the file.
 
-17. Run the following command to open the scaffolded `services` yaml file in the **templates** folder.
+16. Run the following command to open the scaffolded `services` yaml file in the **templates** folder.
 
     ```
     code services.yaml
     ```
 
-18. Search for the `ports` definition and update the values to match the following.
+17. Search for the `ports` definition and update the values to match the following.
 
     ```
     ports:
@@ -447,15 +447,15 @@ The following prerequisites will be required to complete this tutorial:
         protocol: TCP
         name: http
     ```
-19. Save the changes and close the file.
+18. Save the changes and close the file.
 
-20. Run the following command to navigate to the **helm** folder
+19. Run the following command to navigate to the **helm** folder
 
     ```
     cd ../../
     ```
 
-21. Run the following helm install command.
+20. Run the following helm install command.
 
     ```
     helm install api ./api
@@ -470,7 +470,7 @@ The following prerequisites will be required to complete this tutorial:
     docker image build -t content-web .
     ```
 
-2. Run the following commands to navigate to **helm** folder in the **k8s** folder and create the scaffolded helm charts for the web project.
+2. Run the following commands to navigate to **helm** and create the scaffolded helm charts for the web project.
 
     ```
     cd ../deploy/k8s/helm
@@ -484,7 +484,7 @@ The following prerequisites will be required to complete this tutorial:
     code values.yaml
     ```
 
-5. Search for the `image` definition and update the values to match the following.
+4. Search for the `image` definition and update the values to match the following.
 
     ```
     image:
@@ -492,14 +492,14 @@ The following prerequisites will be required to complete this tutorial:
       pullPolicy: Never
     ```
 
-6. Search for `nameOverride` and `fullnameOverride`, and update the values to match the following.
+5. Search for `nameOverride` and `fullnameOverride`, and update the values to match the following.
 
     ```
     nameOverride: "web"
     fullnameOverride: "web"
     ```
 
-7. Search for the `service` definition and update the values to match the following.
+6. Search for the `service` definition and update the values to match the following.
 
     ```
     service:
@@ -510,7 +510,7 @@ The following prerequisites will be required to complete this tutorial:
       name: web
     ```
 
-8. Search for the `resources` definition. Remove the curly braces and add `requests` to match the following.
+7. Search for the `resources` definition. Remove the curly braces and add `requests` to match the following.
 
     ```
     resources:
@@ -526,30 +526,30 @@ The following prerequisites will be required to complete this tutorial:
         memory: 128Mi
     ```
 
-9. Save the changes and close the file.
+8. Save the changes and close the file.
 
-10. Run the following command to open the scaffolded `chart` yaml file in the helm web folder.
+9. Run the following command to open the scaffolded `chart` yaml file in the helm web folder.
 
     ```
     code chart.yaml
     ```
 
-11. Search for `appVersion` and update the values to match the following.
+10. Search for `appVersion` and update the values to match the following.
 
     ```
     appVersion: latest
     ```
 
-12. Save the changes and close the file.
+11. Save the changes and close the file.
 
-13. Run the following commands to navigate to the **templates** folder and open the scaffolded `deployments` yaml file.
+12. Run the following commands to navigate to the **templates** folder and open the scaffolded `deployments` yaml file.
 
     ```
     cd templates
     code deployments.yaml
     ```
 
-14. Search for the `metadata` definition and replace the the line under `annotations` with the following.
+13. Search for the `metadata` definition and replace the the line under `annotations` with the following.
 
     ```
     apiVersion: apps/v1
@@ -565,7 +565,7 @@ The following prerequisites will be required to complete this tutorial:
             rollme: {{ randAlphaNum 5 | quote }}
     ```
 
-15. Search for the `containers` definition and update the `containerPort`, and `livenessProbe port` to match the following. Also add the following `env` variable.
+14. Search for the `containers` definition and update the `containerPort`, and `livenessProbe port` values to match the following. Also add the following `env` variable.
 
     ```
     containers:
@@ -583,15 +583,15 @@ The following prerequisites will be required to complete this tutorial:
             port: 3000
     ```
 
-16. Save the changes and close the file.
+15. Save the changes and close the file.
 
-17. Run the following command to open the scaffolded `services` yaml file in the **templates** folder.
+16. Run the following command to open the scaffolded `services` yaml file in the **templates** folder.
 
     ```
     code services.yaml
     ```
 
-18. Search for the `ports` definition and update the values to match the following.
+17. Search for the `ports` definition and update the values to match the following.
 
     ```
     ports:
@@ -601,25 +601,25 @@ The following prerequisites will be required to complete this tutorial:
         name: http
     ```
 
-19. Save the changes and close the file.
+18. Save the changes and close the file.
 
-20. Run the following command to navigate to the **helm** folder.
+19. Run the following command to navigate to the **helm** folder.
 
     ```
     cd ../../
     ```
 
-21. Run the following helm install command.
+20. Run the following helm install command.
 
     ```
     helm install web ./web
     ```
 
-22. Open the Kubernetes Management Dashboard UI and select **Services** under **Discovery and Load Balancing** in the navigation menu. 
+21. Open the Kubernetes Management Dashboard UI and select **Services** under **Discovery and Load Balancing** in the navigation menu. 
 
     ![Kubernetes Dashboard Discovery And Load Balancing Services Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/KubernetesDashboard/KubernetesDashboardDiscoveryAndLoadBalancingServicesNavigation.png)
 
-23. In the **Services** view, select the **web service**. Once the web service has finished deploying, select the external endpoint to access the website.
+22. In the **Services** view, select the **web service**. Once the web service has finished deploying, select the external endpoint to access the website.
 
     ![Kubernetes Dashboard Discovery And Load Balancing Services](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/KubernetesDashboard/KubernetesDashboardDiscoveryAndLoadBalancingServices.png)
 
@@ -637,20 +637,20 @@ The following prerequisites will be required to complete this tutorial:
     helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace
     ```
 
-2. Run the following commands to create a folder named **nginx-ingress** and navigate to the new **nginx-ingress** folder.
+3. Run the following commands to create a folder named **nginx-ingress** and navigate to the new **nginx-ingress** folder.
 
     ```
     mkdir nginx-ingress
     cd nginx-ingress
     ```
 
-3. Run the following command to add a new yaml file named `content-nginx`. 
+4. Run the following command to add a new yaml file named `content-nginx`. 
 
     ```
     code content-nginx.yaml
     ```
 
-4. Add the following contents to the `content-nginx` yaml file.
+5. Add the following contents to the `content-nginx` yaml file.
 
     ```
     apiVersion: networking.k8s.io/v1
@@ -682,13 +682,13 @@ The following prerequisites will be required to complete this tutorial:
                   number: 3001
     ```
 
-4. Run the following command to apply the nginx configuration specified in the `content-nginx` yaml file to the `default` namespace.
+6. Run the following command to apply the nginx configuration specified in the `content-nginx` yaml file to the `default` namespace.
 
     ```
     kubectl apply -f content-nginx.yaml --namespace default 
     ```
 
-5. Navigate to http://localhost, in the navigation, select **speakers** to view the speakers data and select **sessions** to view the sessions data.
+7. Navigate to http://localhost, in the navigation, select **speakers** to view the speakers data and select **sessions** to view the sessions data.
 
     ![Fabmedical Website Home Page](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Fabmedical/FabmedicalWebsiteHomePage.png)
 
