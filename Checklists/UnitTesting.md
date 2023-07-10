@@ -1,0 +1,4 @@
+- [] Special characters in text and numeric fields
+- [] Minimum and maximum value ranges
+- [] Unusual and extreme test cases
+- [] Missing fields
