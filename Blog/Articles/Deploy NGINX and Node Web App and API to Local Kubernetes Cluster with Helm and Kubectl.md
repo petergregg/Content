@@ -40,7 +40,7 @@ The following prerequisites will be required to complete this tutorial:
     cd /DevSample
     ```
 
-2. Run the following commands to create a new folder named **FabmedicalTemp** and navigate into the folder.
+2. Run the following commands to create a new folder named **FabmedicalTemp** and navigate to the folder.
 
     ```
     mkdir FabmedicalTemp
@@ -81,7 +81,7 @@ The following prerequisites will be required to complete this tutorial:
     cd /DevSample
     ```
 
-9. Run the following commands to create a new folder named **FabmedicalK8s** and navigate into the folder.
+9. Run the following commands to create a new folder named **FabmedicalK8s** and navigate to the folder.
 
     ```
     mkdir FabmedicalK8s
@@ -139,7 +139,7 @@ The following prerequisites will be required to complete this tutorial:
     cd K8s
     ```
 
-5. Run the following command to create a new yaml file named `dashboard-adminuser` into the **K8s** folder. 
+5. Run the following command to add a new yaml file named `dashboard-adminuser` into the **K8s** folder. 
 
     ```
     code dashboard-adminuser.yaml
@@ -155,7 +155,7 @@ The following prerequisites will be required to complete this tutorial:
       namespace: kubernetes-dashboard
     ```
 
-7. Run the following command to create a new yaml file named `dashboard-adminuser-authorization` into the **K8s** folder. 
+7. Run the following command to add a new yaml file named `dashboard-adminuser-authorization` into the **K8s** folder. 
 
     ```
     code dashboard-adminuser-authorization.yaml
@@ -225,14 +225,14 @@ The following prerequisites will be required to complete this tutorial:
     docker image build -t content-init .
     ```
 
-2. Run the following commands to navigate into the **k8s** folder and create a folder named **helm**.
+2. Run the following commands to navigate to the **k8s** folder and create a folder named **helm**.
 
     ```
     cd ../deploy/k8s
     mkdir helm
     ```
 
-2. Run the following commands to navigate into the **helm** folder and create scaffolded helm charts for the content initialization project.
+2. Run the following commands to navigate to the **helm** folder and create the scaffolded helm charts for the content initialization project.
 
     ```
     cd helm
@@ -277,7 +277,7 @@ The following prerequisites will be required to complete this tutorial:
 
 12. Save the changes and close the file.
 
-13. Run the following commands to navigate to the **templates** folder in the **content-init** folder and open the scaffolded `deployments` yaml file.
+13. Run the following commands to navigate to the **templates** folder and open the scaffolded `deployments` yaml file.
 
     ```
     cd templates
@@ -320,7 +320,7 @@ The following prerequisites will be required to complete this tutorial:
     docker image build -t content-api .
     ```
 
-2. Run the following commands to navigate to **helm** folder in the **k8s** folder and create the scaffolded helm charts for the api project.
+2. Run the following commands to navigate to the **helm** folder and create the scaffolded helm charts for the api project.
 
     ```
     cd ../deploy/k8s/helm
@@ -412,7 +412,7 @@ The following prerequisites will be required to complete this tutorial:
             rollme: {{ randAlphaNum 5 | quote }}
     ```
 
-15. Search for the `containers` definition and update the `containerPort`, and `livenessProbe port` to match the following. Also add the following `env` variable.
+15. Search for the `containers` definition and update the `containerPort`, and `livenessProbe port` values to match the following. Also add the following `env` variable.
 
     ```
     containers:
@@ -644,7 +644,7 @@ The following prerequisites will be required to complete this tutorial:
     cd nginx-ingress
     ```
 
-3. Run the following command to create a new yaml file named `content-nginx`. 
+3. Run the following command to add a new yaml file named `content-nginx`. 
 
     ```
     code content-nginx.yaml
