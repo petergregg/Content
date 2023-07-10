@@ -5,7 +5,7 @@ description: Deploy NGINX Ingress Controller and Node.js Web App and API to Loca
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
-status: draft
+status: published
 published: 2023/07/10 19:20:00
 categories: 
   - Docker Desktop
