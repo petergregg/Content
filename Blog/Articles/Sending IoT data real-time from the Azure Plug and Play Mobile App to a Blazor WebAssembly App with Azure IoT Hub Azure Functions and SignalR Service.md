@@ -5,7 +5,7 @@ image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
 status: draft
-published: 2021/07/12 19:00:00
+published: 2023/07/12 19:00:00
 categories: 
   - Azure IoT Hub
   - Azure IoT Plug and Play Mobile App
@@ -17,7 +17,7 @@ categories:
 
 # Sending IoT data real-time from the Azure Plug and Play Mobile App to a Blazor WebAssembly App with Azure IoT Hub, Azure Functions and SignalR Service
 
-In this article, you will learn how to build a solution to send IoT data real-time from a Plug and Play mobile app to a Blazor app with Azure IoT Hub, Azure Functions and a SignalR Service.
+In this article, you will learn how to build a solution to send IoT data real-time from the Azure Plug and Play Mobile App to a Blazor WebAssembly App with Azure IoT Hub, Azure Functions and a SignalR Service.
 
 ## Prerequisites
 
@@ -52,9 +52,9 @@ The following prerequisites will be required to complete this tutorial:
     | Parameter | Value |
     | --- | --- | 
     | Functions worker | .NET 6.0 (Long-term support) | 
-    | Function | IoT Hub trigger |
-    | Enable Docker | Unchecked  |
+    | Function | IoT Hub trigger |   
     | Use Azurite for runtime storage account (AzureWebJobsStorage) | Checked  |
+    | Enable Docker | Unchecked  |
     | Connection string setting name | IoTHubEndpoint  |
     | Path | messages/events |
 
@@ -65,15 +65,37 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Create Azure IoT Hub
 
-1. Navigate to portal azure
-2. Create an Azure Hub 
+1. Navigate to the [Azure Portal](https://portal.azure.com/), search for **IoT Hub**.
 
-## Update IoT Hub connection string in Visual Studio 
+    ![Azure Search for IoT Hub](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureSearchIoTHub.png)
 
-1. In Visual Studio, open the `local.settings` json file and replace `{YourConnectionString}` with the connections string you copied earlier.
+2. Select **+ Create**.
+
+    ![Azure IoT Hub Navigation Bar Create Link](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubNavigationBar.png)
+
+3. Enter the following values in the **Basics** tab, then select the **Review + create** tab, and then select **Create**.
+
+    | Parameter | Value |
+    | --- | --- | 
+    | Subscription | Your Azure Subscription | 
+    | Resource group | Create new with a name of your choice  | 
+    | IoT hub name | Chosen name for the IoT hub name |
+    | Region | Location nearest to you that has the IoT Hub |
+    | Tier | Free |
+    | Daily message limit | 8000 (US$0/month) |
+
+    ![Azure IoT Hub Basics Setup](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubBasicsSetup.png)
+
+4. Navigate to your new IoT Hub and search for **built**. Select **Built-in endpoints**, scroll down to the **Event Hub compatible endpoint** section and copy the **Event Hub-compatible endpoint** value.
+
+    ![Azure IoT Hub Built-in endpoints](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubBuiltInEndpoints.png)
+
+## Update IoT Hub Endpoint in Visual Studio 
+
+1. In Visual Studio, open the `local.settings` json file and replace `{YourIoTHubEndpoint}` with the endpoint you copied earlier.
 
     ```
-        "IoTHubEndpoint": "{YourConnectionString}"
+        "IoTHubEndpoint": "{YourIoTHubEndpoint}"
     ```
 
 ## Update Azure Functions project nuget 
@@ -92,8 +114,31 @@ The following prerequisites will be required to complete this tutorial:
 
 # Create Azure SignalR service and setup SignalR in Azure Function
 
-1. Navigate to portal azure
-2. Create an SignalR service 
+1. Navigate to the [Azure Portal](https://portal.azure.com/), search for **signalr**.
+
+    ![Azure Search for SignalR Service](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureSignalRService/AzureSearchSignalRService.png)
+
+2. Select **+ Create**.
+
+    ![Azure SignalR Service Navigation Bar Create Link](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureSignalRService/AzureSignalRServiceNavigationBar.png)
+
+3. Enter the following values in the **Basics** tab, then select the **Review + create** tab, and then select **Create**.
+
+    | Parameter | Value |
+    | --- | --- | 
+    | Subscription | Your Azure Subscription | 
+    | Resource group | Create new with a name of your choice  | 
+    | Resource name | Chosen name for the IoT hub name |
+    | Region | Location nearest to you that has the SignalR service |
+    | Pricing tier | Free |
+    | Unit count | 1 |
+    | Service mode | Serverless |
+
+    ![Azure SignalR Service Basics Setup](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureSignalRService/AzureSignalRServiceBasicsSetup.png)
+
+4. Navigate to the new SignalR service and search for **connect**. Select **Connection strings**, scroll down to the **For access key** section and copy the **Connection string** value.
+
+    ![Azure SignalR Service Connection Strings](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureSignalRService/AzureSignalRServiceConnectionStrings.png)
 
 ## Add SignalR connection string in Visual Studio 
 
@@ -192,6 +237,82 @@ The following prerequisites will be required to complete this tutorial:
 
 5. In the **Preview Changes** window select **OK**.
 
+## Add functionality and Page to Blazor WebAssembly App to connect to Azure SignalR Service
+
+1. In Visual Studio, in the **IOTDevices** project, open `program` c# file and add the following code above `await builder.Build().RunAsync();`.
+
+    ```
+    builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+    ```
+
+2. Right click on the **Pages** folder, and select **Add** and then **Razor Component...**.
+
+3. Name the Razor Component **FetchData** in the **Name** textbox, and select **Add**.
+
+4. Open the `launchSettings` json file in the **Properties** folder of the **IOTHubIngestionSignalR** Azure function project, and copy the `--port` value in `commandLineArgs`.
+
+5. in the **IOTDevices** project, add the following code. Replace the port in the following url with the port you copied earlier `http://localhost:{YourPort}/api`.
+
+    ```
+    @page "/fetchdata"
+    @using Microsoft.AspNetCore.SignalR.Client
+    @implements IAsyncDisposable
+
+    <PageTitle>IOT Devices</PageTitle>
+
+    <h1>IOT Devices</h1>
+
+    <ul id="messagesList">
+        @foreach (var message in messages)
+        {
+            <li>@message</li>
+        }
+    </ul>
+
+    @code {
+        private HubConnection? hubConnection;
+        private List<string> messages = new List<string>();
+        
+
+        protected override async Task OnInitializedAsync()
+        {
+            hubConnection = new HubConnectionBuilder()
+        .WithUrl("http://localhost:{YourPort}/api")
+        .Build();
+
+            hubConnection.On<string>("iotDeviceMessage", (message) =>
+            {
+                var encodedMsg = $"{message}";
+                messages.Add(encodedMsg);
+                StateHasChanged();
+            });
+
+            await hubConnection.StartAsync();
+        }
+
+        public bool IsConnected =>
+                hubConnection?.State == HubConnectionState.Connected;
+
+        public async ValueTask DisposeAsync()
+        {
+            if (hubConnection is not null)
+            {
+                await hubConnection.DisposeAsync();
+            }
+        }
+    }
+    ```
+
+6. Open the `NavMenu` razor component in the **Shared** folder and add the following code before the closing `</nav>` tag.
+
+    ```
+    <div class="nav-item px-3">
+        <NavLink class="nav-link" href="fetchdata">
+            <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+        </NavLink>
+    </div>
+    ```
+
 ## Enable CORS in Azure Function
 1. In Visual Studio, open the `launchSettings` json file in the **Properties** folder of the **IOTDevices** project. Copy the `https` url in `applicationUrl` under `IOTDevices`.
 
@@ -219,6 +340,39 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
+## Install the Azure Plug and Play mobile app
+
+1. [Install the Azure Plug and Play mobile app](https://learn.microsoft.com/en-us/azure/iot/iot-phone-app-how-to#install-the-app) onto your device.
+
+## Setup device in Azure IoT Hub
+
+1. Navigate to the IoT Hub in [Azure Portal](https://portal.azure.com/) and search for **devices**. Select **+ Add Device**.
+
+    ![Azure IoT Hub Devices Add Device Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubDevicesAddDeviceNavigation.png)
+
+2. Add a name into the **Device ID** box, and select **Save**.
+
+3. Enter the following values in the **Create a device**. 
+
+    | Parameter | Value |
+    | --- | --- | 
+    | Device ID | A device ID of your choice | 
+    | IoT Edge Device | Unchecked | 
+    | Authentication type | Symmetric key |
+    | Auto-generate keys | Checked |
+    | Connect this device to an IoT hub | Enable |
+    | Parent device | No parent device |
+
+    ![Azure IoT Hub Devices Create Device](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubDevicesCreateDevice.png)
+
+
+4. Select the new the new device when created in **Devices**, and copy the **Primary connection string**.
+
+    ![Azure IoT Hub Devices Device Primary Connection String](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubDevicesDevicePrimaryConnectionString.png)
+
+5. Open the Azure Plug and Play mobile on your device. Select **settings** and then **Registration**.
+
+6. 
 
 
 
