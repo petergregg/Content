@@ -239,7 +239,7 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Add functionality to the Blazor WebAssembly App to connect to Azure SignalR Service
 
-1. In Visual Studio, in the **IOTDevices** project, open `program` c# file and add the following code above `await builder.Build().RunAsync();`.
+1. In Visual Studio, open the`program` c# file in the **IOTDevices** project, and add the following code above `await builder.Build().RunAsync();`.
 
     ```
     builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
@@ -251,7 +251,7 @@ The following prerequisites will be required to complete this tutorial:
 
 4. Name the Razor Component **FetchData** in the **Name** textbox, and select **Add**.
 
-5. Add the following code into FetchData. Replace the port in the following url with the port you copied earlier `http://localhost:{YourPort}/api`.
+5. Add the following code into `FetchData`. Replace the port in the following url with the port you copied earlier `http://localhost:{YourPort}/api`.
 
     ```
     @page "/fetchdata"
@@ -316,7 +316,7 @@ The following prerequisites will be required to complete this tutorial:
 ## Enable CORS in Azure Function
 1. In Visual Studio, open the `launchSettings` json file in the **Properties** folder of the **IOTDevices** project. Copy the `https` url in `applicationUrl` under `IOTDevices`.
 
-2. Open the `launchSettings` json file in the **Properties** folder of the **IOTHubIngestionSignalR** Azure function project. Add the following `--cors https://localhost:7145` to the end of `commandLineArgs`. Replace the `localhost:7145` with the blazor `applicationUrl` you copied earlier.
+2. Open the `launchSettings` json file in the **Properties** folder of the **IOTHubIngestionSignalR** Azure function project. Add the following `--cors https://localhost:7145` to the end of `commandLineArgs`. Replace the `localhost:7145` with the `applicationUrl` you copied earlier.
 
     ```
     {
@@ -346,11 +346,11 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Setup device in Azure IoT Hub
 
-1. Navigate to the IoT Hub in [Azure Portal](https://portal.azure.com/) and search for **devices**. Select **+ Add Device**.
+1. Navigate to the IoT Hub in [Azure Portal](https://portal.azure.com/). Search for **devices**, and then select **+ Add Device**.
 
     ![Azure IoT Hub Devices Add Device Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubDevicesAddDeviceNavigation.png)
 
-2. Add a name into the **Device ID** box, and select **Save**.
+2. Add a name into the **Device ID** box, and then select **Save**.
 
 3. Enter the following values in the **Create a device**. 
 
@@ -366,7 +366,7 @@ The following prerequisites will be required to complete this tutorial:
     ![Azure IoT Hub Devices Create Device](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubDevicesCreateDevice.png)
 
 
-4. Select the new the new device when created in **Devices**, and copy the **Primary connection string**.
+4. Select the new device when its created in **Devices**, and then copy the **Primary connection string**.
 
     ![Azure IoT Hub Devices Device Primary Connection String](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubDevicesDevicePrimaryConnectionString.png)
 
@@ -378,7 +378,7 @@ The following prerequisites will be required to complete this tutorial:
    ![Azure IoT PnP Scan QR Code](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTPnP/AzureIoTPnPAllowPictureTaking.jpeg)
 9. Select **Connect Manually**.
     ![Azure IoT PnP Scan QR Code](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTPnP/AzureIoTPnPConnectManuallyNavigation.jpeg)
-11. Select **IoT Hub device connection string**, and then enter the connection string you copied earlier. Select **Connect**.
+11. Select **IoT Hub device connection string**. Enter the connection string you copied earlier, and then select **Connect**.
     ![Azure IoT PnP Scan QR Code](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTPnP/AzureIoTPnPManuallyConnect.jpeg)
 
 
