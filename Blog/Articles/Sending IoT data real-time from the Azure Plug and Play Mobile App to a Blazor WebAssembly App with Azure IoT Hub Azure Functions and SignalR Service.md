@@ -245,13 +245,13 @@ The following prerequisites will be required to complete this tutorial:
     builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
     ```
 
-2. Right click on the **Pages** folder, and select **Add** and then **Razor Component...**.
+2. Open the `launchSettings` json file in the **Properties** folder of the **IOTHubIngestionSignalR** Azure function project, and copy the `--port` value in `commandLineArgs`.
 
-3. Name the Razor Component **FetchData** in the **Name** textbox, and select **Add**.
+3. Right click on the **Pages** folder, and select **Add** and then **Razor Component...**.
 
-4. Open the `launchSettings` json file in the **Properties** folder of the **IOTHubIngestionSignalR** Azure function project, and copy the `--port` value in `commandLineArgs`.
+4. Name the Razor Component **FetchData** in the **Name** textbox, and select **Add**.
 
-5. in the **IOTDevices** project, add the following code. Replace the port in the following url with the port you copied earlier `http://localhost:{YourPort}/api`.
+5. Add the following code into FetchData. Replace the port in the following url with the port you copied earlier `http://localhost:{YourPort}/api`.
 
     ```
     @page "/fetchdata"
@@ -303,7 +303,7 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-6. Open the `NavMenu` razor component in the **Shared** folder and add the following code before the closing `</nav>` tag.
+5. Open the `NavMenu` razor component in the **Shared** folder and add the following code before the closing `</nav>` tag.
 
     ```
     <div class="nav-item px-3">
@@ -316,7 +316,7 @@ The following prerequisites will be required to complete this tutorial:
 ## Enable CORS in Azure Function
 1. In Visual Studio, open the `launchSettings` json file in the **Properties** folder of the **IOTDevices** project. Copy the `https` url in `applicationUrl` under `IOTDevices`.
 
-2. In Visual Studio, open the `launchSettings` json file in the **Properties** folder of the **IOTHubIngestionSignalR** Azure function project. Add the following `--cors https://localhost:7145` to the end of `commandLineArgs`. Replace the `localhost:7145` with the blazor `applicationUrl` you copied earlier.
+2. Open the `launchSettings` json file in the **Properties** folder of the **IOTHubIngestionSignalR** Azure function project. Add the following `--cors https://localhost:7145` to the end of `commandLineArgs`. Replace the `localhost:7145` with the blazor `applicationUrl` you copied earlier.
 
     ```
     {
@@ -330,7 +330,7 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-3. In Visual Studio, open the `local.settings` json file in the **IOTHubIngestionSignalR** Azure function project. Add the following block.
+3. Open the `local.settings` json file in the **IOTHubIngestionSignalR** Azure function project. Add the following block.
 
     ```
     "Host": {
