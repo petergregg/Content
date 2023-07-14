@@ -65,7 +65,7 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Create Azure IoT Hub
 
-1. Navigate to the [Azure Portal](https://portal.azure.com/), search for **IoT Hub**.
+1. Navigate to the [Azure Portal](https://portal.azure.com/), search for **iot hub**.
 
     ![Azure Search for IoT Hub](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureSearchIoTHub.png)
 
@@ -73,7 +73,7 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure IoT Hub Navigation Bar Create Link](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubNavigationBar.png)
 
-3. Enter the following values in the **Basics** tab, then select the **Review + create** tab, and then select **Create**.
+3. Enter the following values in the **Basics** tab, and then select the **Review + create** tab. Select **Create**.
 
     | Parameter | Value |
     | --- | --- | 
@@ -86,13 +86,13 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure IoT Hub Basics Setup](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubBasicsSetup.png)
 
-4. Navigate to your new IoT Hub and search for **built**. Select **Built-in endpoints**, scroll down to the **Event Hub compatible endpoint** section and copy the **Event Hub-compatible endpoint** value.
+4. Navigate to your new IoT Hub and search for **built**. Select **Built-in endpoints**. Scroll down to the **Event Hub compatible endpoint** section and copy the **Event Hub-compatible endpoint** value.
 
     ![Azure IoT Hub Built-in endpoints](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubBuiltInEndpoints.png)
 
 ## Update IoT Hub Endpoint in Azure Functions Project
 
-1. In Visual Studio, open the `local.settings` json file and replace `{YourIoTHubEndpoint}` with the endpoint you copied earlier.
+1. In Visual Studio, open the `local.settings` json file, and then replace `{YourIoTHubEndpoint}` with the endpoint you copied earlier.
 
     ```
         "IoTHubEndpoint": "{YourIoTHubEndpoint}"
@@ -122,7 +122,7 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure SignalR Service Navigation Bar Create Link](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureSignalRService/AzureSignalRServiceNavigationBar.png)
 
-3. Enter the following values in the **Basics** tab, then select the **Review + create** tab, and then select **Create**.
+3. Enter the following values in the **Basics** tab, and then select the **Review + create** tab. Select **Create**.
 
     | Parameter | Value |
     | --- | --- | 
@@ -136,18 +136,18 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure SignalR Service Basics Setup](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureSignalRService/AzureSignalRServiceBasicsSetup.png)
 
-4. Navigate to the new SignalR service and search for **connect**. Select **Connection strings**, scroll down to the **For access key** section and copy the **Connection string** value.
+4. Navigate to the new SignalR service and then search for **connect**. Select **Connection strings**. Scroll down to the **For access key** section, and then copy the **Connection string** value.
 
     ![Azure SignalR Service Connection Strings](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureSignalRService/AzureSignalRServiceConnectionStrings.png)
 
 ## Add SignalR connection string to Azure Functions project
 
-1. In Visual Studio, open the `local.settings` file and add the following. Replace `{YourConnectionString}` with the connection string copied earlier.
+1. In Visual Studio, open the `local.settings` file, and then add the following code. Replace `{YourConnectionString}` with the connection string copied earlier.
     ```
     "AzureSignalRConnectionString": "{YourConnectionString}"
     ```
 
-2. Right click on the `Function1` c# file and select **Rename**. Rename it to `IOTSignalRFunction`.
+2. Right click on the `Function1` c# file, and then select **Rename**. Rename it to `IOTSignalRFunction`.
 
 3. Replace the code in the `IOTSignalRFunction` with the following.
     ```
@@ -172,15 +172,15 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Add SignalR negotiate function
 
-1. In Visual Studio, right click on the **IOTHubIngestionSignalR** Azure Functions project, and select **Add**, and then **New Azure Function**.
+1. In Visual Studio, right click on the **IOTHubIngestionSignalR** Azure Functions project, and then select **Add**. Select **New Azure Function**.
 
     ![Visual Studio Add Azure Function To IoT Hub SignalR Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioAddAzureFunctionToIoTHubSignalRProject.png)
 
-2. Select **Azure Function** and name the function **SignalRNegotiate** in the **Name** textbox. Select **Add**.
+2. Select **Azure Function**, and then name the function **SignalRNegotiate** in the **Name** textbox. Select **Add**.
 
     ![Visual Studio Add Azure Function To Azure Functions Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioAddAzureFunctionToAzureFunctionsProject.png)
 
-3. Select **SignalR** in the Azure Functions list, and Enter the following values into the New Azure Function window.
+3. Select **SignalR** in the Azure Functions list, and then enter the following values into the New Azure Function window.
 
     | Parameter | Value |
     | --- | --- | 
@@ -192,9 +192,9 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Add New Blazor WebAssembly App Project
 
-1. In Visual Studio, right click on the **IOTHubIngestionSignalR** solution, and select **Add**, and then **New Project**.
+1. In Visual Studio, right click on the **IOTHubIngestionSignalR** solution, and select **Add**. Select **New Project**.
 
-2. Search for **blazor**, and then select **Blazor WebAssembly App**, and then select **Next**.
+2. Search for **blazor**. Select **Blazor WebAssembly App**, and then select **Next**.
 
     ![Visual Studio Add A New Blazor WebAssembly App Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioCreateANewBlazorWebAssemblyAppProject.png)
 
@@ -223,7 +223,7 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Install Nuget packages
 
-1. Right click on the **IOTHubDevices** project, and select **Manage Nuget Packages**.
+1. Right click on the **IOTDevices** project, and then select **Manage Nuget Packages**.
 
 2. Select **Browse** and then search for **Microsoft.AspNetCore.SignalR.Client**, and then **Install**.
 
@@ -231,13 +231,13 @@ The following prerequisites will be required to complete this tutorial:
 
 3. In the **Preview Changes** window select **OK**.
 
-4. Still in the NuGet Package Manager, select **Browse** and then search for **Microsoft.Extensions.Logging**, and then select **Install**.
+4. Still in the NuGet Package Manager, select **Browse** and then search for **Microsoft.Extensions.Logging**. Select **Install**.
 
     ![Visual Studio Nuget Package Manager Install Microsoft Extensions Logging](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioNugetPackageManagerInstallMicrosoftExtensionsLogging.png)
 
 5. In the **Preview Changes** window select **OK**.
 
-## Add functionality and Page to Blazor WebAssembly App to connect to Azure SignalR Service
+## Add functionality to the Blazor WebAssembly App to connect to Azure SignalR Service
 
 1. In Visual Studio, in the **IOTDevices** project, open `program` c# file and add the following code above `await builder.Build().RunAsync();`.
 
