@@ -370,9 +370,11 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure IoT Hub Devices Device Primary Connection String](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubDevicesDevicePrimaryConnectionString.png)
 
-5. Open the Azure Plug and Play mobile on your device. Select **settings** and then **Registration**.
+5. Open the Azure Plug and Play mobile on your device. Select **Scan QR code** .
 
-6. 
+7. Select the option to allow iot pnp to use the devices camera
+8. Select **Connect Manually**.
+9. Select **IoT Hub device connection string**, and then enter the connection string you copied earlier. Select **Connect**.
 
 
 
