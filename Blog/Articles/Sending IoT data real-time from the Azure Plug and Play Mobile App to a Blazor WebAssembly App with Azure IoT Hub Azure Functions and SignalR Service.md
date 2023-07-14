@@ -25,7 +25,7 @@ The following prerequisites will be required to complete this tutorial:
 - Visual Studio 2022 Community with the ASP.NET and web development, and Azure development workloads. If you don't have Visual Studio installed, [download Visual Studio for free](https://visualstudio.microsoft.com/vs/community/) before you begin.
 - Azure account. If you don't have an Azure account, [create one for free](https://azure.microsoft.com/en-gb/free/) before you begin. 
 
-## Create an Azure Functions Project in Visual Studio
+# Create an Azure Functions Project in Visual Studio
 
 1. Open **Visual Studio**.
 2. Select **Create a new project**.
@@ -190,7 +190,7 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Visual Studio Add SignalR Negotiate Azure Function To Azure Functions Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioAddSignalRNegotiateAzureFunctionToAzureFunctionsProject.png)
 
-## Add New Blazor WebAssembly App Project
+# Add New Blazor WebAssembly App Project
 
 1. In Visual Studio, right click on the **IOTHubIngestionSignalR** solution. Select **Add**, and then select **New Project**.
 
@@ -312,7 +312,7 @@ The following prerequisites will be required to complete this tutorial:
     </div>
     ```
 
-## Enable CORS in Azure Function
+# Enable CORS in Azure Function
 1. In Visual Studio, open the `launchSettings` json file in the **Properties** folder of the **IOTDevices** project. Copy the `https` url in `applicationUrl` under `IOTDevices`.
 
 2. Open the `launchSettings` json file in the **Properties** folder of the **IOTHubIngestionSignalR** Azure function project. Add the following `--cors https://localhost:7145` to the end of `commandLineArgs`. Replace the `localhost:7145` with the `applicationUrl` you copied earlier.
@@ -339,7 +339,7 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-## Install the Azure Plug and Play mobile app
+# Install the Azure Plug and Play mobile app
 
 1. [Install the Azure Plug and Play mobile app](https://learn.microsoft.com/en-us/azure/iot/iot-phone-app-how-to#install-the-app) onto your device.
 
@@ -373,12 +373,13 @@ The following prerequisites will be required to complete this tutorial:
    
     ![Azure IoT PnP Scan QR Code](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTPnP/AzureIoTPnPScanQRCode.jpeg)
 
-7. Select the option to allow iot pnp to use the devices camera.
+6. Select the option to allow iot pnp to use the devices camera.
    ![Azure IoT PnP Scan QR Code](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTPnP/AzureIoTPnPAllowPictureTaking.jpeg)
    
-9. Select **Connect Manually**.
+7. Select **Connect Manually**.
     ![Azure IoT PnP Scan QR Code](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTPnP/AzureIoTPnPConnectManuallyNavigation.jpeg)
-11. Select **IoT Hub device connection string**. Enter the connection string you copied earlier, and then select **Connect**.
+   
+8. Select **IoT Hub device connection string**. Enter the connection string you copied earlier, and then select **Connect**.
     ![Azure IoT PnP Scan QR Code](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTPnP/AzureIoTPnPManuallyConnect.jpeg)
 
 
