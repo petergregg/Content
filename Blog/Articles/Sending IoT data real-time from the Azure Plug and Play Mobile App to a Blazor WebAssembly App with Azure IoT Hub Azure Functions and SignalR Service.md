@@ -164,6 +164,8 @@ The following prerequisites will be required to complete this tutorial:
 
 2. Right click on the `Function1` c# file. Select **Rename**, and then rename it to `IOTSignalRFunction`.
 
+    ![Visual Studio Rename File](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioRenameFile.png)
+
 3. Replace the code in the `IOTSignalRFunction` with the following.
 
     ```
