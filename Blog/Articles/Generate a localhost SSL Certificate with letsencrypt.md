@@ -52,7 +52,7 @@ The following prerequisites will be required to complete this tutorial:
 
     ![GitBash Here](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Git/GitBash/GitBashHere.png)
 
-4. Run the following command to generate a certificate and key.
+4. Run the following command to generate a certificate and key in the certificates folder.
 
     ```
     openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.key -out localhost.crt -config req.cnf -sha256
