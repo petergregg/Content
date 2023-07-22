@@ -17,6 +17,11 @@ categories:
 
 In this article, you will learn how to Setup Security Code Scanning on a GitHub repository.
 
+## Prerequisites
+The following prerequisites will be required to complete this tutorial:
+- GitHub account. If you don't have an GitHub account, [create one for free](https://github.com/signup?user_email=&source=form-home-signup) before you begin.
+- GitHub repository. If you don't have an GitHub repository, [create one for free](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository) before you begin. 
+
 # Setup Security Code Scanning on a GitHub repository
 
 1. Navigate to one of your GitHub repositories. Select **Settings**, and then **Code Security and Analysis**. Scroll down to the **Code scanning** section, and select **Set up**.
