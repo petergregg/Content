@@ -1,14 +1,15 @@
 ---
-title: Penetration test a dotnet core Web API with OWASP ZAP
+title: Penetration Test a dotnet Core Web API with OWASP ZAP
 author: Peter Gregg
-description: Penetration test a dotnet core Web API with OWASP ZAP
+description: Penetration Test a dotnet Core Web API with OWASP ZAP
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
-status: draft
-published: 2023/07/10 20:00:00
+status: published
+published: 2023/07/22 16:00:00
 categories: 
   - OWASP ZAP
+  - Active Scan
   - Docker
   - MSSQL
   - Entity Framework core
@@ -18,7 +19,7 @@ categories:
 
 # Penetration test a dotnet core Web API with OWASP ZAP
 
-In this article, you will learn how to penetration test a dotnet core Web API project with OWASP ZAP. 
+In this article, you will learn how to penetration test a dotnet Core Web API project with OWASP ZAP. 
 
 ## Prerequisites
 
@@ -27,13 +28,13 @@ The following prerequisites will be required to complete this tutorial:
 - A dotnet core Web API project. If you don't have a project you can [follow the first step in these instructions to create one](https://www.pgdevopstips.co.uk/article/structured-logging-with-serilog-and-seq-and-event-viewing-with-elasticsearch-logstash-grafana-and-opserver-in-docker) or [pull down a dotnet core Web API project](https://github.com/petergregg/MonitoringDockerStack).
 
 
-## Create an Open api definition
+## Create an Open API definition
 
-1. Create a new folder name **deploy** in the root of the `MonitoringDockerStack` solution.
+1. Create a new folder name **zap** in the **deploy** folder which is in the root of the `MonitoringDockerStack` solution.
 
-2. Create a new folder name **zap** in the **deploy** folder.
+    ![Visual Studio Folder View Create New Folder](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioFolderViewCreateNewFolder.png)
 
-3. Add a new json file named `monitoredapidefinition` with the following contents.
+2. Add a new json file named `monitoredapidefinition` with the following contents.
 
     ```
     {
@@ -88,13 +89,17 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Run ZAP API Scan in Docker via Powershell
 
-1. Open Powershell, run the following command to navigate into the zap folder.
+1. In Visual Studio, right click on the `MonitoringDockerStack` solution, and select **Open in Terminal**. 
+
+    ![Visual Studio Folder View Create New Folder](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioOpenInTerminal.png)
+
+2. run the following command to navigate into the **zap** folder.
 
     ```
     cd deploy/zap
     ```
 
-2. Execute the following command.
+3. Ensure the **MonitoringDockerStack** in running in **Docker** and then execute the following command.
 
     ```
     docker run -i -t --network=host --rm -v "$(pwd):/zap/wrk/:rw" -t owasp/zap2docker-weekly
@@ -103,26 +108,34 @@ The following prerequisites will be required to complete this tutorial:
     ![OWASP Zap Run Docker Container](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/OWASPZAP/OWASPZAPRunDockerContainer.png)
 
 
-3. Once in the container, run the zap api scan with the following command.
+4. Once in the container, run the zap api scan with the following command.
 
     ```
     ./zap-api-scan.py -g api-scan.conf -t monitoredapidefinition.json -f openapi -r api-scan-report.html
     ```
 
-4. Run the following command to get the name of the running zap container and make a copy of the container name. 
+    ![OWASP Zap API Scan CMD Report](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/OWASPZAP/OWASPZapAPIScanCMDReport.png)
+
+## View OWASP ZAP API Scan Report
+1. In Visual Studio, right click on the `MonitoringDockerStack` solution, and select **Open in Terminal**.
+
+2. Run the following command to get the name of the **running zap container** and make a copy of the container name. 
 
     ```
     docker ps
     ```
+    ![OWASP Zap Running Container](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/OWASPZAP/OWASPZAPRunningContainer.png)
 
-5. Run the following command to copy the container files to a folder on your device. Replace `
+3. Run the following command to copy the **api-scan-report.html** in the container onto your device. Replace `
 {ZapContainerName}` with your zap container and `{FolderOnYourDevice}` to a folder on your device.
 
     ```
-    docker cp {ZapContainerName}:/zap/wrk/ "C:\{FolderOnYourDevice}\zap"
+    docker cp {ZapContainerName}:/zap/wrk/api-scan-report.html "C:\{FolderOnYourDevice}\zap\api-scan-report.html"
     ```
 
-6. Navigate to the copied folder on your device and open `api-scan-report.html` to view the report.
+    ![OWASP ZAP Copy Scan Report From Container To Device](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/OWASPZAP/OWASPZAPCopyScanReportFromContainerToDevice.png)
+    
+4. To view the report, navigate to the **api-scan-report.html** on your device and open it in a browser.
 
     ![OWASP Zap API Scan Report](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/OWASPZAP/OWASPZapAPIScanReport.png)
 
