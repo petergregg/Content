@@ -96,16 +96,24 @@ The following prerequisites will be required to complete this tutorial:
 1. In Visual Studio, open the `local.settings` json file. Replace `{YourIoTHubEndpoint}` with the endpoint you copied earlier in the [Azure Portal](https://portal.azure.com/).
 
     ```
-        "IoTHubEndpoint": "{YourIoTHubEndpoint}"
+    {
+        "IsEncrypted": false,
+        "Values": {
+            ...
+            "IoTHubEndpoint": "{YourIoTHubEndpoint}"
+        }
+    }
     ```
 
-## Update the Azure Functions Project Nuget Packages 
+## Update the Azure Functions Project NuGet Packages 
 
-1. Right click on the **IOTHubIngestionSignalR** project, and then select **Manage Nuget Packages**
+1. Right click on the **IOTHubIngestionSignalR** project, and then select **Manage NuGet Packages...**.
+
+    ![Visual Studio Manage NuGet packages](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioManageNuGetPackages.png)
 
 2. Select **Installed**, and then  select **Microsoft.Azure.WebJobs.Extensions.EventHubs**. Select version **4.3.0** in the **Version** drop down list and then **Update**.
 
-   ![Visual Studio Nuget Package Manager Update Microsoft Azure WebJobs Extensions EventHubs Nuget package](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioNugetPackageManagerUpdateMicrosoftAzureWebJobsExtensionsEventHubs.png)
+   ![Visual Studio NuGet Package Manager Update Microsoft Azure WebJobs Extensions EventHubs NuGet package](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioNugetPackageManagerUpdateMicrosoftAzureWebJobsExtensionsEventHubs.png)
 
 3. In the **Preview Changes** window, select **OK**.
 
@@ -145,7 +153,13 @@ The following prerequisites will be required to complete this tutorial:
 1. In Visual Studio, open the `local.settings` file, and then add the following code. Replace `{YourConnectionString}` with the connection string copied earlier.
 
     ```
-    "AzureSignalRConnectionString": "{YourConnectionString}"
+    {
+        "IsEncrypted": false,
+        "Values": {
+            ...
+            "AzureSignalRConnectionString": "{YourConnectionString}"
+        }
+    }
     ```
 
 2. Right click on the `Function1` c# file. Select **Rename**, and then rename it to `IOTSignalRFunction`.
@@ -194,7 +208,9 @@ The following prerequisites will be required to complete this tutorial:
 
 # Add New Blazor WebAssembly App Project
 
-1. In Visual Studio, right click on the **IOTHubIngestionSignalR** solution. Select **Add**, and then select **New Project**.
+1. In Visual Studio, right click on the **IOTHubIngestionSignalR** solution. Select **Add**, and then **New Project**.
+
+    ![Visual Studio Add New Project To Solution](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioAddNewProjectToSolution.png)
 
 2. Search for **blazor**. Select **Blazor WebAssembly App**, and then **Next**.
 
@@ -222,19 +238,19 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Visual Studio Configure Blazor WebAssembly App Project Additional Information](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioConfigureBlazorWebAssemblyAppProjectAdditionalInformation.png)
 
-## Install Nuget Packages
+## Install NuGet Packages
 
-1. Right click on the **IOTDevices** project, and then select **Manage Nuget Packages**.
+1. Right click on the **IOTDevices** project, and then select **Manage NuGet Packages**.
 
 2. Select **Browse** and then search for **Microsoft.AspNetCore.SignalR.Client**, and then select **Install**.
 
-    ![Visual Studio Nuget Package Manager Install Microsoft AspNetCore SignalR Client](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioNugetPackageManagerInstallMicrosoftAspNetCoreSignalRClient.png)
+    ![Visual Studio NuGet Package Manager Install Microsoft AspNetCore SignalR Client](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioNugetPackageManagerInstallMicrosoftAspNetCoreSignalRClient.png)
 
 3. In the **Preview Changes** window, select **OK**.
 
 4. Still in the NuGet Package Manager, select **Browse**. Search for **Microsoft.Extensions.Logging**, and then select **Install**.
 
-    ![Visual Studio Nuget Package Manager Install Microsoft Extensions Logging](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioNugetPackageManagerInstallMicrosoftExtensionsLogging.png)
+    ![Visual Studio NuGet Package Manager Install Microsoft Extensions Logging](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioNugetPackageManagerInstallMicrosoftExtensionsLogging.png)
 
 5. In the **Preview Changes** window, select **OK**.
 
@@ -243,10 +259,26 @@ The following prerequisites will be required to complete this tutorial:
 1. In Visual Studio, open the`program` c# file in the **IOTDevices** project, and add the following code above `await builder.Build().RunAsync();`.
 
     ```
+    ...
+
     builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+
+    await builder.Build().RunAsync();
     ```
 
 2. Open the `launchSettings` json file in the **Properties** folder of the **IOTHubIngestionSignalR** Azure function project, and copy the `--port` value in `commandLineArgs`.
+
+    ```
+    {
+        "profiles": {
+            "IOTHubIngestionSignalR": {
+                ...
+                "commandLineArgs": "--port 7178 --cors https://localhost:7145",
+                "launchBrowser": false
+            }
+        }
+    }
+    ```
 
 3. Right click on the **Pages** folder. Select **Add**, and then **Razor Component...**.
 
@@ -316,6 +348,18 @@ The following prerequisites will be required to complete this tutorial:
 
 # Enable CORS in the Azure Functions Project
 1. In Visual Studio, open the `launchSettings` json file in the **Properties** folder of the **IOTDevices** project. Copy the `https` url in `applicationUrl` under `IOTDevices`.
+
+    ```
+    {
+        "profiles": {
+            "IOTDevices": {
+                ...
+                "applicationUrl": "https://localhost:7145;http://localhost:5205"
+        },
+        ...
+        }
+    }
+    ```
 
 2. Open the `launchSettings` json file in the **Properties** folder of the **IOTHubIngestionSignalR** Azure function project. Add `--cors https://localhost:7145` to the end of `commandLineArgs`. Replace the `localhost:7145` with the `applicationUrl` you copied earlier.
 
@@ -387,7 +431,7 @@ The following prerequisites will be required to complete this tutorial:
 
 # Send Data from the Azure IoT Plug and Play Mobile Application to the Blazor WebAssembly App
 
-1. In Visual Studio, right click on the **Solution**, and then select **Configure Startup Projects...**.
+1. In Visual Studio, right click on the **IOTHubIngestionSignalR**, solution and then select **Configure Startup Projects...**.
 
     ![Visual Studio Solution Configure Startup Projects](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioSolutionConfigureStartupProjects.png)
 
