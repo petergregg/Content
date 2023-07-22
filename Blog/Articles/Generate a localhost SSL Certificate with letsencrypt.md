@@ -1,7 +1,7 @@
 ---
 title: Generate a localhost SSL Certificate with letsencrypt
 author: Peter Gregg
-description: Generate a localhost Certificate with letsencrypt
+description: Generate a localhost SSL Certificate with letsencrypt
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
