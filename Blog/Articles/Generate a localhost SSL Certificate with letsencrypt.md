@@ -12,7 +12,7 @@ categories:
   - openssl
   - localhost
   - SSL 
-  - Certificate
+  - SSL Certificate
 ---
 
 # Generate a localhost SSL Certificate with letsencrypt
