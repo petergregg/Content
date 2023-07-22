@@ -4,8 +4,8 @@ description: Sending IoT data real-time from the Azure Plug and Play Mobile App 
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
-status: draft
-published: 2023/07/12 19:00:00
+status: published
+published: 2023/07/22 13:10:00
 categories: 
   - Azure IoT Hub
   - Azure IoT Plug and Play Mobile App
