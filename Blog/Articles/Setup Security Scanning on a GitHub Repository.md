@@ -1,34 +1,33 @@
 ---
-title: GitHub Setup Security Code Scanning
+title: Setup Security Code Scanning on a GitHub Repository
 author: Peter Gregg
-description: GitHub Setup Security Code Scanning
+description: Setup Security Code Scanning on a GitHub Repository
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
-status: draft
-published: 2023/07/14 23:30:00
+status: published
+published: 2023/07/22 16:30:00
 categories: 
   - GitHub 
   - GitHub Repository
-  - Dependabot
+  - Security Code Scanning
 ---
 
-# GitHub Setup Security Code Scanning
+# Setup Security Code Scanning on a GitHub Repository
 
-In this article, you will learn how to GitHub Setup Security Code Scanning on a GitHub repository.
+In this article, you will learn how to Setup Security Code Scanning on a GitHub repository.
 
 # Setup Security Code Scanning on a GitHub repository
 
-1. Navigate to one of your GitHub repositories. Select **Settings**, and then **Code Security and Analysis**. Select **Set up** next to **Code scanning**.
+1. Navigate to one of your GitHub repositories. Select **Settings**, and then **Code Security and Analysis**. Scroll down to the **Code scanning** section, and select **Set up**.
 
     ![GitHub Settings Code Security And Analysis Code Scanning Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/GitHub/GitHubSettingsCodeSecurityAndAnalysisCodeScanningNavigation.png)
 
-2. Under **Code scanning alerts**, select **Set up this workflow**.
+2. Navigate to **Code scanning alerts**, and select **Set up this workflow**.
 
     ![GitHub Settings Code Security And Analysis Code Scanning Set Up This Workflow](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/GitHub/GitHubSettingsCodeSecurityAndAnalysisCodeScanningSetUpThisWorkflow.png)
 
-3. In the new **workflow**, select **Start commit**.
-
+3. When the new **workflow** loads, select **Start commit**.
 
     ![GitHub Settings Code Security And Analysis Code Scanning Set Up This Workflow](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/GitHub/GitHubSettingsCodeSecurityAndAnalysisCodeScanningStartCommit.png)
 
