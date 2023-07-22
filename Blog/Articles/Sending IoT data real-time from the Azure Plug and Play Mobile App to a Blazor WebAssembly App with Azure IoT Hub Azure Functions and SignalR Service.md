@@ -30,11 +30,11 @@ The following prerequisites will be required to complete this tutorial:
 1. Open **Visual Studio**.
 2. Select **Create a new project**.
 
-    ![Visual Studio Create New Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioCreateNewProject.png)
+    ![Visual Studio Create a New Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioCreateNewProject.png)
 
 3. Search for **azure function**. Select **Azure Functions**, and then select **Next**.
 
-    ![Visual Studio Create New Azure Functions Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioCreateANewAzureFunctionsProject.png)
+    ![Visual Studio Create a New Azure Functions Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioCreateANewAzureFunctionsProject.png)
 
 4. Enter the following values in the **Configure your new project window**, and then select **Next**.
 
@@ -45,7 +45,7 @@ The following prerequisites will be required to complete this tutorial:
     | Solution name | IOTHubIngestionSignalR  |
     | Place solution and project in the same directory | Unchecked  |
 
-    ![Visual Studio Configure New Azure Functions Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioConfigureAzureFunctionsProject.png)
+    ![Visual Studio Configure a New Azure Functions Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioConfigureAzureFunctionsProject.png)
 
 5. Enter the following values in **Additional information**, and then select **Create**.
 
@@ -58,10 +58,10 @@ The following prerequisites will be required to complete this tutorial:
     | Connection string setting name | IoTHubEndpoint  |
     | Path | messages/events |
 
-    ![Visual Studio Additional Information New dotnet Core Web API Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioConfigureAzureFunctionsProjectAdditionalInformation.png)
+    ![Visual Studio Additional Information New Azure Functions Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioConfigureAzureFunctionsProjectAdditionalInformation.png)
 
 
-# Create Azure IoT Hub and configure IoT Hub in Azure Function
+# Create Azure IoT Hub and configure in the Azure Functions Project
 
 ## Create Azure IoT Hub
 
@@ -73,7 +73,7 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure IoT Hub Navigation Bar Create Link](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubNavigationBar.png)
 
-3. Enter the following values in the **Basics** tab. Select the **Review + create** tab, and select **Create**.
+3. Enter the following values in the **Basics** tab. Select **Review + create**, and select **Create**.
 
     | Parameter | Value |
     | --- | --- | 
@@ -90,29 +90,29 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure IoT Hub Built-in endpoints](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubBuiltInEndpoints.png)
 
-## Update IoT Hub Endpoint in Azure Functions Project
+## Update IoT Hub Endpoint in the Azure Functions Project
 
-1. In Visual Studio, open the `local.settings` json file. Replace `{YourIoTHubEndpoint}` with the endpoint you copied earlier.
+1. In Visual Studio, open the `local.settings` json file. Replace `{YourIoTHubEndpoint}` with the endpoint you copied earlier in the [Azure Portal](https://portal.azure.com/).
 
     ```
         "IoTHubEndpoint": "{YourIoTHubEndpoint}"
     ```
 
-## Update Azure Functions project nuget 
+## Update the Azure Functions Project Nuget Packages 
 
-1. Right click on the **IOTHubIngestionSignalR** project, and select **Manage Nuget Packages**
+1. Right click on the **IOTHubIngestionSignalR** project, and then select **Manage Nuget Packages**
 
-2. Select **Installed**, and then  select **Microsoft.Azure.WebJobs.Extensions.EventHubs**. Select version **4.3.0** in the Version drop down list and then **Update**.
+2. Select **Installed**, and then  select **Microsoft.Azure.WebJobs.Extensions.EventHubs**. Select version **4.3.0** in the **Version** drop down list and then **Update**.
 
    ![Visual Studio Nuget Package Manager Update Microsoft Azure WebJobs Extensions EventHubs Nuget package](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioNugetPackageManagerUpdateMicrosoftAzureWebJobsExtensionsEventHubs.png)
 
 3. In the **Preview Changes** window select **OK**.
 
-4. Run Azure Function.
+4. Run the Azure Function.
 
    ![Visual Studio Run Azure Functions IoT SignalR Project After IoT Hub Setup](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioRunAzureFunctionsIoTSignalRProjectAfterIoTHubSetup.png)
 
-# Create Azure SignalR service and configure SignalR in Azure Function
+# Create Azure SignalR service and configure in the Azure Functions Project
 
 1. Navigate to the [Azure Portal](https://portal.azure.com/), and then search for **signalr**.
 
@@ -122,7 +122,7 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure SignalR Service Navigation Bar Create Link](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureSignalRService/AzureSignalRServiceNavigationBar.png)
 
-3. Enter the following values in the **Basics** tab. Select the **Review + create** tab, and then select **Create**.
+3. Enter the following values in the **Basics** tab. Select **Review + create**, and then select **Create**.
 
     | Parameter | Value |
     | --- | --- | 
@@ -138,18 +138,20 @@ The following prerequisites will be required to complete this tutorial:
 
 4. Navigate to the new SignalR service and then search for **connect**. Select **Connection strings**. Scroll down to the **For access key** section, and then copy the **Connection string** value.
 
-    ![Azure SignalR Service Connection Strings](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureSignalRService/AzureSignalRServiceConnectionStrings.png)
+    ![Azure SignalR Service Copy Connection String](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureSignalRService/AzureSignalRServiceConnectionStrings.png)
 
-## Add SignalR connection string to Azure Functions project
+## Add SignalR Connection String to Azure Functions Project
 
 1. In Visual Studio, open the `local.settings` file, and then add the following code. Replace `{YourConnectionString}` with the connection string copied earlier.
+
     ```
     "AzureSignalRConnectionString": "{YourConnectionString}"
     ```
 
 2. Right click on the `Function1` c# file. Select **Rename**, and then rename it to `IOTSignalRFunction`.
 
-3. Replace the code in the `IOTSignalRFunction` with the following code. 
+3. Replace the code in the `IOTSignalRFunction` with the following.
+
     ```
     public static async Task RunAsync(
                 [IoTHubTrigger("messages/events", Connection = "IoTHubEndpoint")]EventData message,
@@ -170,13 +172,13 @@ The following prerequisites will be required to complete this tutorial:
             }
     ```
 
-## Add SignalR negotiate function
+## Add SignalR Negotiate Function
 
 1. In Visual Studio, right click on the **IOTHubIngestionSignalR** Azure Functions project. Select **Add**, and then select **New Azure Function**.
 
-    ![Visual Studio Add Azure Function To IoT Hub SignalR Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioAddAzureFunctionToIoTHubSignalRProject.png)
+    ![Visual Studio Add Azure SignalR Negotiate Function To IoT Hub SignalR Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioAddAzureFunctionToIoTHubSignalRProject.png)
 
-2. Select **Azure Function**. Name the function **SignalRNegotiate** in the **Name** textbox, and then select **Add**.
+2. Select **Azure Function**. Name the function **SignalRNegotiate** in the **Name** box, and then select **Add**.
 
     ![Visual Studio Add Azure Function To Azure Functions Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioAddAzureFunctionToAzureFunctionsProject.png)
 
@@ -248,7 +250,7 @@ The following prerequisites will be required to complete this tutorial:
 
 3. Right click on the **Pages** folder. Select **Add**, and then **Razor Component...**.
 
-4. Name the Razor Component **FetchData** in the **Name** textbox, and select **Add**.
+4. Name the Razor Component **FetchData** in the **Name** box, and select **Add**.
 
 5. Add the following code into `FetchData`. Replace the port in the following url with the port you copied earlier `http://localhost:{YourPort}/api`.
 
@@ -302,7 +304,7 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-5. Open the `NavMenu` razor component in the **Shared** folder and add the following code before the closing `</nav>` tag.
+6. Open the `NavMenu` Razor Component in the **Shared** folder and add the following code before the closing `</nav>` tag.
 
     ```
     <div class="nav-item px-3">
@@ -312,10 +314,10 @@ The following prerequisites will be required to complete this tutorial:
     </div>
     ```
 
-# Enable CORS in Azure Function
+# Enable CORS in the Azure Functions Project
 1. In Visual Studio, open the `launchSettings` json file in the **Properties** folder of the **IOTDevices** project. Copy the `https` url in `applicationUrl` under `IOTDevices`.
 
-2. Open the `launchSettings` json file in the **Properties** folder of the **IOTHubIngestionSignalR** Azure function project. Add the following `--cors https://localhost:7145` to the end of `commandLineArgs`. Replace the `localhost:7145` with the `applicationUrl` you copied earlier.
+2. Open the `launchSettings` json file in the **Properties** folder of the **IOTHubIngestionSignalR** Azure function project. Add `--cors https://localhost:7145` to the end of `commandLineArgs`. Replace the `localhost:7145` with the `applicationUrl` you copied earlier.
 
     ```
     {
@@ -339,19 +341,17 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-# Install the Azure Plug and Play mobile app
+# Install the Azure Plug and Play Mobile App
 
 1. [Install the Azure Plug and Play mobile app](https://learn.microsoft.com/en-us/azure/iot/iot-phone-app-how-to#install-the-app) onto your device.
 
-## Setup device in Azure IoT Hub
+# Setup your Device in Azure IoT Hub
 
-1. Navigate to the IoT Hub in [Azure Portal](https://portal.azure.com/). Search for **devices**, and then select **+ Add Device**.
+1. Navigate to the IoT Hub in the [Azure Portal](https://portal.azure.com/). Search for **devices**, and then select **+ Add Device**.
 
     ![Azure IoT Hub Devices Add Device Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubDevicesAddDeviceNavigation.png)
 
-2. Add a name into the **Device ID** box, and then select **Save**.
-
-3. Enter the following values in the **Create a device**. 
+2. Enter the following values in the **Create a device** window.
 
     | Parameter | Value |
     | --- | --- | 
@@ -365,22 +365,52 @@ The following prerequisites will be required to complete this tutorial:
     ![Azure IoT Hub Devices Create Device](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubDevicesCreateDevice.png)
 
 
-4. Select the new device when its created in **Devices**, and then copy the **Primary connection string**.
+3. Select the new device when its created in the **Devices** tab, and then copy the **Primary connection string**.
 
     ![Azure IoT Hub Devices Device Primary Connection String](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubDevicesDevicePrimaryConnectionString.png)
 
-5. Open the Azure Plug and Play mobile on your device. Select **Scan QR code** .
+4. Open the Azure Plug and Play mobile on your device. Select **Scan QR code** .
    
     ![Azure IoT PnP Scan QR Code](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTPnP/AzureIoTPnPScanQRCode.jpeg)
 
-6. Select the option to allow iot pnp to use the devices camera.
+5. Select the option to allow iot pnp to use the devices camera.
+
    ![Azure IoT PnP Scan QR Code](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTPnP/AzureIoTPnPAllowPictureTaking.jpeg)
    
-7. Select **Connect Manually**.
+6. Select **Connect Manually**.
+
     ![Azure IoT PnP Scan QR Code](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTPnP/AzureIoTPnPConnectManuallyNavigation.jpeg)
    
-8. Select **IoT Hub device connection string**. Enter the connection string you copied earlier, and then select **Connect**.
+7. Select **IoT Hub device connection string**. Enter the connection string you copied earlier, and then select **Connect**.
+
     ![Azure IoT PnP Scan QR Code](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTPnP/AzureIoTPnPManuallyConnect.jpeg)
+
+# Send Data from the Azure IoT Plug and Play Mobile Application to the Blazor WebAssembly App
+
+1. In Visual Studio, right click on the solution, and then select **Configure Startup Projects...**.
+
+    ![Visual Studio Solution Configure Startup Projects](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioSolutionConfigureStartupProjects.png)
+
+2. Select **Multiple startup projects**, and then select **OK**. 
+
+    ![Visual Studio Solution Configure Startup Projects](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioSolutionConfigureMultipleStartupProjects.png)
+
+3. Select **Start**.
+
+    ![Visual Studio Start Multiple Projects](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioStartMultipleProjects.png)
+
+4. Select **Yes**.
+
+    ![Visual Studio Trust ASP.NET Core SSL Certificate](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioTrustASPNETCoreSSLCertificate.png)
+
+5. Select **Yes**.
+    ![Visual Studio Trust ASP.NET Core SSL Certificate](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioTrustASPNETCoreSSLCertificateSecurityWarning.png)
+
+6. Open the Azure Plug and Play mobile on your device.
+
+7. Navigate to the **FetchData** page.
+
+    ![IoT Hub Ingestion SignalR Blazor WebAssembly FetchData Page](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/IoTHubIngestionSignalR/BlazorWebAssemblyFetchDataPage.png)
 
 
 
