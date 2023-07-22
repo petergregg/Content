@@ -1,6 +1,6 @@
 ---
-title: Sending IoT data real-time from the Azure Plug and Play Mobile App to a Blazor WebAssembly App with Azure IoT Hub Azure Functions and SignalR Service
-description: Sending IoT data real-time from the Azure Plug and Play Mobile App to a Blazor WebAssembly App with Azure IoT Hub Azure Functions and SignalR Service
+title: Sending IoT data real-time from the Azure Plug and Play Mobile App to a Blazor WebAssembly App with Azure IoT Hub Azure Functions and a SignalR Service
+description: Sending IoT data real-time from the Azure Plug and Play Mobile App to a Blazor WebAssembly App with Azure IoT Hub Azure Functions and a SignalR Service
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
@@ -12,10 +12,11 @@ categories:
   - Azure Functions
   - Azurite
   - Azure SignalR Service
-  - Blazor WebAssembly
+  - Blazor WebAssembly App
+  - Visual Studio
 ---
 
-# Sending IoT data real-time from the Azure Plug and Play Mobile App to a Blazor WebAssembly App with Azure IoT Hub, Azure Functions and SignalR Service
+# Sending IoT data real-time from the Azure Plug and Play Mobile App to a Blazor WebAssembly App with Azure IoT Hub, Azure Functions and a SignalR Service
 
 In this article, you will learn how to build a solution to send IoT data real-time from the Azure Plug and Play Mobile App to a Blazor WebAssembly App with Azure IoT Hub, Azure Functions and a SignalR Service.
 
@@ -61,9 +62,9 @@ The following prerequisites will be required to complete this tutorial:
     ![Visual Studio Additional Information New Azure Functions Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioConfigureAzureFunctionsProjectAdditionalInformation.png)
 
 
-# Create Azure IoT Hub and configure in the Azure Functions Project
+# Create an Azure IoT Hub and Connect it to the Azure Functions Project
 
-## Create Azure IoT Hub
+## Create an Azure IoT Hub
 
 1. Navigate to the [Azure Portal](https://portal.azure.com/), and then search for **iot hub**.
 
@@ -90,7 +91,7 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure IoT Hub Built-in endpoints](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubBuiltInEndpoints.png)
 
-## Update IoT Hub Endpoint in the Azure Functions Project
+## Update the IoT Hub Endpoint in the Azure Functions Project
 
 1. In Visual Studio, open the `local.settings` json file. Replace `{YourIoTHubEndpoint}` with the endpoint you copied earlier in the [Azure Portal](https://portal.azure.com/).
 
@@ -106,13 +107,13 @@ The following prerequisites will be required to complete this tutorial:
 
    ![Visual Studio Nuget Package Manager Update Microsoft Azure WebJobs Extensions EventHubs Nuget package](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioNugetPackageManagerUpdateMicrosoftAzureWebJobsExtensionsEventHubs.png)
 
-3. In the **Preview Changes** window select **OK**.
+3. In the **Preview Changes** window, select **OK**.
 
 4. Run the Azure Function.
 
    ![Visual Studio Run Azure Functions IoT SignalR Project After IoT Hub Setup](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioRunAzureFunctionsIoTSignalRProjectAfterIoTHubSetup.png)
 
-# Create Azure SignalR service and configure in the Azure Functions Project
+# Create an Azure SignalR Service and Connect it to the Azure Functions Project
 
 1. Navigate to the [Azure Portal](https://portal.azure.com/), and then search for **signalr**.
 
@@ -131,7 +132,6 @@ The following prerequisites will be required to complete this tutorial:
     | Resource name | Chosen name for the SignalR service name |
     | Region | Location nearest to you that has the SignalR service |
     | Pricing tier | Free |
-    | Unit count | 1 |
     | Service mode | Serverless |
 
     ![Azure SignalR Service Basics Setup](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureSignalRService/AzureSignalRServiceBasicsSetup.png)
@@ -182,7 +182,7 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Visual Studio Add Azure Function To Azure Functions Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioAddAzureFunctionToAzureFunctionsProject.png)
 
-3. Select **SignalR** in the Azure Functions list, and then enter the following values into the New Azure Function window.
+3. Select **SignalR** in the Azure Functions list. Enter the following values into the New Azure Function window, and then select **Add**.
 
     | Parameter | Value |
     | --- | --- | 
@@ -196,7 +196,7 @@ The following prerequisites will be required to complete this tutorial:
 
 1. In Visual Studio, right click on the **IOTHubIngestionSignalR** solution. Select **Add**, and then select **New Project**.
 
-2. Search for **blazor**. Select **Blazor WebAssembly App**, and then select **Next**.
+2. Search for **blazor**. Select **Blazor WebAssembly App**, and then **Next**.
 
     ![Visual Studio Add A New Blazor WebAssembly App Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioCreateANewBlazorWebAssemblyAppProject.png)
 
@@ -222,7 +222,7 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Visual Studio Configure Blazor WebAssembly App Project Additional Information](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioConfigureBlazorWebAssemblyAppProjectAdditionalInformation.png)
 
-## Install Nuget packages
+## Install Nuget Packages
 
 1. Right click on the **IOTDevices** project, and then select **Manage Nuget Packages**.
 
@@ -230,15 +230,15 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Visual Studio Nuget Package Manager Install Microsoft AspNetCore SignalR Client](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioNugetPackageManagerInstallMicrosoftAspNetCoreSignalRClient.png)
 
-3. In the **Preview Changes** window select **OK**.
+3. In the **Preview Changes** window, select **OK**.
 
 4. Still in the NuGet Package Manager, select **Browse**. Search for **Microsoft.Extensions.Logging**, and then select **Install**.
 
     ![Visual Studio Nuget Package Manager Install Microsoft Extensions Logging](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioNugetPackageManagerInstallMicrosoftExtensionsLogging.png)
 
-5. In the **Preview Changes** window select **OK**.
+5. In the **Preview Changes** window, select **OK**.
 
-## Add functionality to the Blazor WebAssembly App to connect to Azure SignalR Service
+## Add Functionality to the Blazor WebAssembly App to Connect it to the Azure SignalR Service
 
 1. In Visual Studio, open the`program` c# file in the **IOTDevices** project, and add the following code above `await builder.Build().RunAsync();`.
 
@@ -252,7 +252,7 @@ The following prerequisites will be required to complete this tutorial:
 
 4. Name the Razor Component **FetchData** in the **Name** box, and select **Add**.
 
-5. Add the following code into `FetchData`. Replace the port in the following url with the port you copied earlier `http://localhost:{YourPort}/api`.
+5. Add the following code into `FetchData`. Replace the `{YourPort}` in the url in following code with the `port` you copied earlier.
 
     ```
     @page "/fetchdata"
@@ -304,7 +304,7 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-6. Open the `NavMenu` Razor Component in the **Shared** folder and add the following code before the closing `</nav>` tag.
+6. Open the `NavMenu` **Razor Component** in the **Shared** folder and add the following code before the closing `</nav>` tag.
 
     ```
     <div class="nav-item px-3">
@@ -331,7 +331,7 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-3. Open the `local.settings` json file in the **IOTHubIngestionSignalR** Azure function project, and add the following code.
+3. Open the `local.settings` json file in the **IOTHubIngestionSignalR** Azure function project, and add the following code to the end of the file.
 
     ```
     "Host": {
@@ -345,9 +345,9 @@ The following prerequisites will be required to complete this tutorial:
 
 1. [Install the Azure Plug and Play mobile app](https://learn.microsoft.com/en-us/azure/iot/iot-phone-app-how-to#install-the-app) onto your device.
 
-# Setup your Device in Azure IoT Hub
+# Setup Your Device in Azure IoT Hub
 
-1. Navigate to the IoT Hub in the [Azure Portal](https://portal.azure.com/). Search for **devices**, and then select **+ Add Device**.
+1. Navigate to the **IoT Hub** in the [Azure Portal](https://portal.azure.com/). Search for **devices**, and then select **+ Add Device**.
 
     ![Azure IoT Hub Devices Add Device Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubDevicesAddDeviceNavigation.png)
 
@@ -369,11 +369,11 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure IoT Hub Devices Device Primary Connection String](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubDevicesDevicePrimaryConnectionString.png)
 
-4. Open the Azure Plug and Play mobile on your device. Select **Scan QR code** .
+4. Open the **Azure Plug and Play mobile app** on your device. Select **Scan QR code** .
    
     ![Azure IoT PnP Scan QR Code](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTPnP/AzureIoTPnPScanQRCode.jpeg)
 
-5. Select the option to allow iot pnp to use the devices camera.
+5. Select the option to **Allow IoT PnP to take pictures and record video** with your devices camera.
 
    ![Azure IoT PnP Scan QR Code](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTPnP/AzureIoTPnPAllowPictureTaking.jpeg)
    
@@ -381,17 +381,17 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure IoT PnP Scan QR Code](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTPnP/AzureIoTPnPConnectManuallyNavigation.jpeg)
    
-7. Select **IoT Hub device connection string**. Enter the connection string you copied earlier, and then select **Connect**.
+7. Select **IoT Hub device connection string**. Enter the **connection string** you copied earlier, and then select **Connect**.
 
     ![Azure IoT PnP Scan QR Code](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTPnP/AzureIoTPnPManuallyConnect.jpeg)
 
 # Send Data from the Azure IoT Plug and Play Mobile Application to the Blazor WebAssembly App
 
-1. In Visual Studio, right click on the solution, and then select **Configure Startup Projects...**.
+1. In Visual Studio, right click on the **Solution**, and then select **Configure Startup Projects...**.
 
     ![Visual Studio Solution Configure Startup Projects](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioSolutionConfigureStartupProjects.png)
 
-2. Select **Multiple startup projects**, and then select **OK**. 
+2. Select **Multiple startup projects**, and then **OK**. 
 
     ![Visual Studio Solution Configure Startup Projects](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioSolutionConfigureMultipleStartupProjects.png)
 
@@ -406,9 +406,9 @@ The following prerequisites will be required to complete this tutorial:
 5. Select **Yes**.
     ![Visual Studio Trust ASP.NET Core SSL Certificate](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioTrustASPNETCoreSSLCertificateSecurityWarning.png)
 
-6. Open the Azure Plug and Play mobile on your device.
+6. Open the **Azure Plug and Play Mobile App** on your device.
 
-7. Navigate to the **FetchData** page.
+7. Navigate to the **FetchData** page in the **Blazor WebAssembly App**.
 
     ![IoT Hub Ingestion SignalR Blazor WebAssembly FetchData Page](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/IoTHubIngestionSignalR/BlazorWebAssemblyFetchDataPage.png)
 
