@@ -21,13 +21,14 @@ categories:
 ---
 
 # Deploy NGINX Ingress Controller and Node.js Web App and API to Local Kubernetes Cluster with Helm and Kubectl
-In this article, you will learn how to deploy [NGINX Ingress Controller](https://docs.nginx.com/nginx-ingress-controller/) and a Node.js web app and api with a mongodb to a local Kubernetes Cluster with Helm and Kubectl. This article was inspired by the [Microsoft Cloud Workshop Cloud Native Applications](https://github.com/microsoft/MCW-Cloud-native-applications).
+In this article, you will learn how to deploy [NGINX Ingress Controller](https://docs.nginx.com/nginx-ingress-controller/) and a Node.js web app and api with a mongodb to a local Kubernetes Cluster with Helm and Kubectl. At the end of this tutorial you will be able to build and deploy containerized applications to local Kubernetes. This article was inspired by the [Microsoft Cloud Workshop Cloud Native Applications](https://github.com/microsoft/MCW-Cloud-native-applications). 
 
 ## Prerequisites
 The following prerequisites will be required to complete this tutorial:
 - Visual Studio Code. If you don't have Visual Studio Code installed, [download Visual Studio Code for free](https://code.visualstudio.com/Download) before you begin.
 - Windows Subsystem for Linux (WSL). If you don't have WSL installed, [download Docker WSL for free](https://learn.microsoft.com/en-us/windows/wsl/install) before you begin.
 - Docker Desktop with Kubernetes enabled. If you don't have Docker Desktop installed, [download Docker Desktop for free](https://docs.docker.com/desktop/install/windows-install/) before you begin.
+- Helm. If you don't have Helm installed, [install helm for free](https://helm.sh/docs/intro/install/) before you begin.
 
 # Clone the MCW-Cloud-native-applications project
 1. Open **Visual Studio Code**, select **Terminal**, and then **New Terminal**. Ensure you are running a Powershell terminal.
@@ -91,7 +92,7 @@ The following prerequisites will be required to complete this tutorial:
 10. Run the following command to clone the repository code into the **FabmedicalK8s** folder. Replace `{DevSample}` with your chosen folder.
 
     ```
-    git clone /DevSample/FabmedicalTemp/MCW-Cloud-native-applications/'Hands-on lab'/lab-files/developer .
+    git clone C://DevSample/FabmedicalTemp/MCW-Cloud-native-applications/'Hands-on lab'/lab-files/developer .
     ```
 
 # Push the FabmedicalK8s to a GitHub repo (Optional)
@@ -101,7 +102,7 @@ The following prerequisites will be required to complete this tutorial:
 2. Run the following command to set the remote origin to the GitHub URL, replace `{YourGitHubUsername}` with your Github username.
 
     ```
-    git remote add origin https://github.com/{YourGitHubUsername}/Fabmedicalk8s
+    git remote add origin https://github.com/{YourGitHubUsername}/Fabmedicalk8s.git
     ```
 
 3. Run the following command to push to the main branch.
@@ -277,11 +278,11 @@ The following prerequisites will be required to complete this tutorial:
 
 10. Save the changes and close the file.
 
-11. Run the following commands to navigate to the **templates** folder and open the scaffolded `deployments` yaml file.
+11. Run the following commands to navigate to the **templates** folder and open the scaffolded `deployment` yaml file.
 
     ```
     cd templates
-    code deployments.yaml
+    code deployment.yaml
     ```
 
 12. Search for the `containers` definition and add the following `env` variable.
@@ -389,14 +390,14 @@ The following prerequisites will be required to complete this tutorial:
 
 11. Save changes and close the file.
 
-12. Run the following commands to navigate to the **templates** folder and open the scaffolded `deployments` yaml file.
+12. Run the following commands to navigate to the **templates** folder and open the scaffolded `deployment` yaml file.
 
     ```
     cd templates
-    code deployments.yaml
+    code deployment.yaml
     ```
 
-13. Search for the `metadata` definition and replace the the line under `annotations` with the following.
+13. Search for the `metadata` definition and replace the line under `annotations` with the following.
 
     ```
     apiVersion: apps/v1
@@ -432,10 +433,10 @@ The following prerequisites will be required to complete this tutorial:
 
 15. Save the changes and close the file.
 
-16. Run the following command to open the scaffolded `services` yaml file in the **templates** folder.
+16. Run the following command to open the scaffolded `service` yaml file in the **templates** folder.
 
     ```
-    code services.yaml
+    code service.yaml
     ```
 
 17. Search for the `ports` definition and update the values to match the following.
@@ -542,14 +543,14 @@ The following prerequisites will be required to complete this tutorial:
 
 11. Save the changes and close the file.
 
-12. Run the following commands to navigate to the **templates** folder and open the scaffolded `deployments` yaml file.
+12. Run the following commands to navigate to the **templates** folder and open the scaffolded `deployment` yaml file.
 
     ```
     cd templates
-    code deployments.yaml
+    code deployment.yaml
     ```
 
-13. Search for the `metadata` definition and replace the the line under `annotations` with the following.
+13. Search for the `metadata` definition and replace the line under `annotations` with the following.
 
     ```
     apiVersion: apps/v1
@@ -585,10 +586,10 @@ The following prerequisites will be required to complete this tutorial:
 
 15. Save the changes and close the file.
 
-16. Run the following command to open the scaffolded `services` yaml file in the **templates** folder.
+16. Run the following command to open the scaffolded `service` yaml file in the **templates** folder.
 
     ```
-    code services.yaml
+    code service.yaml
     ```
 
 17. Search for the `ports` definition and update the values to match the following.
@@ -687,6 +688,9 @@ The following prerequisites will be required to complete this tutorial:
     ```
     kubectl apply -f content-nginx.yaml --namespace default 
     ```
+
+> [!NOTE] 
+> If you have any other applications running on your device on port 80, stop them otherwise they will clash with the following.
 
 7. Navigate to http://localhost, in the navigation, select **speakers** to view the speakers data and select **sessions** to view the sessions data.
 
