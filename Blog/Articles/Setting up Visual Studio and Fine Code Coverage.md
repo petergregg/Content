@@ -5,8 +5,8 @@ description: Setting up Visual Studio and Fine Code Coverage
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
-status: draft
-published: 2023/10/14 16:00:00
+status: published
+published: 2023/10/14 19:12:00
 categories: 
   - Visual Studio
   - Unit Testing
@@ -77,7 +77,7 @@ Before we begin, make sure you have the following prerequisites:
 
 2. Work on improving your test suite to cover the untested code paths.
 
-3. Rerun the tests and review the Fine Code Coverage results to monitor your progress and ensure that you achieve the desired code coverage.
+3. Rerun the **tests** and review the **Fine Code Coverage** results to monitor your progress and ensure that you achieve the desired code coverage.
 
 ## Conclusion
 
