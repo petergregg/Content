@@ -28,9 +28,9 @@ Before we begin, make sure you have the following prerequisites:
 
 ## Step 1: Install Fine Code Coverage
 
-1. Launch Visual Studio and open the project or solution you want to analyze for code coverage.
+1. Launch **Visual Studio** and open the **project or solution** you want to analyze for code coverage.
 
-2. In Visual Studio, go to **Extensions** and select on **Manage Extensions**.
+2. In Visual Studio, go to **Extensions** and select **Manage Extensions**.
 
    ![Visual Studio Extensions Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioManageExtensionsNavigation.png)
 
@@ -38,17 +38,17 @@ Before we begin, make sure you have the following prerequisites:
 
    ![Visual Studio Manage Extensions Download Fine Code Coverage](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioManageExtensionsDownloadFineCodeCoverage.png)
 
-4. After the installation is complete, restart Visual Studio to apply the changes.
+4. After the installation is complete, restart **Visual Studio** to apply the changes.
 
 ## Step 2: Configure Fine Code Coverage
 
-1. In Visual Studio, open the project for which you want to enable code coverage analysis.
+1. In Visual Studio, open the **project** for which you want to enable code coverage analysis.
 
 2. Build your project by selecting **Build** in the Visual Studio navigation.
 
    ![Visual Studio Build Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioBuildProject.png)
 
-3. Navigate to View, select **other windows** and then **Fine Code Coverage**. 
+3. Navigate to **View**, select **Other Windows** and then **Fine Code Coverage**. 
 
    ![Visual Studio View Fine Code Coverage Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioViewFineCodeCoverageNavigation.png)
 
@@ -58,16 +58,16 @@ Before we begin, make sure you have the following prerequisites:
 
 5. In the Test Explorer, select the ![Run All Tests In View](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioTestExplorerRunAllTestsButton.png) button.
 
-6. Fine Code Coverage will start running your tests and collecting code coverage data. You can see the progress in the Fine Code Coverage panel.
+6. The tests will start running and Fine Code Coverage will collect code coverage data. You can see the progress in the **Fine Code Coverage Log**.
 
    ![Visual Studio Fine Code Coverage Log](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioViewFineCodeCoverageLog.png)
 
-7. After the tests are completed, Fine Code Coverage will display the code coverage results, showing which lines of code were covered by your tests.
+7. After the tests are completed, Fine Code Coverage will display the code coverage results, showing which lines of code were covered by your tests, so you can analyze the results to improve your test suite.
 
    ![Visual Studio Fine Code Coverage Line Coverage Results](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioViewFineCodeCoverageLineCoverageResults.png)
 
 
-8. You can explore the code coverage details, view the covered and uncovered lines, and analyze the results to improve your test suite.
+8. You can explore the code coverage details, by selecting a class name, and then viewing the covered (Green) and uncovered lines (Red) of code.
 
    ![Visual Studio Fine Code Coverage Line Coverage Code](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioViewFineCodeCoverageLineCoverageCode.png)
 
