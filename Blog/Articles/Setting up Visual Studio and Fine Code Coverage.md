@@ -66,7 +66,6 @@ Before we begin, make sure you have the following prerequisites:
 
    ![Visual Studio Fine Code Coverage Line Coverage Results](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioViewFineCodeCoverageLineCoverageResults.png)
 
-
 8. You can explore the code coverage details, by selecting a class name, and then viewing the covered (Green) and uncovered lines (Red) of code.
 
    ![Visual Studio Fine Code Coverage Line Coverage Code](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioViewFineCodeCoverageLineCoverageCode.png)
