@@ -359,7 +359,6 @@ The following prerequisites will be required to complete this tutorial:
 
 1. Create a **deploy** folder in the root of the solution with the following folders in it **elasticsearch**, **logstash** and **grafana**.
 
-
     ![Visual Studio ELG Folder Structure](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioELGFolderStructure.png)
 
 ### Create ElasticSearch configuration
@@ -543,12 +542,3 @@ The following prerequisites will be required to complete this tutorial:
 4. Select **Elastic** in the top right hand corner of the screen for the Elastic overview.
 
     ![Opserver SQL Overview](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Opserver/OpserverElasticOverview.png)
-
-
-
-
-
-
-
-
-
