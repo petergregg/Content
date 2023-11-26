@@ -132,7 +132,6 @@ The following prerequisites will be required to complete this tutorial:
     cd deploy
     ```
 
-
 4. Run the following commands to create a new folder named **K8s** in the **deploy** folder and navigate to it.
 
     ```
