@@ -11,6 +11,7 @@ categories:
   - Network
   - Performance
   - Fiddler
+  - Simulate
 ---
 
 # Simulate Network Speeds using Fiddler
