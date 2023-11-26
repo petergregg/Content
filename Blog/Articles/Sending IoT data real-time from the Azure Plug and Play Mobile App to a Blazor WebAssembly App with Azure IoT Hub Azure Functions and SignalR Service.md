@@ -61,7 +61,6 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Visual Studio Additional Information New Azure Functions Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioConfigureAzureFunctionsProjectAdditionalInformation.png)
 
-
 # Create an Azure IoT Hub and Connect it to the Azure Functions Project
 
 ## Create an Azure IoT Hub
@@ -410,7 +409,6 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure IoT Hub Devices Create Device](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubDevicesCreateDevice.png)
 
-
 3. Select the new device when its created in the **Devices** tab, and then copy the **Primary connection string**.
 
     ![Azure IoT Hub Devices Device Primary Connection String](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureIoTHub/AzureIoTHubDevicesDevicePrimaryConnectionString.png)
@@ -457,31 +455,3 @@ The following prerequisites will be required to complete this tutorial:
 7. Navigate to the **FetchData** page in the **Blazor WebAssembly App**.
 
     ![IoT Hub Ingestion SignalR Blazor WebAssembly FetchData Page](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/IoTHubIngestionSignalR/BlazorWebAssemblyFetchDataPage.png)
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
