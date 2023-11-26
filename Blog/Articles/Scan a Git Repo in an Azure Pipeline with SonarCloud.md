@@ -23,7 +23,7 @@ In this article, you will learn how to scan a Git repo in an Azure Pipeline with
 
 The following prerequisites will be required to complete this tutorial:
 - Azure DevOps account. If you don't have an Azure DevOps account,  [create one for free](https://azure.microsoft.com/en-us/products/devops/) before you begin.
-- Azure DevOps project, with a dotnet core project in a Git repository. If you don't have a repo [Fork the articles Git repo](https://twogsdev.visualstudio.com/_git/CoreDeployTest).
+- Azure DevOps project, with a dotnet core project in a Git repository. If you don't have a repo [fork the articles Git repo](https://twogsdev.visualstudio.com/_git/CoreDeployTest).
 - SonarCloud account. If you don't have a SonarCloud account,  [create one for free with your Azure DevOps account](https://www.sonarsource.com/products/sonarcloud/signup/) before you begin.
 
 ## Create a SonarCloud Organization and Link it to Azure DevOps
@@ -243,21 +243,3 @@ The following prerequisites will be required to complete this tutorial:
 3. Select the **Bug** to see the code.
 
     ![SonarCloud Bug Code](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/SonarCloud/SonarCloudDetailedReportBugCode.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
