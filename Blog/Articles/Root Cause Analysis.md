@@ -6,7 +6,7 @@ image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
 status: draft
-published: 2021/07/10 16:00:00
+published: 2023/11/26 16:58:00
 categories: 
   - Root Cause Analysis
 ---
