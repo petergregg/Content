@@ -35,9 +35,3 @@ The following prerequisites will be required to complete this tutorial:
 3. When the new **workflow** loads, select **Start commit**.
 
     ![GitHub Settings Code Security And Analysis Code Scanning Set Up This Workflow](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/GitHub/GitHubSettingsCodeSecurityAndAnalysisCodeScanningStartCommit.png)
-
-
-
-
-
-
