@@ -27,7 +27,6 @@ The following prerequisites will be required to complete this tutorial:
 - Visual Studio 2022 Community with the ASP.NET and web development workload installed. If you don't have Visual Studio installed, [download Visual Studio for free](https://visualstudio.microsoft.com/vs/community/) before you begin.
 - A dotnet core Web API project. If you don't have a project you can [follow the first step in these instructions to create one](https://www.pgdevopstips.co.uk/article/structured-logging-with-serilog-and-seq-and-event-viewing-with-elasticsearch-logstash-grafana-and-opserver-in-docker) or [pull down a dotnet core Web API project](https://github.com/petergregg/MonitoringDockerStack).
 
-
 ## Create an Open API definition
 
 1. Create a new folder name **zap** in the **deploy** folder which is in the root of the `MonitoringDockerStack` solution.
@@ -106,7 +105,6 @@ The following prerequisites will be required to complete this tutorial:
     ```
 
     ![OWASP Zap Run Docker Container](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/OWASPZAP/OWASPZAPRunDockerContainer.png)
-
 
 4. Once in the container, run the zap api scan with the following command.
 
