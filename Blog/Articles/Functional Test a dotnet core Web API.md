@@ -21,13 +21,11 @@ In this article, you will learn how to functional test a dotnet core Web API pro
 
 [Source code on GitHub](https://github.com/petergregg/MonitoringDockerStack)
 
-
 ## Prerequisites
 
 The following prerequisites will be required to complete this tutorial:
 - Visual Studio 2022 Community with the ASP.NET and web development workload installed. If you don't have Visual Studio installed, [download Visual Studio for free](https://visualstudio.microsoft.com/vs/community/) before you begin.
 - A dotnet core Web API project. If you don't have a project you can [follow the first step in these instructions to create one](https://www.pgdevopstips.co.uk/article/structured-logging-with-serilog-and-seq-and-event-viewing-with-elasticsearch-logstash-grafana-and-opserver-in-docker).
-
 
 ## Add a Functional Test Project to an existing Solution
 
@@ -35,7 +33,6 @@ The following prerequisites will be required to complete this tutorial:
 2. Right click on the **Solution**, and then select **Add** > **New Project...**.     
 
     ![Visual Studio Create New Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioAddNewProjectToSolution.png)
-
 
 2. Search for **xunit**, and then select **xUnit Test Project**, and then select **Next**.
 
@@ -87,7 +84,6 @@ The following prerequisites will be required to complete this tutorial:
 2. Tick the **Web API Project**, and then select **OK**.
 
     ![Visual Studio Reference Manager Reference a Web API Project in the Test Project](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioReferenceManagerAddProjectReferenceToProject.png)
-
 
 ### Add a Custom WebApplicationFactory to the Test Project
 
