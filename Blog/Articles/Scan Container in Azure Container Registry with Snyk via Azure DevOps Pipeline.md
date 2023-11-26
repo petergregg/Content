@@ -65,7 +65,6 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure Container Registries Navigation Bar Create Link](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureContainerRegistry/AzureContainerRegistriesNavigationBar.png)
 
-
 3. Enter the following values in the **Basics** tab, then select the **Review + create** tab, and then select **Create**.
 
     | Parameter | Value |
@@ -77,7 +76,6 @@ The following prerequisites will be required to complete this tutorial:
     | SKU | Basic |
 
     ![Azure](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Azure/AzureContainerRegistry/AzureContainerRegistrySetup.png)
-
 
 ## Add Snyk Service Connection to Azure DevOps Project
 
@@ -111,7 +109,6 @@ The following prerequisites will be required to complete this tutorial:
     > To get the **Snyk API Token**, select **Personal API Token**, then select **click to show** the **Key**. Copy and paste the key into Azure DevOps Snyk Service Connection Setup **Personal API Token** box.
     ![Snyk Account API Token](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Snyk/SnykAccountAPIToken.png)
 
-
 ## Add Azure Container Registry Service Connection to Azure DevOps Project
 
 1. Complete steps 1 and 2 in [Add Snyk Service Connection to Azure DevOps Project](#add-snyk-service-connection-to-azure-devops-project).
@@ -135,7 +132,6 @@ The following prerequisites will be required to complete this tutorial:
     | Grant access permission to all pipelines | True |
 
     ![Azure DevOps Service Connection Navigation Bar](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsAzureContainerRegistryServiceConnectionSetup.png)
-
 
 ## Add Azure DevOps Snyk Pipeline
 
@@ -259,7 +255,3 @@ The following prerequisites will be required to complete this tutorial:
 4. Select the **Snyk Report** tab to view the Snyk test report.
 
     ![Azure DevOps Pipelines Snyk Test Report](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesSnykReport.png)
-
-
-
-
