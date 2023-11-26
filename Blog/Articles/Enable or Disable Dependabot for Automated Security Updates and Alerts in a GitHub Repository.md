@@ -35,9 +35,3 @@ The following prerequisites will be required to complete this tutorial:
 1. Navigate to the GitHub repository with Dependabot enabled. Select **Settings**, and then **Code Security and Analysis**. In the **Dependabot security updates** and **Dependabot alerts** sections, select **Disable**.
 
   ![GitHub Settings Code Security And Analysis Disable Dependabot](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/GitHub/GitHubSettingsCodeSecurityAndAnalysisDisableDependabot.png)
-
-
-
-
-
-
