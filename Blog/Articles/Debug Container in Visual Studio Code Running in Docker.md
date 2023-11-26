@@ -97,4 +97,4 @@ The following prerequisites will be required to complete this tutorial:
 # Disconnect Debugger 
 1. Select the **Disconnect plug** icon to disconnect the debugger from the container. 
 
-    ![Visual Studio Code Debugging Docker Container  Disconnect Plug](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudioCode/VisualStudioCodeDebuggingDockerContainerNavigation.png)
+    ![Visual Studio Code Debugging Docker Container Disconnect Plug](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudioCode/VisualStudioCodeDebuggingDockerContainerNavigation.png)
