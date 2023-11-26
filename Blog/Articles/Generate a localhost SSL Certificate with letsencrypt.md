@@ -13,6 +13,7 @@ categories:
   - localhost
   - SSL 
   - SSL Certificate
+  - Security
 ---
 
 # Generate a localhost SSL Certificate with letsencrypt
