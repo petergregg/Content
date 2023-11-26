@@ -13,7 +13,6 @@ categories:
   - JMeter
 ---
 
-
 # Create a Performance Test with BlazeMeter and JMeter
 
 In this article, you will learn how to create a performance test with BlazeMeter and JMeter.
