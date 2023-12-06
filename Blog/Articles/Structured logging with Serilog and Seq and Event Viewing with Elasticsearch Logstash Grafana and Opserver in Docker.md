@@ -496,7 +496,7 @@ The following prerequisites will be required to complete this tutorial:
     ![Visual Studio Solution Run Docker Compose Up in Terminal](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudio/VisualStudioSolutionRunDockerComposeUpInTerminal.png)
 
 ## Test Web API
-1. Browse to [https://localhost:5021/](https://localhost:5021/swagger/index.html).
+1. Browse to https://localhost:5021/swagger/index.html.
 2. Expand **GET /WeatherForecast**, and then select **Try it out**.
 
     ![Swagger Try it out](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Swagger/SwaggerTryItOut.png)
@@ -511,7 +511,7 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Test Grafana
 
-1. Browse to [http://localhost:3000/](http://localhost:3000/).
+1. Browse to http://localhost:3000/.
 2. Enter the default username and password **admin / admin**, and then select **Log in**.
 
     ![Grafana Login](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Grafana/GrafanaLogin.png)
@@ -530,7 +530,7 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Test Opserver
 
-1. Browse to [http://localhost:4001/](http://localhost:4001/). 
+1. Browse to http://localhost:4001/. 
 2. Enter the default username and password **admin / admin**, and then select **Log in**.
 
     ![Opserver Login](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Opserver/OpserverLogin.png)
