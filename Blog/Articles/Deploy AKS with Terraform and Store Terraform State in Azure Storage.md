@@ -1,7 +1,7 @@
 ---
 title: Deploy AKS with Terraform and Store Terraform State in Azure Storage
 author: Peter Gregg
-description: Deploy AKS with Terraform
+description: Deploy AKS with Terraform and Store Terraform State in Azure Storage
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
@@ -49,10 +49,10 @@ The following prerequisites will be required to complete this tutorial:
 
 # Create an Azure Service Principal
 
-1. Run the following command to create a Service Principal, replacing `{Your...}` with your subscription id.
+1. Run the following command to create a Service Principal, replacing `{YourAzureSubscriptionId}` with your azure subscription id.
 
     ```
-    az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/{YourSubscriptionId}"
+    az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/{YourAzureSubscriptionId}"
     ```
 
 2. Add the following to environment variables via the following powershell commands, replacing `{Your...}` with your credentials.
@@ -163,34 +163,119 @@ The following prerequisites will be required to complete this tutorial:
 2. Add a file named variables.tf and paste the below terraform configuration.
 
     ```
-
+    variable "CLIENT_ID" {
+      description = "Azure TF Service Principal Client Id"
+    }
+    
+    variable "CLIENT_SECRET" {
+      description = "Azure TF Service Principal Password"
+    }
+    
+    variable "TENANT_ID" {
+      description = "Azure TF Tenant Id"
+    }
+    
+    variable "SUBSCRIPTION_ID" {
+      description = "Azure Subscription Id"
+    }
+    
+    variable "PRINCIPAL_ID" {
+      description = "Azure Service Principal Id"
+    }
     ```
-
 
 3. Add a file named main.tf and paste the below terraform configuration.
    
     ```
-
+    resource "random_pet" "prefix" {}
+    
+    provider "azurerm" {
+      features {}
+    }
+    
+    resource "azurerm_resource_group" "default" {
+      name     = "${random_pet.prefix.id}-rg"
+      location = "West Europe"
+    
+      tags = {
+        environment = "staging"
+      }
+    }
+    
+    resource "azurerm_kubernetes_cluster" "default" {
+      name                = "${random_pet.prefix.id}-aks"
+      location            = azurerm_resource_group.default.location
+      resource_group_name = azurerm_resource_group.default.name
+      dns_prefix          = "${random_pet.prefix.id}-k8s"
+    
+      default_node_pool {
+        name            = "default"
+        node_count      = 2
+        vm_size         = "Standard_B2s"
+        os_disk_size_gb = 30
+      }
+    
+      service_principal {
+        client_id     = var.CLIENT_ID
+        client_secret = var.CLIENT_SECRET
+      }
+    
+      role_based_access_control {
+        enabled = true
+      }
+    
+      tags = {
+        environment = "staging"
+      }
+    }
     ```
 
 4. Add a file named outputs.tf and paste the below terraform configuration.
 
     ```
-
+    output "resource_group_name" {
+      value = azurerm_resource_group.default.name
+    }
+    
+    output "kubernetes_cluster_name" {
+      value = azurerm_kubernetes_cluster.default.name
+    }
     ```
 
 5. Add a new file name providers.tf and paste the below terraform configuration.
 
     ```
-
+    terraform {
+      required_providers {
+        azurerm = {
+          source  = "hashicorp/azurerm"
+          version = "2.66.0"
+        }
+      }
+    
+      required_version = ">= 0.14"
+    }
     ```
 
 ## Configure terraform backend State
 
-1. Add the below configuration to providers.tf.
+1. Add the backend configuration to the providers.tf, replacing `{YourStorageAccount}` with the terraform state storage account you created earlier and `{YourAzureSubscription}` with your azure subscription id.
 
     ```
-
+    terraform {
+      required_providers {
+        ...
+      }
+    
+      backend "azurerm" {
+          resource_group_name  = "tfstate"
+          storage_account_name = "{YourStorageAccount}"
+          container_name       = "tfstate"
+          key                  = "terraform.tfstate"
+          subscription_id      = "{YourAzureSubscription}"
+      }
+    
+    required_version = ">= 0.14"
     ```
 
 
