@@ -31,6 +31,7 @@ The following prerequisites will be required to complete this tutorial:
 # Authenticate Terraform using Azure CLI
 
 1. Open **Visual Studio Code**, select **Terminal**, and then **New Terminal**. Ensure you are running a Powershell terminal.
+
     ![Visual Studio Code Open New Terminal](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudioCode/VisualStudioCodeOpenTerminal.png)
 
 2. Run the following command in the Terminal, to log in to Azure.
