@@ -353,8 +353,8 @@ The following prerequisites will be required to complete this tutorial:
 
     ```
     service:
-      type: LoadBalancer
-      port: 80
+      type: ClusterIP
+      port: 3001
     ```
 
 7. Search for the `resources` definition. Remove the curly braces and add `requests` to match the following.
