@@ -1,24 +1,25 @@
 ---
 title: Deploy AKS with Terraform and Store Terraform State in Azure Storage
 author: Peter Gregg
-description: Deploy AKS with Terraform and Store Terraform State in Azure Storage
+description: Deploy Azure Kubernetes Service with Terraform and Store Terraform State in Azure Storage
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
-status: draft
-published: 2024/01/14 14:00:00
+status: published
+published: 2024/01/16 18:50:00
 categories: 
   - Azure
-  - AKS
+  - Azure Kubernetes Service (AKS)
   - Terraform
   - Azure CLI
   - Azure Storage
   - Powershell
+  - Visual Studio Code 
 ---
 
-# Deploy AKS with Terraform and Store Terraform State in Azure Storage
+# Deploy Azure Kubernetes Service with Terraform and Store Terraform State in Azure Storage
 
-In this article, you will learn how to deploy AKS with Terraform and Store Terraform State in Azure Storage.
+In this article, you will learn how to deploy Azure Kubernetes Service (AKS) with Terraform and store Terraform State in Azure Storage.
 
 ## Prerequisites
 The following prerequisites will be required to complete this tutorial:
@@ -32,7 +33,7 @@ The following prerequisites will be required to complete this tutorial:
 1. Open **Visual Studio Code**, select **Terminal**, and then **New Terminal**. Ensure you are running a Powershell terminal.
     ![Visual Studio Code Open New Terminal](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/VisualStudioCode/VisualStudioCodeOpenTerminal.png)
 
-2. Run the following command in the Terminal.
+2. Run the following command in the Terminal, to log in to Azure.
 
     ```
     az login
@@ -56,7 +57,7 @@ The following prerequisites will be required to complete this tutorial:
     az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/{YourAzureSubscriptionId}"
     ```
 
-2. Add the following to environment variables via the following powershell commands in the **Terminal**, replacing `{Your...}` with your credentials.
+2. Run the following powershell commands in the **Terminal**, replacing `{Your...}` with your details, to add the details to environment variables. 
     ```
     $env:TF_VAR_CLIENT_ID = "{YourServicePrincipalClientId}"
     $env:TF_VAR_CLIENT_SECRET = "{YourServicePrincipalClientSecret}"
@@ -65,11 +66,11 @@ The following prerequisites will be required to complete this tutorial:
     $env:TF_VAR_PRINCIPAL_ID = "{YourServicePrincipalObjectId}"
     ```
 
-    !NOTE: Environment variables that are named using the pattern `TF_VAR_` can be directly accessed via terraform config.
+    !NOTE: Environment variables that are named using the pattern `TF_VAR_` can be directly accessed via Terraform config.
 
-# Create an Azure Storage Account with Terraform for remote state
+# Create an Azure Storage Account with Terraform for Remote State
 
-1. Create a new folder in **Visual Studio Code**, named `tf-state`. Add a file named `main.tf` into the `tf-state` folder and paste the following terraform configuration into it.
+1. Create a new folder in **Visual Studio Code**, named `tf-state`. Add a file named `main.tf` into the `tf-state` folder and paste the following Terraform configuration into it.
 
     ```
     terraform {
@@ -155,14 +156,13 @@ The following prerequisites will be required to complete this tutorial:
 4. Run `terraform init` in the terminal to initialize the Terraform configuration.
 5. Run `terraform fmt` in the terminal to format and validate the Terraform configuration.
 6. Run `terraform plan` in the terminal to see any planned changes.
-7. Run `terraform apply` in the terminal to apply the Terraform configuration.
-. Navigate to the [Azure portal](https://portal.azure.com/) in your web browser to validate the azure storage account.
+7. Run `terraform apply` in the terminal to apply the Terraform configuration. Navigate to the [Azure portal](https://portal.azure.com/) in your web browser to validate the azure storage account.
 
 # Create AKS Terraform configuration
 
 1. In **Visual Studio Code**, create a new folder in the root named `aks`. 
 
-2. Add a file named `variables.tf` into the `aks` folder and paste the following terraform configuration into it.
+2. Add a file named `variables.tf` into the `aks` folder and paste the following Terraform configuration into it.
 
     ```
     variable "CLIENT_ID" {
@@ -174,7 +174,7 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-3. Add a file named `main.tf` into the `aks` folder and paste the following terraform configuration into it.
+3. Add a file named `main.tf` into the `aks` folder and paste the following Terraform configuration into it.
    
     ```
     resource "random_pet" "prefix" {}
@@ -220,7 +220,7 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-4. Add a file named `outputs.tf` into the `aks` folder and paste the following terraform configuration into it.
+4. Add a file named `outputs.tf` into the `aks` folder and paste the following Terraform configuration into it.
 
     ```
     output "resource_group_name" {
@@ -232,7 +232,7 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-5. Add a file named `providers.tf` into the `aks` folder and paste the following terraform configuration into it.
+5. Add a file named `providers.tf` into the `aks` folder and paste the following Terraform configuration into it.
 
     ```
     terraform {
@@ -249,7 +249,7 @@ The following prerequisites will be required to complete this tutorial:
 
 ## Configure Terraform Backend State
 
-1. Add the following backend Terraform configuration into the `providers.tf`, replacing `{YourTFStateAzureStorageAccount}` with the terraform state storage account you created earlier and `{YourAzureSubscription}` with your azure subscription id.
+1. Add the following backend Terraform configuration into the `providers.tf`, replacing `{YourTFStateAzureStorageAccount}` with the Terraform state storage account you created earlier and `{YourAzureSubscription}` with your azure subscription id.
 
     ```
     terraform {
