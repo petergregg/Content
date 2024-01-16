@@ -13,6 +13,7 @@ categories:
   - Terraform
   - Azure CLI
   - Azure Storage
+  - Powershell
 ---
 
 # Deploy AKS with Terraform and Store Terraform State in Azure Storage
@@ -41,21 +42,21 @@ The following prerequisites will be required to complete this tutorial:
 
 4. Copy the **id** of subscription you would like to use.
 
-5. Run the following command in the Terminal, replacing `{Your...}` with your subscription id.
+5. Run the following command in the **Terminal**, replacing `{YourAzureSubscriptionId}` with your azure subscription id.
 
     ```
-    az account set --subscription "{YourSubscriptionId}"
+    az account set --subscription "{YourAzureSubscriptionId}"
     ```
 
 # Create an Azure Service Principal
 
-1. Run the following command to create a Service Principal, replacing `{YourAzureSubscriptionId}` with your azure subscription id.
+1. Run the following command in the **Terminal** to create an **Azure Service Principal**, replacing `{YourAzureSubscriptionId}` with your azure subscription id.
 
     ```
     az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/{YourAzureSubscriptionId}"
     ```
 
-2. Add the following to environment variables via the following powershell commands, replacing `{Your...}` with your credentials.
+2. Add the following to environment variables via the following powershell commands in the **Terminal**, replacing `{Your...}` with your credentials.
     ```
     $env:TF_VAR_CLIENT_ID = "{YourServicePrincipalClientId}"
     $env:TF_VAR_CLIENT_SECRET = "{YourServicePrincipalClientSecret}"
@@ -68,7 +69,7 @@ The following prerequisites will be required to complete this tutorial:
 
 # Create an Azure Storage Account with Terraform for remote state
 
-1. Create a new project in visual studio code. Add a new folder named `tf-state`. Add a main.tf file with the following terraform configuration.
+1. Create a new folder in **Visual Studio Code**, named `tf-state`. Add a file named `main.tf` into the `tf-state` folder and paste the following terraform configuration into it.
 
     ```
     terraform {
@@ -126,7 +127,7 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-2. Add a variables.tf file with the following terraform configuration.
+2. Add a file named `variables.tf` into the `tf-state` folder and paste the following terraform configuration into it.
 
     ```
     variable "CLIENT_ID {
@@ -150,17 +151,18 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-3. Right click on the tf-state folder and select open in integrated terminal.
-4. Run `terraform` init to ...
-5. Run `terraform` plan to ...
-6. Run `terraform` apply to ...
-7. Run `terraform` destroy to ...
+3. Right click on the `tf-state` folder and select **Open in Integrated Terminal**.
+4. Run `terraform init` in the terminal to initialize the Terraform configuration.
+5. Run `terraform fmt` in the terminal to format and validate the Terraform configuration.
+6. Run `terraform plan` in the terminal to see any planned changes.
+7. Run `terraform apply` in the terminal to apply the Terraform configuration.
+. Navigate to the [Azure portal](https://portal.azure.com/) in your web browser to validate the azure storage account.
 
 # Create AKS Terraform configuration
 
-1. Create a new folder in the root and name it `aks`. 
+1. In **Visual Studio Code**, create a new folder in the root named `aks`. 
 
-2. Add a file named variables.tf and paste the below terraform configuration.
+2. Add a file named `variables.tf` into the `aks` folder and paste the following terraform configuration into it.
 
     ```
     variable "CLIENT_ID" {
@@ -170,21 +172,9 @@ The following prerequisites will be required to complete this tutorial:
     variable "CLIENT_SECRET" {
       description = "Azure TF Service Principal Password"
     }
-    
-    variable "TENANT_ID" {
-      description = "Azure TF Tenant Id"
-    }
-    
-    variable "SUBSCRIPTION_ID" {
-      description = "Azure Subscription Id"
-    }
-    
-    variable "PRINCIPAL_ID" {
-      description = "Azure Service Principal Id"
-    }
     ```
 
-3. Add a file named main.tf and paste the below terraform configuration.
+3. Add a file named `main.tf` into the `aks` folder and paste the following terraform configuration into it.
    
     ```
     resource "random_pet" "prefix" {}
@@ -230,7 +220,7 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-4. Add a file named outputs.tf and paste the below terraform configuration.
+4. Add a file named `outputs.tf` into the `aks` folder and paste the following terraform configuration into it.
 
     ```
     output "resource_group_name" {
@@ -242,7 +232,7 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-5. Add a new file name providers.tf and paste the below terraform configuration.
+5. Add a file named `providers.tf` into the `aks` folder and paste the following terraform configuration into it.
 
     ```
     terraform {
@@ -257,9 +247,9 @@ The following prerequisites will be required to complete this tutorial:
     }
     ```
 
-## Configure terraform backend State
+## Configure Terraform Backend State
 
-1. Add the backend configuration to the providers.tf, replacing `{YourStorageAccount}` with the terraform state storage account you created earlier and `{YourAzureSubscription}` with your azure subscription id.
+1. Add the following backend Terraform configuration into the `providers.tf`, replacing `{YourTFStateAzureStorageAccount}` with the terraform state storage account you created earlier and `{YourAzureSubscription}` with your azure subscription id.
 
     ```
     terraform {
@@ -269,7 +259,7 @@ The following prerequisites will be required to complete this tutorial:
     
       backend "azurerm" {
           resource_group_name  = "tfstate"
-          storage_account_name = "{YourStorageAccount}"
+          storage_account_name = "{YourTFStateAzureStorageAccount}"
           container_name       = "tfstate"
           key                  = "terraform.tfstate"
           subscription_id      = "{YourAzureSubscription}"
@@ -277,6 +267,16 @@ The following prerequisites will be required to complete this tutorial:
     
     required_version = ">= 0.14"
     ```
+
+  2. Navigate to the [Azure portal](https://portal.azure.com/) in your web browser to validate the AKS.
+
+# Delete Azure Resources
+
+1. Right click on the `aks` folder and select **Open in Integrated Terminal**.
+2. Run `terraform destroy` in the terminal to destroy the AKS resources.
+3. Right click on the `tf-state` folder and select **Open in Integrated Terminal**.
+4. Run `terraform destroy` in the terminal to destroy the Azure Storage resources.
+
 
 
 
