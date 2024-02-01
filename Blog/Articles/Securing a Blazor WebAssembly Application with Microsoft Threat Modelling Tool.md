@@ -1,12 +1,12 @@
 ---
-title: Securing Blazor a WebAssembly Application with Microsoft Threat Modeling using STRIDE in Azure Ecosystem
-author: Peter Gregg
+title: Securing Blazor WebAssembly Applications with Microsoft Threat Modeling using STRIDE in Azure Ecosystem
+author: Peter Gregg and GhatGPT 
 description: Securing Blazor WebAssembly Applications with Microsoft Threat Modeling using STRIDE in Azure Ecosystem
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
-status: draft
-published: 2024/01/30 18:34:00
+status: published
+published: 2024/02/01 07:46:00
 categories: 
   - Microsoft Threat Modeling Tool
   - Blazor WebAssembly
@@ -20,7 +20,7 @@ categories:
 
 # Securing Blazor WebAssembly Applications with Microsoft Threat Modeling using STRIDE in Azure Ecosystem
 
-In the era of cloud computing and distributed applications, securing web applications is more critical than ever. Microsoft Threat Modeling, coupled with the STRIDE framework, provides an effective strategy to identify and mitigate potential security threats. This article focuses on applying these principles to securing a Blazor WebAssembly application (Hosted in GitHub Pages) connected to an Azure Function, which, in turn, communicates with an Azure Storage account.
+In the era of cloud computing and distributed applications, securing web applications is more critical than ever. Microsoft Threat Modeling, coupled with the STRIDE framework, provides an effective strategy to identify and mitigate potential security threats. This article focuses on applying these principles to securing a Blazor WebAssembly application hosted on GitHub Pages in combination with a GitHub webhook connected to an Azure Function, which, in turn, communicates with an Azure Storage account.
 
 ## Prerequisites
 
@@ -30,23 +30,23 @@ The following prerequisites will be required to complete this tutorial:
 
 # Understanding the Architecture
 
-Detailed in this section is the architecture and the potential threats for each component at a high level. See the Diagram in the [Build a Model section](#build-a-model) for an infographic.
+Detailed in this section is the architecture and what needs identifying for each element to analyse potential threats. For an infographic see the [Build a Model section](#build-a-model).
 
 ## Blazor WebAssembly Application
-   - A web application hosted in GitHub Pages which supports the development of interactive and responsive web applications using C# and .NET technologies.
+   - A web application hosted on GitHub Pages which supports the development of interactive and responsive web applications using C# and .NET technologies.
    - Identify the assets, entry points, and critical functionalities within the Blazor WebAssembly application.
 
 ## Azure Functions
-   - A serverless compute service which allows developers to run event-triggered functions without the need for managing infrastructure. The Azure Functions in this architecture include HTTPTriggers which act as a REST API.
-   - Recognize the various Azure Functions associated with the application, including their triggers and inputs.
+   - A serverless compute service which allows developers to run event-triggered functions without the need for managing infrastructure.
+   - Identify the various Azure Functions associated with the application, including their triggers and inputs.
 
 ## Azure Storage Account
-   - Azure Storage provides scalable and secure storage solutions for data, including blobs, tables, queues, and files. The Azure Storage in this architecture has table and blob storage. 
+   - Azure Storage provides scalable and secure storage solutions for data, including blobs, tables, queues, and files. 
    - Identify the specific types of data stored in the Azure Storage account and assess their sensitivity.
 
 ## GitHub WebHook
 
-   - GitHub webhooks allow for real-time communication between GitHub and external services, triggering events upon code changes. The GitHub webhook in this architecture is used to send over a payload to an azure function HTTPTrigger.
+   - GitHub webhooks allow for real-time communication between GitHub and external services, triggering events upon code changes.
    - Identify the GitHub webhook's role in the architecture.
 
 # Applying Microsoft Threat Modeling using STRIDE
@@ -58,13 +58,17 @@ Detailed in this section is the architecture and the potential threats for each 
 
    ![MS Threat Modeling Tool Threat Model Selection](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/MicrosoftThreatModelingTool/MSThreatModelingToolThreatModelSelection.png)
 
-4. Drag and drop **Elements** from the **Stencils** onto the diagram.
+4. Drag and drop **Elements** from the **Stencils** onto the Canvas. This is the architecture detailed above.
 
-   ![MS Threat Modeling Tool PGDevOpsTips Architecture Diagram](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/MicrosoftThreatModelingTool/MSThreatModelingToolPGDevOpsTipsArchitectureDiagram.png)
+   ![MS Threat Modeling Tool PGDevOpsTips Architecture Canvas](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/MicrosoftThreatModelingTool/MSThreatModelingToolPGDevOpsTipsArchitectureCanvas.png)
 
 ## Analysing Threats
 
-1. To view a list of threats in a model, select **View** > **Analysis View** and a **Threat List** will open.
+1. To view a list of threats in a model, select **View** > **Analysis View**.
+
+   ![MS Threat Modeling Tool View Analysis Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/MicrosoftThreatModelingTool/MSThreatModelingToolViewAnalysisNavigation.png)
+
+2. A **Threat List** will dock at the bottom of the application.
 
    ![MS Threat Modeling Tool PGDevOpsTips Initial Threat List](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/MicrosoftThreatModelingTool/MSThreatModelingToolAnalysisInitialThreatList.png)
 
@@ -73,10 +77,10 @@ Detailed below is a description of each part of the STRIDE framework used by the
 
 ### Spoofing
    - Identify potential spoofing threats, such as unauthorized access to the Blazor WebAssembly application, Azure Function or GitHub webhook.
-   - Implement strong authentication mechanisms, such as OAuth, for GitHub webhook integration, and leverage Azure AD for securing access to the application and function.
+   - Implement strong authentication mechanisms, such as OAuth, for GitHub webhook integration, and leverage Microsoft Entra ID for securing access to the application and function.
 
 ### Tampering
-   - Assess the possibility of code tampering within the Blazor WebAssembly application, the Azure Function , or the GitHub webhook.
+   - Assess the possibility of code tampering within the Blazor WebAssembly application, the Azure Function, or the GitHub webhook.
    - Utilise HTTPS to encrypt data in transit, employ code signing, and implement source code integrity checks to ensure the integrity of the application.
 
 ### Repudiation
