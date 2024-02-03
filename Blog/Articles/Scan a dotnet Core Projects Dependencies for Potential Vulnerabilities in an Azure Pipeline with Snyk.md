@@ -159,7 +159,7 @@ As the Snyk scan concludes, dive into the results presented in your Azure Pipeli
 
 4. Select the **Snyk Report** tab to view the Snyk test report.
 
-    ![Azure DevOps Pipelines Snyk Test Report](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesSnykReport.png)
+    ![Azure DevOps Pipelines Snyk Test Report](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesSnykAppSecurityScanReport.png)
 
 
 # Conclusion
