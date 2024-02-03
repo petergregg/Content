@@ -106,7 +106,7 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure DevOps Snyk Service Connection Setup](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsSnykServiceConnectionSetup.png)
  
-    > To get the **Snyk API Token**, select **Personal API Token**, then select **click to show** the **Key**. Copy and paste the key into Azure DevOps Snyk Service Connection Setup **Personal API Token** box.
+    > To get the **Snyk API Token**, in [snyk account settings](https://app.snyk.io/account), select **General**, then select **click to show** the **Key**. Copy and paste the key into Azure DevOps Snyk Service Connection Setup **Personal API Token** box.
     ![Snyk Account API Token](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Snyk/SnykAccountAPIToken.png)
 
 ## Add Azure Container Registry Service Connection to Azure DevOps Project
