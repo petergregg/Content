@@ -5,8 +5,8 @@ description: Scan a dotnet Core Projects Dependencies for Potential Vulnerabilit
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
-status: draft
-published: 2024/02/01 10:56:00
+status: published
+published: 2024/02/03 13:08:00
 categories: 
   - Azure DevOps
   - Azure Pipelines
@@ -18,9 +18,9 @@ categories:
 
 # Securing Your Dependencies: Integrating Snyk into Azure Pipelines
 
-In the dynamic landscape of modern software development, security is not just a buzzword—it's a prerequisite. Open-source dependencies inject agility into our projects but also introduce potential vulnerabilities. Snyk, is a developer-centric solution for identifying and mitigating these risks. In this guide, we'll walk through seamlessly integrating Snyk into Azure Pipelines, ensuring your dependencies are as robust as your code.
+In the dynamic landscape of modern software development, security is not just a buzzword—it's a prerequisite. Open-source dependencies inject agility into our projects but also introduce potential vulnerabilities. Snyk, is a developer-centric solution for identifying and mitigating these risks. In this article, we'll walk through seamlessly integrating Snyk into Azure Pipelines, ensuring your dependencies are as robust as your code.
 
-# Understanding the Imperative:
+## Understanding the Imperative
 
 Before diving into the integration, let's acknowledge why managing dependencies is paramount. Our applications lean heavily on third-party libraries, but these can be an Achilles' heels if not managed meticulously. Snyk steps in as the guardian, offering a proactive stance against vulnerabilities, allowing developers to navigate the intricate web of dependencies securely.
 
@@ -31,12 +31,9 @@ The following prerequisites will be required to complete this tutorial:
 - Azure DevOps project, with a dotnet core project in a Git repository. If you don't have a repo [fork the articles Git repo](https://twogsdev.visualstudio.com/_git/CoreDeployTest).
 - Snyk account. If you don't have a Snyk account,  [create one for free with your Azure DevOps account](https://app.snyk.io/login/?_gl=1%2a14oxqhz%2a_ga%2aOTQ4MDkwMjEwLjE3MDY5NDcxMzE.%2a_ga_X9SH3KP7B4%2aMTcwNjk1NTAzNC4yLjEuMTcwNjk1NTA1My4wLjAuMA..) before you begin.
 
-
-# Getting Started
+## Add Snyk Extension to Azure DevOps
 
 Begin by embracing Snyk into your Azure Pipelines workflow. The process, akin to the simplicity synonymous with Azure, empowers developers to fortify their projects effortlessly.
-
-## Add Snyk Extension to Azure DevOps
 
 1. In the root of an Azure DevOps Organization, select **Organization Settings** in the bottom left of the screen.
 
@@ -92,10 +89,10 @@ Begin by embracing Snyk into your Azure Pipelines workflow. The process, akin to
 
     ![Azure DevOps Snyk Service Connection Setup](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsSnykServiceConnectionSetup.png)
  
-    > To get the **Snyk API Token**, select **Personal API Token**, then select **click to show** the **Key**. Copy and paste the key into Azure DevOps Snyk Service Connection Setup **Personal API Token** box.
+    > To get the **Snyk API Token**, in [snyk account settings](https://app.snyk.io/account), select **General**, then select **click to show** the **Key**. Copy and paste the key into Azure DevOps Snyk Service Connection Setup **Personal API Token** box.
     ![Snyk Account API Token](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Snyk/SnykAccountAPIToken.png)
 
-### ## Create and Run Azure DevOps Snyk Pipeline
+### Create and Run Azure DevOps Snyk Pipeline
 
 With the extension in place, incorporate the Snyk Scan task into your pipeline configuration. This task serves as the sentinel, scrutinizing your dependencies for vulnerabilities.
 
@@ -130,11 +127,11 @@ With the extension in place, incorporate the Snyk Scan task into your pipeline c
         command: 'build'
     - task: SnykSecurityScan@1
       inputs:
-         serviceConnectionEndpoint: 'Snyk'
-         testType: 'app'
-         failOnIssues: true
-         monitorWhen: 'always'
-         additionalArguments: '--all-projects --exclude=tests'
+        serviceConnectionEndpoint: 'Snyk'
+        testType: 'app'
+        failOnIssues: true
+        monitorWhen: 'always'
+        additionalArguments: '--all-projects --exclude=tests'
     ```  
 
 7. Rename the pipelines YAML file to **snykappsecurityscan-az-pipeline.yml** and then select **Save and run**.
@@ -151,11 +148,11 @@ As the Snyk scan concludes, dive into the results presented in your Azure Pipeli
 
 1. Navigate to **Pipelines**.
 
-    ![Azure DevOps Pipelines Snyk](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesSnyk.png)
+    ![Azure DevOps Pipelines Snyk](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesSnykAppSecurityScan.png)
 
 3. In the **Runs** tab, select a pipeline that has been run. 
 
-    ![Azure DevOps Pipelines Runs Pipelines Run](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesRunsPipeline.png)
+    ![Azure DevOps Pipelines Runs Pipelines Run](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesSnykAppSecurityScanRunsPipeline.png)
 
 4. Select the **Snyk Report** tab to view the Snyk test report.
 
