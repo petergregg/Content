@@ -5,8 +5,8 @@ description: Creating an Azure Pipeline to run OWASP ZAP with custom scan rules
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
-status: draft
-published: 2024/02/08 22:16:00
+status: published
+published: 2024/02/09 07:00:00
 categories: 
   - Security
   - Azure DevOps
@@ -24,11 +24,11 @@ Creating an Azure Pipeline to run OWASP ZAP (Zed Attack Proxy) with custom scan 
 The following prerequisites will be required to complete this tutorial:
 - Azure DevOps account. If you don't have an Azure DevOps account,  [create one for free](https://azure.microsoft.com/en-us/products/devops/) before you begin.
 - Azure DevOps project, with a dotnet core project in a Git repository. If you don't have a repo [fork the articles Git repo](https://twogsdev.visualstudio.com/_git/CoreDeployTest).
-- A hosted API which you own.
+- A hosted Website which you own.
 
 ## Create an OWASP ZAP Custom Rules File
 
-In OWASP ZAP, you can create a custom rules file to exclude specific content from the scan. To exclude URLs with non-storable content, you can define a custom rule in a `zap-custom-rules.conf` file. Follow the steps below to create a `zap-custom-rules-file.conf` to exclude non-storable content based on the `Cache-Control` header.
+In OWASP ZAP, you can create a custom rules file to ignore specific content in the scan. To ignore Storable and Cacheable Content, you can define a custom rule in a `zap-custom-rules.conf` file. Follow the steps below to create a `zap-custom-rules-file.conf` to ignore Storable and Cacheable Content.
 
 1. In the root of an Azure DevOps Project, select **Repos**.
 
@@ -50,15 +50,15 @@ In OWASP ZAP, you can create a custom rules file to exclude specific content fro
 
 In this configuration:
 
-- We define a custom scan rule named "Ignore Non-Storable Content."
-- The `scanURL` field is set to `true` to enable scanning URLs.
-- The `condition` section contains JavaScript code that checks the `Cache-Control` header in the HTTP response. If the header contains "no-store," the `exclude` variable is set to `true`, indicating that the URL should be excluded from the scan.
+- The `Id` of the rule you would like to ignore.
+- The `action` on the rul to take.
+- The `name` of the custom scan rule
 
 Once you've created this `custom-rules-file.conf`, you can load it into OWASP ZAP to apply the custom rule during your scans.
 
 Please note that ZAP's custom rules are quite flexible, and you can customize them further to meet your specific needs.
 
-# Setup report
+# Create a Template for the Zap report
 
 1. Navigate to the **Zap** folder in your repo, select **More actions**, then **+ New**, and then **File**.
 
@@ -127,11 +127,11 @@ Please note that ZAP's custom rules are quite flexible, and you can customize th
 
     ![Azure DevOps Pipelines Select ASP.NET Core YAML template](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesStarterPipelineYamlTemplate.png)
 
-6. Replace the Contents of the YAML file with the following YAML.
+6. Replace the Contents of the YAML file with the following YAML, also replace {YourWebsiteURL} with the website url you would like to target.
 
     ```yaml
     trigger:
-    - main
+    - master
 
     pr: none
 
@@ -157,7 +157,7 @@ Please note that ZAP's custom rules are quite flexible, and you can customize th
 
         # Start OWASP ZAP as a Docker container
         chmod -R 777 ./
-        docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t https://www.pgdevopstips.co.uk -x xml_report.xml -c /zap/wrk/Zap/zap-custom-rules-file.conf
+        docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t {YourWebsiteURL} -x xml_report.xml -c /zap/wrk/Zap/zap-custom-rules-file.conf
       displayName: 'Run OWASP ZAP Container'
       continueOnError: true
 
@@ -212,6 +212,10 @@ Make sure to customize the script arguments, scan rules, and file paths accordin
 
     ![Azure DevOps Pipelines Runs Pipelines Run](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesZapBaselineScanRunsPipeline.png)
 
-4. Select the **Tests** tab to view the Snyk test report.
+4. Select the **Tests** tab to view the Zap test report.
 
-    ![Azure DevOps Pipelines Snyk Test Report](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesZapBaselineScanReport.png)
+    ![Azure DevOps Pipelines Zap Test Report](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesZapBaselineScanReport.png)
+
+    ## Resources 
+
+    - [xml_to_nunit.xslt](https://gist.github.com/sudhinsr/6dad07c20785d8d00ffd406a6c581b15)
