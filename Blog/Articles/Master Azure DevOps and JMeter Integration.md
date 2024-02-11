@@ -12,6 +12,12 @@ categories:
   - JMeter
   - Azure Pipelines
   - Load Test
+  - Performance Testing
+  - Integration
+  - CI/CD
+  - Automation 
+  - Deployment Efficiency
+  - DevOps Tips
 ---
 
 # JMeter Integration with Azure DevOps
