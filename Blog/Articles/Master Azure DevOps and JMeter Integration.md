@@ -1,12 +1,12 @@
 ---
 title: Master Azure DevOps and JMeter Integration - Boost Performance Testing Efficiency
 author: Peter Gregg
-description: Discover seamless JMeter integration with Azure DevOps! Elevate your performance testing capabilities and optimize software delivery pipelines today. Dive in now!
+description: Discover seamless JMeter integration with Azure DevOps! Elevate your performance testing capabilities and optimize software delivery pipelines
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
-status: draft
-published: 2024/02/11 11:00:00
+status: published
+published: 2024/02/11 19:38:00
 categories: 
   - Azure DevOps
   - JMeter
@@ -21,13 +21,13 @@ categories:
 ---
 
 # JMeter Integration with Azure DevOps
-In this article, we delve into the powerful synergy between Azure DevOps and JMeter. Explore how this integration revolutionizes performance testing, accelerates deployment, and ensures software excellence. Unlock the key strategies, tips, and best practices to harness the full potential of these tools for your development pipeline. Let's embark on a journey to streamline your DevOps processes and elevate your software delivery game. This article was inspired by the [Run nonfunctional tests in Azure Pipelines Module](https://learn.microsoft.com/en-us/training/modules/run-non-functional-tests-azure-pipelines).
+In this article, we delve into the powerful synergy between Azure DevOps and JMeter. Explore how this integration revolutionizes performance testing, accelerates deployment, and ensures software excellence. Unlock the key strategies, tips, and best practices to harness the full potential of these tools for your development pipeline. Let's embark on a journey to streamline your DevOps processes and elevate your software delivery game. This article was inspired by the [Run nonfunctional tests in Azure Pipelines Microsoft Learn Module](https://learn.microsoft.com/en-us/training/modules/run-non-functional-tests-azure-pipelines).
 
 ## Prerequisites
 
 The following prerequisites will be required to complete this tutorial:
 - Azure DevOps account. If you don't have an Azure DevOps account,  [create one for free](https://azure.microsoft.com/en-us/products/devops/) before you begin.
-- Azure DevOps project, with a dotnet core project in a Git repository. If you don't have a repo [fork the articles Git repo](https://twogsdev.visualstudio.com/_git/CoreDeployTest).
+- Azure DevOps project.
 - A hosted Website which you own.
 
 ## Setting Up Your Azure DevOps Environment
@@ -42,9 +42,9 @@ Let's kickstart our journey by configuring your Azure DevOps environment for JMe
 
     ![Azure DevOps Repos Files Add New File](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsReposFilesAddNewFile.png)
 
-4. In the Modal Popup, add the folder name  **JMeter** into the **New folder name** text box and the file name **LoadTest.jmx** into the text box.
+4. In the **Modal Popup**, add the folder name  **JMeter** into the **New folder name** text box and the file name **LoadTest.jmx** into the text box.
 
-    ![Azure DevOps Repos Files Add New File Modal Popup](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsReposFilesAddNewFolderFileModalPopup.png)
+    ![Azure DevOps Repos Files Add New File Modal Popup](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsReposJMeterAddNewFolderAndFileModalPopup.png)
 
 3. Add the following contents to the **LoadTest.jmx** file.
 
@@ -165,7 +165,7 @@ Let's kickstart our journey by configuring your Azure DevOps environment for JMe
 
 1. Navigate to the **JMeter** folder in your repo, select **More actions**, then **+ New**, and then **File**.
 
-2. In the Modal Popup, add the file name  **JMeter2JUnit.xsl** into the **New file name** text box.
+2. In the **Modal Popup**, add the file name  **JMeter2JUnit.xsl** into the **New file name** text box.
 
 3. Add the following contents to the **JMeter2JUnit.xsl** file.
 
@@ -210,13 +210,13 @@ Let's kickstart our journey by configuring your Azure DevOps environment for JMe
 
     ![Azure DevOps Pipelines Library Navigation Bar](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesLibraryNavigationBar.png)
 
-4. In the new **Variable group**, enter the following values, replacing {YourWebsiteURL} with your website url. To add new variables in the **Variables** section, select **+ Add**.
+4. In the new **Variable group**, enter the following values. To add new variables in the **Variables** section, select **+ Add**, replace {YourWebsiteURL} with your website url.
 
     ![Azure DevOps Pipelines Library Navigation Bar](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesLibraryNewVariableGroup.png)
 
     | Section | Field | Value | Description |
     | --- | --- | --- | --- |
-    | Properties | Variable group name | Release | Name of the Variable Group |
+    | Properties | Variable group name | Release | Name of the Variable group |
     | Variables | Name | STAGING_HOSTNAME | |
     | Variables| Value | {YourWebsiteURL} | Website URL to load test. You don't need to include the http:// or https:// protocol prefix in your value. JMeter provides the protocol when the tests run. |
     |Variables| Name | jmeterVersion | |
@@ -224,7 +224,7 @@ Let's kickstart our journey by configuring your Azure DevOps environment for JMe
 
 7. To save the **Variable group** to the pipeline, select **Save** near the top of the page.
 
-### Integrating JMeter Tests into Azure Pipelines
+## Integrating JMeter Tests into Azure Pipelines
 
 Now that your Azure DevOps environment is set up, it's time to integrate your JMeter tests into your pipelines. In this section, we'll guide you through the process of adding JMeter tests as tasks in your Azure Pipelines, configuring parameters, and executing tests automatically as part of your CI/CD process. Get ready to automate your performance testing and ensure the stability and scalability of your applications with ease.
 
@@ -240,11 +240,11 @@ Now that your Azure DevOps environment is set up, it's time to integrate your JM
     
     ![Azure DevOps Pipelines Connect Azure Repos Git](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesConnectAzureReposGit.png)
 
-5. In the **Select** tab, select **Starter pipeline** YAML template.
+4. In the **Select** tab, select **Starter pipeline** YAML template.
 
     ![Azure DevOps Pipelines Select ASP.NET Core YAML template](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesStarterPipelineYamlTemplate.png)
 
-6. Replace the Contents of the YAML file with the following YAML.
+5. Replace the Contents of the YAML file with the following YAML.
 
     ```yaml
 
@@ -276,17 +276,29 @@ Now that your Azure DevOps environment is set up, it's time to integrate your JM
 
     ```
 
-7. Rename the pipelines YAML file to **jmeter-az-pipeline.yml** and then select **Save and run**.
+6. Rename the pipelines YAML file to **jmeter-az-pipeline.yml** and then select **Save and run**.
 
     ![Azure DevOps Pipelines Connect Azure Repos Git](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesJMeterLoadTestSaveAndRunNavigation.png)
 
-8. Add a commit message and then select **Save and run**. 
+7. Add a commit message and then select **Save**. 
 
-    ![Azure DevOps Pipelines Rename the Pipelines Yaml File, Save and Run](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesJMeterLoadTestCommitSaveAndRun.png)
+    ![Azure DevOps Pipelines Rename the Pipelines Yaml File, Save](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesJMeterLoadTestCommitSaveAndRun.png)
 
-## Analyzing Test Results and Performance Metrics
+8. You will need to give the pipeline permission to run. In the new pipeline, select **View** on the permissions dialog.
 
-With your JMeter tests seamlessly integrated into Azure Pipelines, it's crucial to analyze test results and performance metrics effectively. In this section, we'll dive into strategies for retrieving and interpreting test results, generating comprehensive reports, and monitoring performance metrics using Azure DevOps tools and integrations. Get ready to gain valuable insights into your application's performance and make informed decisions to optimize its efficiency.
+    ![Azure DevOps Pipelines Library Permissions Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesLibraryPermissionsNavigation.png)
+
+9. In the **Waiting for review** panel, select **Permit**.
+
+    ![Azure DevOps Pipelines Library Permissions Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesLibraryPermissions.png)
+
+10. In the **Permit access** modal popup, select **Permit**. 
+
+    ![Azure DevOps Pipelines Library Permissions Navigation](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesLibraryPermissionsModal.png)
+
+## Analysing Test Results and Performance Metrics
+
+With your JMeter tests seamlessly integrated into Azure Pipelines, it's crucial to analyse test results and performance metrics effectively. In this section, we'll dive into strategies for retrieving and interpreting test results, generating comprehensive reports, and monitoring performance metrics using Azure DevOps tools and integrations. Get ready to gain valuable insights into your application's performance and make informed decisions to optimize its efficiency.
 
 1. Navigate to **Pipelines**.
 
@@ -300,11 +312,13 @@ With your JMeter tests seamlessly integrated into Azure Pipelines, it's crucial 
 
     ![Azure DevOps Pipelines JMeter Test Report](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesJMeterLoadTestReport.png)
 
+In this load test we have a test for the average request time should be less than one second which is passing, and a test for no more than 10 percent of requests should take more than one second which is failing. We can now review the code and improve the performance of the failing test.
+
 ## Conclusion
 
 In conclusion, the integration of JMeter with Azure DevOps opens up a world of possibilities for streamlining your performance testing workflows. By leveraging these powerful tools together, you can ensure the robustness and reliability of your software applications while accelerating your deployment processes. Remember to implement the strategies and tips discussed in this guide to maximize the benefits of this integration for your DevOps practices. Stay tuned to PG DevOps Tips for more insights and guides to optimize your software development lifecycle. Let's continue to innovate and elevate our DevOps journey together!
 
 ## Resources
 
-- https://learn.microsoft.com/en-us/training/modules/run-non-functional-tests-azure-pipelines
-- https://github.com/MicrosoftDocs/mslearn-tailspin-spacegame-web-deploy/tree/jmeter
+- [Run nonfunctional tests in Azure Pipelines Microsoft Learn Module](https://learn.microsoft.com/en-us/training/modules/run-non-functional-tests-azure-pipelines)
+- [JMeter branch of Code used in Microsoft Learn modules to support Azure DevOps](https://github.com/MicrosoftDocs/mslearn-tailspin-spacegame-web-deploy/tree/jmeter)
