@@ -210,7 +210,7 @@ Let's kickstart our journey by configuring your Azure DevOps environment for JMe
 
     ![Azure DevOps Pipelines Library Navigation Bar](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesLibraryNavigationBar.png)
 
-4. In the new **Variable group**, enter the following values. To add new variables in the **Variables** section, select **+ Add**, replace {YourWebsiteURL} with your website url.
+4. In the new **Variable group**, enter the following values. To add new variables in the **Variables** section, select **+ Add**, replace `{YourWebsiteURL}` with your website url.
 
     ![Azure DevOps Pipelines Library Navigation Bar](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesLibraryNewVariableGroup.png)
 
@@ -218,7 +218,7 @@ Let's kickstart our journey by configuring your Azure DevOps environment for JMe
     | --- | --- | --- | --- |
     | Properties | Variable group name | Release | Name of the Variable group |
     | Variables | Name | STAGING_HOSTNAME | |
-    | Variables| Value | {YourWebsiteURL} | Website URL to load test. You don't need to include the http:// or https:// protocol prefix in your value. JMeter provides the protocol when the tests run. |
+    | Variables| Value | `{YourWebsiteURL}` | Website URL to load test. You don't need to include the http:// or https:// protocol prefix in your value. JMeter provides the protocol when the tests run. |
     |Variables| Name | jmeterVersion | |
     | Variables | Value | 5.4.3 | Version of JMeter. To get the latest version, see Download Apache JMeter. |
 
