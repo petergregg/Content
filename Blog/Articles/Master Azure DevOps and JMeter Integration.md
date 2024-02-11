@@ -1,12 +1,12 @@
 ---
-title: Azure DevOps and JMeter
+title: Master Azure DevOps and JMeter Integration - Boost Performance Testing Efficiency
 author: Peter Gregg
-description: Azure DevOps and JMeter
+description: Discover seamless JMeter integration with Azure DevOps! Elevate your performance testing capabilities and optimize software delivery pipelines today. Dive in now!
 image: https://dummyimage.com/800x600/000/fff&text=placeholder
 thumbnail: https://dummyimage.com/200x200/000/fff&text=placeholder
 type: article
 status: draft
-published: 2023/11/26 16:11:00
+published: 2024/02/11 11:00:00
 categories: 
   - Azure DevOps
   - JMeter
@@ -14,8 +14,8 @@ categories:
   - Load Test
 ---
 
-# Azure DevOps and JMeter
-This article was inspired by the [Run nonfunctional tests in Azure Pipelines Module](https://learn.microsoft.com/en-us/training/modules/run-non-functional-tests-azure-pipelines).
+# JMeter Integration with Azure DevOps
+In this article, we delve into the powerful synergy between Azure DevOps and JMeter. Explore how this integration revolutionizes performance testing, accelerates deployment, and ensures software excellence. Unlock the key strategies, tips, and best practices to harness the full potential of these tools for your development pipeline. Let's embark on a journey to streamline your DevOps processes and elevate your software delivery game. This article was inspired by the [Run nonfunctional tests in Azure Pipelines Module](https://learn.microsoft.com/en-us/training/modules/run-non-functional-tests-azure-pipelines).
 
 ## Prerequisites
 
@@ -24,7 +24,9 @@ The following prerequisites will be required to complete this tutorial:
 - Azure DevOps project, with a dotnet core project in a Git repository. If you don't have a repo [fork the articles Git repo](https://twogsdev.visualstudio.com/_git/CoreDeployTest).
 - A hosted Website which you own.
 
-# Create a JMeter Load Test
+## Setting Up Your Azure DevOps Environment
+
+Let's kickstart our journey by configuring your Azure DevOps environment for JMeter integration. In this section, we'll walk you through the step-by-step process of setting up your Azure DevOps project, creating pipelines, and configuring agents to seamlessly incorporate JMeter into your CI/CD workflows. Get ready to optimize your DevOps processes and supercharge your performance testing capabilities.
 
 1. In the root of an Azure DevOps Project, select **Repos**.
 
@@ -153,7 +155,7 @@ The following prerequisites will be required to complete this tutorial:
 
   See my [Create a Performance Test with BlazeMeter and JMeter](https://www.pgdevopstips.co.uk/article/create-a-performance-test-with-blazemeter-and-jmeter) article to learn how to create a load test. 
 
-# Create a Template for the JMeter report
+### Create a Template for the JMeter report
 
 1. Navigate to the **JMeter** folder in your repo, select **More actions**, then **+ New**, and then **File**.
 
@@ -216,7 +218,9 @@ The following prerequisites will be required to complete this tutorial:
 
 7. To save the **Variable group** to the pipeline, select **Save** near the top of the page.
 
-### Create and Run Azure DevOps JMeter Pipeline
+### Integrating JMeter Tests into Azure Pipelines
+
+Now that your Azure DevOps environment is set up, it's time to integrate your JMeter tests into your pipelines. In this section, we'll guide you through the process of adding JMeter tests as tasks in your Azure Pipelines, configuring parameters, and executing tests automatically as part of your CI/CD process. Get ready to automate your performance testing and ensure the stability and scalability of your applications with ease.
 
 1. In the root of an Azure DevOps Project, select **Pipelines**.
 
@@ -274,7 +278,9 @@ The following prerequisites will be required to complete this tutorial:
 
     ![Azure DevOps Pipelines Rename the Pipelines Yaml File, Save and Run](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesJMeterLoadTestCommitSaveAndRun.png)
 
-## Review JMeter Test Report and Fix
+## Analyzing Test Results and Performance Metrics
+
+With your JMeter tests seamlessly integrated into Azure Pipelines, it's crucial to analyze test results and performance metrics effectively. In this section, we'll dive into strategies for retrieving and interpreting test results, generating comprehensive reports, and monitoring performance metrics using Azure DevOps tools and integrations. Get ready to gain valuable insights into your application's performance and make informed decisions to optimize its efficiency.
 
 1. Navigate to **Pipelines**.
 
@@ -287,6 +293,10 @@ The following prerequisites will be required to complete this tutorial:
 4. Select the **Tests** tab to view the JMeter test report.
 
     ![Azure DevOps Pipelines JMeter Test Report](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/AzureDevOps/AzureDevOpsPipelinesJMeterLoadTestReport.png)
+
+## Conclusion
+
+In conclusion, the integration of JMeter with Azure DevOps opens up a world of possibilities for streamlining your performance testing workflows. By leveraging these powerful tools together, you can ensure the robustness and reliability of your software applications while accelerating your deployment processes. Remember to implement the strategies and tips discussed in this guide to maximize the benefits of this integration for your DevOps practices. Stay tuned to PG DevOps Tips for more insights and guides to optimize your software development lifecycle. Let's continue to innovate and elevate our DevOps journey together!
 
 ## Resources
 
