@@ -1,21 +1,25 @@
 ---
-title: Create a Performance Test with BlazeMeter and JMeter
+title: BlazeMeter & JMeter - Optimize Performance Testing
 author: Peter Gregg
-description: Create a Performance Test with BlazeMeter and JMeter
+description: Learn to create powerful performance tests using BlazeMeter and JMeter. Elevate your testing game and optimize software performance.
 image: https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Performance.png
 thumbnail: https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Performance.png
 type: article
 status: published
 published: 2022/06/26 10:00:00
 categories: 
-  - Performance
+  - Performance Testing
   - BlazeMeter
   - JMeter
+  - Software Testing
+  - DevOps
+  - Optimization
+  - Development Process
 ---
 
-# Create a Performance Test with BlazeMeter and JMeter
+# Introduction to BlazeMeter and JMeter Integration
 
-In this article, you will learn how to create a performance test with BlazeMeter and JMeter.
+Welcome to the ultimate guide on harnessing the combined power of BlazeMeter and JMeter for performance testing. In this section, we'll explore how integrating these two industry-leading tools can revolutionize your testing practices, enabling you to create robust and scalable performance tests with ease.
 
 ## Prerequisites
 
@@ -24,9 +28,9 @@ The following prerequisites will be required to complete this tutorial:
 - A BlazeMeter account. If you don't have a BlazeMeter account,  [create one for free](https://auth.blazemeter.com/auth/realms/blazect/login-actions/registration?client_id=blazemeter&tab_id=7GOVEWaplBc) before you begin.
 - JMeter. If you don't have JMeter installed, [download JMeter](https://jmeter.apache.org/download_jmeter.cgi). 
 
-## Create a performance test script using BlazeMeter
+## Getting Started with BlazeMeter
 
-This section details how to create a performance test script using BlazeMeters browser extension.
+Let's kickstart your journey into performance testing excellence by diving into BlazeMeter. In this section, I will guide you through the process of getting started with BlazeMeter, and configuring your first performance test. Get ready to unleash the full potential of BlazeMeter and take your testing efforts to new heights.
 
 1. Select the 
 ![BlazeMeter logo](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/BlazeMeterLogo.png) **Icon** in your browser.
@@ -44,6 +48,7 @@ This section details how to create a performance test script using BlazeMeters b
 4. Select **Edit**, and then **JMeter Script...** (If not logged in to BlazeMeter, you will need to be for the next steps).
 
     ![BlazeMeter edit JMeter script](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/BlazeMeterExportJMeterScriptStep1.png)
+    
 5. Select **JMeter & Selenium combined (YAML)**, and then select **Save**.
 
     ![BlazeMeter JMeter & selenium combined](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/BlazeMeterExportJMeterScriptStep2.png)
@@ -52,9 +57,9 @@ This section details how to create a performance test script using BlazeMeters b
 
     ![BlazeMeter export a JMeter script](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/BlazeMeterExportJMeterScriptStep3.png)
 
-## Open the performance test in JMeter
+## Integrating BlazeMeter with JMeter
 
-This section details how to run a performance test script in JMeter that was created and exported in BlazeMeter.
+Now that you're familiar with BlazeMeter, it's time to explore the seamless integration with JMeter. In this section, I will show you how to integrate BlazeMeter with JMeter to leverage the scalability and analytics capabilities of BlazeMeter while harnessing the flexibility and customization options of JMeter. Get ready to streamline your testing workflows and maximize the efficiency of your performance testing efforts.
 
 1. In Microsoft Windows, **Open** the bin folder of JMeter and run the **JMeter.bat** batch file.
 
@@ -107,7 +112,9 @@ This section details how to run a performance test script in JMeter that was cre
 
     ![JMeter add listeners](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterThreadGroupAddListeners.png) 
 
-### Run the performance test and analyse results
+### Executing and Analysing Performance Tests
+
+With your performance tests created and your tools integrated, it's time to execute and analyze your tests. In this section, I will guide you through the process of running performance tests in BlazeMeter, monitoring test execution, and analyzing test results to identify performance bottlenecks and areas for improvement. Get ready to gain valuable insights into your application's performance and optimize its scalability and reliability.
 
 1. In the JMeter screen, select the ![JMeter Start button](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterGUIStartPerformanceTest.png) button.
 
@@ -118,7 +125,8 @@ This section details how to run a performance test script in JMeter that was cre
     ![JMeter summary report](https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/JMeterThreadGroupSummaryReport.png)
 
 
-
+## Conclusion
+In conclusion, the integration of BlazeMeter and JMeter offers a powerful solution for creating, executing, and analyzing performance tests with precision and efficiency. By following the steps outlined in this guide, you can streamline your testing processes, identify and address performance issues early in the development lifecycle, and ensure the optimal performance of your applications. Stay tuned to PGDevOpsTips for more insights and guides to optimize your DevOps practices and elevate your software delivery capabilities. Let's continue to innovate and excel in the world of performance testing together!
 
 
 
