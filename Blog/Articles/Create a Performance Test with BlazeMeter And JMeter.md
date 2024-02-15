@@ -1,5 +1,5 @@
 ---
-title: BlazeMeter & JMeter - Optimize Performance Testing
+title: Create a Performance Test with BlazeMeter And JMeter
 author: Peter Gregg
 description: Learn to create powerful performance tests using BlazeMeter and JMeter. Elevate your testing game and optimize software performance.
 image: https://raw.githubusercontent.com/petergregg/Content/main/Blog/Images/Performance.png
