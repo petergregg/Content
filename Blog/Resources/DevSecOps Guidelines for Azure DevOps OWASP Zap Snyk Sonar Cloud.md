@@ -12,24 +12,101 @@ categories:
   - OWASP ZAP
   - Snyk
   - SonarCloud
+  - Security
   - Guidelines
 ---
 
 # Introduction
 Implementing DevSecOps practices in Azure DevOps using OWASP ZAP, Snyk, and SonarCloud can help you integrate security into your software development lifecycle. These guidelines define how to effectively use these tools.
 
-## 1. Pre-Development Phase
+## Pre-Development Phase
 
+### 1. Requirements and Design considerations
    - **Guideline:** Begin considering security during the project's initial planning and design phases.
    
    - **Benefits:** Early identification of potential security risks reduces the cost and impact of addressing vulnerabilities.
    
    - **Implementation:**
-     - Conduct threat modeling sessions to identify and prioritize potential security threats using [STRIDE and Microsofts Threat Modeling Tool](https://www.pgdevopstips.co.uk/article/securing-blazor-webassembly-applications-with-microsoft-threat-modeling-using-stride-in-azure-ecosystem#applying-microsoft-threat-modeling-using-stride).
      - Define security requirements and create security user stories.
+     - Consider all aspects of the software ecosystem, including external dependencies and interfaces.
+     - Conduct threat modeling sessions in the design phase to identify and prioritize potential security threats using [STRIDE and Microsoft's Threat Modeling Tool](https://www.pgdevopstips.co.uk/article/securing-blazor-webassembly-applications-with-microsoft-threat-modeling-using-stride-in-azure-ecosystem#applying-microsoft-threat-modeling-using-stride).
      - Ensure that security experts are part of the initial project discussions.
 
-## 2. Static Code Analysis with SonarCloud:
+### 2. Data Privacy and Compliance
+  - **Guideline:** Adhere to data protection regulations and minimize PII collection.
+
+  - **Benefits:** Mitigate legal and reputational risks.
+
+  - **Implementation:** Follow GDPR, HIPAA, and other regulations.
+
+## Development Phase
+
+### 1. **Data Encryption**
+   - **Guideline:** Use strong encryption for sensitive data both at rest and in transit.
+
+   - **Benefits:** Ensures data integrity and confidentiality.
+
+   - **Implementation:** Encrypt communication channels and sensitive data stored in databases with Password-Based Key Function 2 (PBKDF2).
+
+### 2. **Access Controls**
+   - **Guideline:** Limit access based on roles and responsibilities.
+
+   - **Benefits:** Minimize the risk of unauthorized access.
+
+   - **Implementation:** Regularly review and update access control policies.
+
+### 3. **Authentication and Authorization:**
+   - **Guideline:** Implement robust authentication mechanisms.
+
+   - **Benefits:** Prevent unauthorized access and maintain data confidentiality.
+
+   - **Implementation:** Utilize multi-factor authentication and token-based authorization.
+
+### 4. **Input Validation**
+   - **Guideline:** Validate and sanitize user inputs.
+
+   - **Benefits:** Mitigate risks of injection attacks.
+
+   - **Implementation:** Prefer positive security model validation over negative.
+
+### 5. **Error Handling**
+   - **Guideline:** Prevent the disclosure of sensitive information in error messages.
+
+   - **Benefits:** Maintains data confidentiality.
+
+   - **Implementation:** Securely store error logs and messages.
+
+### 6. **Secure Communication**
+   - **Guideline:** Use secure communication protocols.
+
+   - **Benefits:** Protect data during transit.
+
+   - **Implementation:** Employ TLS and disable insecure protocols.
+
+### 7. **API Security:**
+   - **Guideline:** Secure APIs with robust authentication and input validation.
+
+   - **Benefits:** Prevent unauthorized access and data manipulation.
+
+   - **Implementation:** Validate and sanitize API inputs.
+
+### 8. **Code Quality and Reviews**
+  - **Guideline:** Enforce coding standards and conduct regular code reviews.
+
+  - **Benefits:** Identify security vulnerabilities early.
+
+  - **Implementation:** Utilize static code analysis tools.
+
+## Operations
+
+### 1. Secure Configuration
+  - **Guideline:** Configure software securely based on best practices.
+
+  - **Benefits:** Prevent common security misconfigurations.
+
+  - **Implementation:** Avoid default configurations and encrypt sensitive data.
+
+### 2. Static Code Analysis with SonarCloud
 
    - **Guideline:** Integrate SonarCloud into your Azure DevOps pipeline for continuous static code analysis.
    
@@ -40,18 +117,28 @@ Implementing DevSecOps practices in Azure DevOps using OWASP ZAP, Snyk, and Sona
      - Define quality gates to enforce code quality and security standards.
      - Fail the build if quality gate criteria are not met.
 
-**3. Dependency Scanning with Snyk:**
+### 3. Dependency Scanning with Snyk
 
    - **Guideline:** Integrate Snyk into your CI/CD pipeline to scan and monitor dependencies for known vulnerabilities.
    
    - **Benefits:** Identify and remediate vulnerabilities in third-party libraries and dependencies.
    
    - **Implementation:**
-     - [Add Snyk scans as part of your Azure pipeline steps](https://www.pgdevopstips.co.uk/article/scan-a-dotnet-core-projects-dependencies-for-potential-vulnerabilities-in-an-azure-pipeline-with-snyk).
+     - [Add Snyk dependency scans as part of your Azure pipeline steps](https://www.pgdevopstips.co.uk/article/scan-a-dotnet-core-projects-dependencies-for-potential-vulnerabilities-in-an-azure-pipeline-with-snyk).
      - Configure Snyk to monitor dependencies regularly and provide alerts for new vulnerabilities.
      - Fail the build if critical vulnerabilities are detected.
 
-**4. Dynamic Application Security Testing (DAST) with OWASP ZAP:**
+### 4. Container Scanning with Snyk
+   - **Guideline:** Integrate Snyk into your CI/CD pipeline to scan and monitor containers for known vulnerabilities.
+
+   - **Benefits:** Identify and remediate vulnerabilities in containers, container third-party libraries and dependencies.
+   
+   - **Implementation:**
+     - [Add Snyk container scans as part of your Azure pipeline steps](https://www.pgdevopstips.co.uk/article/scan-container-in-azure-container-registry-with-snyk-via-azure-devops-pipeline).
+     - Configure Snyk to monitor containers regularly and provide alerts for new vulnerabilities.
+     - Fail the build if critical vulnerabilities are detected.
+
+### 5. Dynamic Application Security Testing (DAST) with OWASP ZAP
 
    - **Guideline:** Incorporate OWASP ZAP into your CI/CD pipeline to perform dynamic security testing on web applications.
    
@@ -62,7 +149,7 @@ Implementing DevSecOps practices in Azure DevOps using OWASP ZAP, Snyk, and Sona
      - [Configure ZAP to scan your application for common vulnerabilities](https://www.pgdevopstips.co.uk/article/creating-an-azure-pipeline-to-run-owasp-zap-with-custom-scan-rules).
      - Fail the build or block deployments if critical vulnerabilities are detected.
 
-**5. Security Testing as a Gate:**
+### 6. Security Testing as a Gate
 
    - **Guideline:** Make security testing a mandatory gate in your CI/CD pipeline and block deployments if security tests fail.
    
@@ -73,7 +160,14 @@ Implementing DevSecOps practices in Azure DevOps using OWASP ZAP, Snyk, and Sona
      - Fail the build or block deployments if security test results do not meet predefined criteria.
      - Provide developers with clear instructions on how to remediate security findings.
 
-**6. Continuous Training and Awareness:**
+### 7. Incident Response Planning
+  - **Guideline:** Develop a comprehensive incident response plan.
+
+  - **Benefits:** Ensure effective response to security incidents.
+
+  - **Implementation:** Regularly test and update the plan.
+
+### 8. Continuous Training and Awareness
 
    - **Guideline:** Ensure that all team members are aware of security best practices.
    
@@ -84,7 +178,7 @@ Implementing DevSecOps practices in Azure DevOps using OWASP ZAP, Snyk, and Sona
      - Conduct regular security awareness sessions.
      - Encourage secure coding practices and peer code reviews.
 
-**7. Automated Remediation:**
+### 9. Automated Remediation
 
    - **Guideline:** Implement automated remediation for identified security issues.
    
@@ -94,7 +188,7 @@ Implementing DevSecOps practices in Azure DevOps using OWASP ZAP, Snyk, and Sona
      - Use automated tools or scripts to remediate identified security issues.
      - Integrate remediation into the CI/CD pipeline or create dedicated workflows.
 
-**8. Continuous Monitoring:**
+### 10. Continuous Monitoring
 
    - **Guideline:** Implement continuous monitoring of applications and infrastructure for security threats.
    
@@ -105,7 +199,7 @@ Implementing DevSecOps practices in Azure DevOps using OWASP ZAP, Snyk, and Sona
      - Define alerting thresholds and incident response procedures.
      - Regularly review and update security monitoring configurations.
 
-**9. Compliance and Reporting:**
+### 11. Compliance and Reporting
 
    - **Guideline:** Implement compliance checks and generate compliance reports.
    
@@ -116,7 +210,7 @@ Implementing DevSecOps practices in Azure DevOps using OWASP ZAP, Snyk, and Sona
      - Generate and securely store compliance reports.
      - Address compliance violations promptly.
 
-**10. Periodic Security Assessments:**
+### 12. Periodic Security Assessments
 
    - **Guideline:** Conduct regular security assessments, including penetration testing, to identify and mitigate security risks.
    
