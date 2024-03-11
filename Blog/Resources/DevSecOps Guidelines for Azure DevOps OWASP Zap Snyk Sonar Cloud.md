@@ -21,7 +21,7 @@ Implementing DevSecOps practices in Azure DevOps using OWASP ZAP, Snyk, and Sona
 
 ## Pre-Development Phase
 
-### 1. Requirements and Design considerations
+### 1. Requirements and Design
    - **Guideline:** Begin considering security during the project's initial planning and design phases.
    
    - **Benefits:** Early identification of potential security risks reduces the cost and impact of addressing vulnerabilities.
@@ -33,7 +33,7 @@ Implementing DevSecOps practices in Azure DevOps using OWASP ZAP, Snyk, and Sona
      - Ensure that security experts are part of the initial project discussions.
 
 ### 2. Data Privacy and Compliance
-  - **Guideline:** Adhere to data protection regulations and minimize PII collection.
+  - **Guideline:** Adhere to data protection regulations and minimise PII collection.
 
   - **Benefits:** Mitigate legal and reputational risks.
 
@@ -46,7 +46,7 @@ Implementing DevSecOps practices in Azure DevOps using OWASP ZAP, Snyk, and Sona
 
    - **Benefits:** Ensures data integrity and confidentiality.
 
-   - **Implementation:** Encrypt communication channels and sensitive data stored in databases with Password-Based Key Function 2 (PBKDF2).
+   - **Implementation:** Encrypt communication channels with HTTPS and sensitive data stored in databases with Password-Based Key Function 2 (PBKDF2).
 
 ### 2. **Access Controls**
    - **Guideline:** Limit access based on roles and responsibilities.
@@ -60,14 +60,14 @@ Implementing DevSecOps practices in Azure DevOps using OWASP ZAP, Snyk, and Sona
 
    - **Benefits:** Prevent unauthorized access and maintain data confidentiality.
 
-   - **Implementation:** Utilize multi-factor authentication and token-based authorization.
+   - **Implementation:** Utilise multi-factor authentication and token-based authorization.
 
 ### 4. **Input Validation**
-   - **Guideline:** Validate and sanitize user inputs.
+   - **Guideline:** Validate and sanitise user inputs.
 
    - **Benefits:** Mitigate risks of injection attacks.
 
-   - **Implementation:** Prefer positive security model validation over negative.
+   - **Implementation:** Prefer positive security model validation (whitelisting) over negative (blacklisting).
 
 ### 5. **Error Handling**
    - **Guideline:** Prevent the disclosure of sensitive information in error messages.
@@ -88,14 +88,14 @@ Implementing DevSecOps practices in Azure DevOps using OWASP ZAP, Snyk, and Sona
 
    - **Benefits:** Prevent unauthorized access and data manipulation.
 
-   - **Implementation:** Validate and sanitize API inputs.
+   - **Implementation:** Validate and sanitise API inputs.
 
 ### 8. **Code Quality and Reviews**
   - **Guideline:** Enforce coding standards and conduct regular code reviews.
 
   - **Benefits:** Identify security vulnerabilities early.
 
-  - **Implementation:** Utilize static code analysis tools.
+  - **Implementation:** Utilise static code analysis tools for Static Application Security Testing (SAST).
 
 ## Operations
 
